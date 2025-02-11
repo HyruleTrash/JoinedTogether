@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Blocks&shit.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Blocks&shit" parent="." instance=ExtResource( 1 )]
+tile_data = PackedInt32Array( 524301, 3, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 430.3, 275.543 )
+current = true
+zoom = Vector2( 0.5, 0.5 )

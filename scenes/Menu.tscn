@@ -1,0 +1,313 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://FixelGlyphes copy.ttf" type="FontFile" id=1]
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Blocks&shit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Font.tres" type="FontFile" id=5]
+[ext_resource path="res://Soundeffects/Blip_Select.wav" type="AudioStream" id=6]
+[ext_resource path="res://Soundeffects/Blip_Select_enter.wav" type="AudioStream" id=7]
+
+[sub_resource type="FontFile" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="FontFile" id=2]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="FontFile" id=3]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="FontFile" id=4]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="FontFile" id=5]
+size = 128
+font_data = ExtResource( 1 )
+
+[sub_resource type="FontFile" id=6]
+size = 64
+font_data = ExtResource( 1 )
+
+[node name="MainMenu" type="Node"]
+script = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Node2D"]
+offset_right = 483.0
+offset_bottom = 620.0
+color = Color( 0.027451, 0.0901961, 0.235294, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blocks&shit" parent="Node2D" instance=ExtResource( 3 )]
+tile_data = PackedInt32Array( 0, 1, 196608, 1, 1, 196608, 2, 1, 196608, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 1, 196608, 8, 1, 196608, 9, 4, 0, 11, 4, 0, 12, 1, 196608, 15, 1, 131074, 19, 1, 196608, 20, 1, 196608, 23, 4, 0, 26, 1, 196608, 27, 1, 196608, 28, 1, 196608, 29, 1, 196608, 30, 1, 196608, 65536, 1, 196608, 65537, 1, 196608, 65538, 1, 196608, 65539, 4, 0, 65540, 1, 196608, 65541, 1, 196608, 65542, 1, 196608, 65544, 1, 196608, 65545, 1, 196608, 65546, 1, 196608, 65547, 1, 196608, 65551, 1, 131074, 65554, 1, 196608, 65555, 1, 196608, 65556, 1, 196608, 65557, 1, 196608, 65558, 1, 196608, 131072, 4, 0, 131073, 1, 196608, 131074, 1, 196608, 131075, 1, 196608, 131076, 1, 196608, 131077, 4, 0, 131078, 4, 0, 131079, 1, 196608, 131080, 1, 196608, 131081, 4, 0, 131082, 4, 0, 131083, 4, 0, 131085, 1, 196608, 131087, 1, 131074, 131088, 1, 131074, 131090, 1, 196608, 131092, 4, 0, 131093, 3, 0, 131094, 1, 196608, 196608, 4, 0, 196609, 4, 0, 196610, 1, 196608, 196612, 4, 0, 196613, 1, 196608, 196614, 1, 196608, 196615, 1, 196608, 196616, 4, 0, 196617, 1, 196608, 196618, 1, 196608, 196621, 4, 0, 196623, 1, 131074, 196624, 1, 131074, 196626, 1, 196608, 196627, 1, 196608, 196629, 1, 196608, 196630, 1, 196608, 262144, 1, 196608, 262145, 4, 0, 262146, 4, 0, 262147, 1, 196608, 262148, 1, 196608, 262149, 1, 196608, 262150, 1, 196608, 262152, 1, 196608, 262153, 1, 196608, 262154, 4, 0, 262155, 1, 196608, 262156, 1, 196608, 262159, 1, 131074, 262160, 1, 131074, 327682, 1, 196608, 327683, 1, 196608, 327684, 4, 0, 327685, 1, 196608, 327688, 4, 0, 327689, 1, 196608, 327690, 1, 196608, 327691, 4, 0, 327692, 1, 196608, 327695, 1, 131074, 327697, 1, 196608, 327698, 1, 196608, 327699, 1, 196608, 327700, 1, 196608, 327701, 1, 196608, 393217, 1, 196608, 393218, 1, 196608, 393219, 1, 196608, 393220, 1, 196608, 393221, 4, 0, 393222, 4, 0, 393223, 1, 196608, 393224, 1, 196608, 393225, 1, 196608, 393226, 1, 196608, 393227, 1, 196608, 393228, 1, 196608, 393231, 1, 131074, 393232, 1, 196608, 393233, 1, 196608, 393237, 4, 0, 458752, 1, 196608, 458753, 4, 0, 458754, 1, 196608, 458755, 1, 196608, 458756, 1, 196608, 458757, 1, 196608, 458758, 1, 196608, 458759, 1, 196608, 458762, 1, 196608, 458763, 4, 0, 458764, 4, 0, 458767, 1, 131074, 458768, 1, 196608, 458769, 4, 0, 458770, 3, 0, 458771, 1, 196608, 524288, 1, 196608, 524289, 4, 0, 524290, 1, 196608, 524291, 4, 0, 524292, 4, 0, 524293, 1, 196608, 524294, 1, 196608, 524295, 1, 196608, 524296, 1, 196608, 524297, 1, 196608, 524298, 1, 196608, 524299, 1, 196608, 524300, 1, 196608, 524301, 1, 196608, 524303, 1, 131074, 524304, 1, 196608, 524305, 1, 196608, 524306, 4, 0, 524307, 1, 196608, 524313, 4, 0, 524316, 1, 196608, 524317, 1, 196608, 524318, 1, 196608, 589824, 4, 0, 589825, 1, 196608, 589826, 1, 196608, 589832, 1, 196608, 589833, 1, 196608, 589834, 4, 0, 589835, 1, 196608, 589839, 1, 131074, 589841, 1, 196608, 589842, 1, 196608, 589843, 1, 196608, 589845, 1, 196608, 589846, 1, 196608, 589847, 1, 196608, 589848, 1, 196608, 589849, 1, 196608, 589852, 1, 196608, 589853, 4, 0, 589854, 4, 0, 655360, 4, 0, 655361, 1, 196608, 655362, 4, 0, 655368, 1, 196608, 655369, 1, 196608, 655370, 1, 196608, 655371, 4, 0, 655375, 1, 131074, 655379, 1, 196608, 655380, 1, 196608, 655381, 1, 196608, 655385, 1, 196608, 655386, 1, 196608, 655388, 1, 196608, 655389, 3, 0, 720896, 1, 196608, 720897, 1, 196608, 720905, 1, 196608, 720906, 1, 196608, 720907, 4, 0, 720908, 4, 0, 720910, 1, 131074, 720911, 1, 131074, 720915, 1, 196608, 720917, 1, 196608, 720918, 1, 196608, 720919, 1, 196608, 720922, 1, 196608, 786432, 1, 196608, 786433, 4, 0, 786441, 1, 196608, 786442, 4, 0, 786443, 1, 196608, 786444, 1, 196608, 786446, 1, 131074, 786447, 1, 131074, 786450, 1, 196608, 786451, 1, 196608, 786452, 4, 0, 786453, 1, 196608, 786454, 3, 0, 786455, 1, 196608, 786459, 1, 196608, 786460, 1, 196608, 786461, 1, 196608, 851968, 1, 196608, 851969, 1, 196608, 851970, 4, 0, 851976, 1, 196608, 851977, 1, 196608, 851978, 1, 196608, 851982, 1, 131074, 851983, 1, 131074, 851986, 1, 196608, 851987, 1, 196608, 851989, 1, 196608, 851990, 1, 196608, 851991, 1, 196608, 851994, 1, 196608, 851995, 4, 0, 851997, 1, 196608, 851998, 1, 196608, 917504, 4, 0, 917505, 1, 196608, 917506, 4, 0, 917512, 1, 196608, 917513, 4, 0, 917514, 4, 0, 917515, 1, 196608, 917516, 1, 196608, 917517, 4, 0, 917518, 1, 131074, 917519, 1, 131074, 917523, 1, 196608, 917527, 1, 196608, 917530, 1, 196608, 917531, 3, 0, 917532, 4, 0, 917534, 1, 196608, 983040, 4, 0, 983041, 1, 196608, 983042, 1, 196608, 983043, 1, 196608, 983044, 4, 0, 983045, 4, 0, 983046, 4, 0, 983047, 4, 0, 983048, 4, 0, 983049, 4, 0, 983050, 1, 196608, 983051, 1, 196608, 983052, 1, 196608, 983053, 1, 196608, 983055, 1, 131074, 983059, 1, 196608, 983060, 1, 196608, 983061, 1, 196608, 983062, 1, 196608, 983066, 4, 0, 983068, 4, 0, 983070, 1, 196608, 1048576, 4, 0, 1048577, 1, 196608, 1048578, 1, 196608, 1048579, 1, 196608, 1048580, 1, 196608, 1048581, 1, 196608, 1048582, 1, 196608, 1048583, 1, 196608, 1048584, 1, 196608, 1048585, 1, 196608, 1048586, 1, 196608, 1048587, 4, 0, 1048588, 1, 196608, 1048591, 1, 131074, 1048592, 1, 131074, 1048593, 4, 0, 1048597, 1, 196608, 1048601, 1, 196608, 1048606, 1, 196608, 1114112, 1, 196608, 1114113, 1, 196608, 1114114, 4, 0, 1114115, 4, 0, 1114116, 1, 196608, 1114118, 1, 196608, 1114119, 4, 0, 1114120, 4, 0, 1114121, 4, 0, 1114122, 1, 196608, 1114123, 4, 0, 1114124, 1, 196608, 1114127, 1, 131074, 1114128, 1, 131074, 1114135, 4, 0, 1114136, 1, 196608, 1114141, 1, 196608, 1114142, 1, 196608, 1179648, 1, 196608, 1179649, 4, 0, 1179650, 4, 0, 1179651, 4, 0, 1179652, 1, 196608, 1179654, 1, 196608, 1179655, 1, 196608, 1179656, 4, 0, 1179657, 4, 0, 1179658, 1, 196608, 1179659, 4, 0, 1179660, 4, 0, 1179663, 1, 131074, 1179666, 1, 196608, 1179672, 1, 196608, 1179673, 1, 196608, 1179674, 1, 196608, 1179675, 1, 196608, 1179676, 1, 196608, 1179677, 1, 196608 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D"]
+offset_left = 1.0
+offset_top = 60.0
+offset_right = 1025.0
+offset_bottom = 722.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="CenterContainer" parent="Node2D/HBoxContainer"]
+offset_right = 350.0
+offset_bottom = 662.0
+custom_minimum_size = Vector2( 350, 600 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/HBoxContainer/Options"]
+offset_left = 67.0
+offset_top = 231.0
+offset_right = 283.0
+offset_bottom = 431.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Node2D/HBoxContainer/Options/VBoxContainer"]
+offset_right = 216.0
+offset_bottom = 200.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/HBoxContainer/Options/VBoxContainer/CenterContainer"]
+offset_right = 216.0
+offset_bottom = 200.0
+
+[node name="VBoxOptions" type="VBoxContainer" parent="Node2D/HBoxContainer/Options/VBoxContainer/CenterContainer/HBoxContainer"]
+offset_right = 216.0
+offset_bottom = 200.0
+
+[node name="Play" type="Label" parent="Node2D/HBoxContainer/Options/VBoxContainer/CenterContainer/HBoxContainer/VBoxOptions"]
+offset_right = 216.0
+offset_bottom = 64.0
+theme_override_fonts/font = SubResource( 1 )
+text = "Play"
+align = 1
+
+[node name="Settings" type="Label" parent="Node2D/HBoxContainer/Options/VBoxContainer/CenterContainer/HBoxContainer/VBoxOptions"]
+offset_top = 68.0
+offset_right = 216.0
+offset_bottom = 132.0
+theme_override_fonts/font = SubResource( 2 )
+text = "Settings"
+align = 1
+
+[node name="Quit" type="Label" parent="Node2D/HBoxContainer/Options/VBoxContainer/CenterContainer/HBoxContainer/VBoxOptions"]
+offset_top = 136.0
+offset_right = 216.0
+offset_bottom = 200.0
+theme_override_fonts/font = SubResource( 3 )
+text = "Quit"
+align = 1
+
+[node name="Blank" type="CenterContainer" parent="Node2D/HBoxContainer"]
+offset_left = 354.0
+offset_right = 726.0
+offset_bottom = 662.0
+custom_minimum_size = Vector2( 372, 600 )
+
+[node name="Titel" type="CenterContainer" parent="Node2D/HBoxContainer"]
+offset_left = 730.0
+offset_right = 1002.0
+offset_bottom = 662.0
+custom_minimum_size = Vector2( 272, 600 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/HBoxContainer/Titel"]
+offset_right = 272.0
+offset_bottom = 662.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Node2D/HBoxContainer/Titel/VBoxContainer"]
+offset_right = 272.0
+offset_bottom = 198.0
+
+[node name="Joined" type="Label" parent="Node2D/HBoxContainer/Titel/VBoxContainer/CenterContainer"]
+offset_left = 24.0
+offset_right = 248.0
+offset_bottom = 198.0
+theme_override_fonts/font = SubResource( 1 )
+text = "Joined
+
+"
+align = 1
+uppercase = true
+
+[node name="Through" type="Label" parent="Node2D/HBoxContainer/Titel/VBoxContainer/CenterContainer"]
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 232.0
+offset_bottom = 150.0
+theme_override_fonts/font = SubResource( 4 )
+text = "
+~ Trough ~
+"
+align = 1
+uppercase = true
+
+[node name="Realms" type="Label" parent="Node2D/HBoxContainer/Titel/VBoxContainer/CenterContainer"]
+offset_right = 272.0
+offset_bottom = 198.0
+theme_override_fonts/font = SubResource( 3 )
+text = "
+
+Realms"
+align = 1
+uppercase = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Node2D/HBoxContainer/Titel/VBoxContainer"]
+offset_top = 202.0
+offset_right = 272.0
+offset_bottom = 662.0
+custom_minimum_size = Vector2( 0, 460 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Node2D"]
+offset_top = 30.0
+offset_right = 350.0
+offset_bottom = 750.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options2" type="CenterContainer" parent="Node2D/HBoxContainer2"]
+offset_right = 350.0
+offset_bottom = 720.0
+custom_minimum_size = Vector2( 350, 600 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/HBoxContainer2/Options2"]
+offset_left = 63.0
+offset_top = 260.0
+offset_right = 287.0
+offset_bottom = 460.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Node2D/HBoxContainer2/Options2/VBoxContainer"]
+offset_right = 224.0
+offset_bottom = 200.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer"]
+offset_right = 224.0
+offset_bottom = 200.0
+
+[node name="VboxSelectorLeft" type="VBoxContainer" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer"]
+offset_bottom = 200.0
+
+[node name="Selector" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorLeft"]
+offset_bottom = 64.0
+theme_override_fonts/font = SubResource( 1 )
+align = 1
+uppercase = true
+
+[node name="Selector2" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorLeft"]
+offset_top = 68.0
+offset_bottom = 132.0
+theme_override_fonts/font = SubResource( 2 )
+align = 1
+uppercase = true
+
+[node name="Selector3" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorLeft"]
+offset_top = 136.0
+offset_bottom = 200.0
+theme_override_fonts/font = SubResource( 3 )
+align = 1
+uppercase = true
+
+[node name="CenterContainer" type="CenterContainer" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer"]
+offset_left = 4.0
+offset_right = 220.0
+offset_bottom = 200.0
+custom_minimum_size = Vector2( 216, 0 )
+
+[node name="VboxSelectorRight" type="VBoxContainer" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer"]
+offset_left = 224.0
+offset_right = 224.0
+offset_bottom = 200.0
+
+[node name="Selector" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorRight"]
+offset_bottom = 64.0
+theme_override_fonts/font = SubResource( 1 )
+align = 1
+uppercase = true
+
+[node name="Selector2" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorRight"]
+offset_top = 68.0
+offset_bottom = 132.0
+theme_override_fonts/font = SubResource( 2 )
+align = 1
+uppercase = true
+
+[node name="Selector3" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorRight"]
+offset_top = 136.0
+offset_bottom = 200.0
+theme_override_fonts/font = SubResource( 3 )
+align = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="Node2D"]
+visible = false
+offset_left = 68.3486
+offset_top = 472.898
+offset_right = 932.349
+offset_bottom = 600.898
+theme_override_fonts/font = SubResource( 5 )
+theme_override_colors/font_color = Color( 1, 0, 0, 1 )
+text = "No Settings yet."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D2" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Node2D2"]
+offset_left = -1.29492
+offset_right = 1030.7
+offset_bottom = 620.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Node2D2"]
+offset_left = 425.0
+offset_top = 215.0
+offset_right = 601.0
+offset_bottom = 413.0
+theme_override_fonts/font = SubResource( 6 )
+text = "END
+OF
+DEMO"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Node2D2"]
+offset_left = 375.532
+offset_top = 555.528
+offset_right = 645.532
+offset_bottom = 587.528
+theme_override_fonts/font = ExtResource( 5 )
+text = "leave a review!"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blocks&shit" parent="Node2D2" instance=ExtResource( 3 )]
+tile_data = PackedInt32Array( 65535, 7, 131072, 0, 7, 131072, 1, 7, 131072, 2, 7, 131072, 3, 7, 131072, 4, 7, 65536, 26, 7, 65537, 27, 7, 131072, 28, 7, 131072, 29, 7, 131072, 30, 7, 131072, 31, 7, 131072, 32, 7, 131072, 131071, 7, 131072, 65536, 7, 131072, 65537, 7, 131072, 65538, 7, 131072, 65539, 7, 262145, 65540, 7, 196608, 65562, 7, 131073, 65563, 7, 327680, 65564, 7, 131072, 65565, 7, 131072, 65566, 7, 131072, 65567, 7, 131072, 65568, 7, 131072, 196607, 7, 131072, 131072, 7, 131072, 131073, 7, 131072, 131074, 7, 131072, 131075, 7, 65536, 131099, 7, 65537, 131100, 7, 131072, 131101, 7, 131072, 131102, 7, 131072, 131103, 7, 131072, 131104, 7, 131072, 262143, 7, 131072, 196608, 7, 131072, 196609, 7, 131072, 196610, 7, 262145, 196611, 7, 196608, 196635, 7, 65537, 196636, 7, 131072, 196637, 7, 131072, 196638, 7, 131072, 196639, 7, 131072, 196640, 7, 131072, 327679, 7, 131072, 262144, 7, 131072, 262145, 7, 131072, 262146, 7, 65536, 262171, 7, 131073, 262172, 7, 327680, 262173, 7, 131072, 262174, 7, 131072, 262175, 7, 131072, 262176, 7, 131072, 393215, 7, 131072, 327680, 7, 131072, 327681, 7, 131072, 327682, 7, 393216, 327683, 7, 196609, 327708, 7, 131073, 327709, 7, 327680, 327710, 7, 131072, 327711, 7, 131072, 327712, 7, 131072, 458751, 7, 131072, 393216, 7, 131072, 393217, 7, 131072, 393218, 7, 131072, 393219, 7, 65536, 393245, 7, 65537, 393246, 7, 131072, 393247, 7, 131072, 393248, 7, 131072, 524287, 7, 131072, 458752, 7, 131072, 458753, 7, 131072, 458754, 7, 131072, 458755, 7, 393216, 458756, 7, 196609, 458781, 7, 65537, 458782, 7, 131072, 458783, 7, 131072, 458784, 7, 131072, 589823, 7, 131072, 524288, 7, 131072, 524289, 7, 131072, 524290, 7, 131072, 524291, 7, 262145, 524292, 7, 196608, 524316, 7, 262144, 524317, 7, 327681, 524318, 7, 131072, 524319, 7, 131072, 524320, 7, 131072, 655359, 7, 131072, 589824, 7, 131072, 589825, 7, 131072, 589826, 7, 131072, 589827, 7, 65536, 589852, 7, 65537, 589853, 7, 131072, 589854, 7, 131072, 589855, 7, 131072, 589856, 7, 131072, 720895, 7, 131072, 655360, 7, 131072, 655361, 7, 131072, 655362, 7, 262145, 655363, 7, 196608, 655388, 7, 65537, 655389, 7, 131072, 655390, 7, 131072, 655391, 7, 131072, 655392, 7, 131072, 786431, 7, 131072, 720896, 7, 131072, 720897, 7, 131072, 720898, 7, 65536, 720923, 7, 262144, 720924, 7, 327681, 720925, 7, 131072, 720926, 7, 131072, 720927, 7, 131072, 720928, 7, 131072, 851967, 7, 131072, 786432, 7, 131072, 786433, 7, 131072, 786434, 7, 393216, 786435, 7, 196609, 786459, 7, 65537, 786460, 7, 131072, 786461, 7, 131072, 786462, 7, 131072, 786463, 7, 131072, 786464, 7, 131072, 917503, 7, 131072, 851968, 7, 131072, 851969, 7, 131072, 851970, 7, 131072, 851971, 7, 65536, 851995, 7, 65537, 851996, 7, 131072, 851997, 7, 131072, 851998, 7, 131072, 851999, 7, 131072, 852000, 7, 131072, 983039, 7, 131072, 917504, 7, 131072, 917505, 7, 131072, 917506, 7, 131072, 917507, 7, 65536, 917531, 7, 131073, 917532, 7, 327680, 917533, 7, 131072, 917534, 7, 131072, 917535, 7, 131072, 917536, 7, 131072, 1048575, 7, 131072, 983040, 7, 131072, 983041, 7, 131072, 983042, 7, 262145, 983043, 7, 196608, 983068, 7, 65537, 983069, 7, 131072, 983070, 7, 131072, 983071, 7, 131072, 983072, 7, 131072, 1114111, 7, 131072, 1048576, 7, 131072, 1048577, 7, 262145, 1048578, 7, 196608, 1048604, 7, 65537, 1048605, 7, 131072, 1048606, 7, 131072, 1048607, 7, 131072, 1048608, 7, 131072, 1179647, 7, 131072, 1114112, 7, 131072, 1114113, 7, 393216, 1114114, 7, 196609, 1114140, 7, 65537, 1114141, 7, 131072, 1114142, 7, 131072, 1114143, 7, 131072, 1114144, 7, 131072, 1245183, 7, 131072, 1179648, 7, 131072, 1179649, 7, 131072, 1179650, 7, 393216, 1179651, 7, 196609, 1179675, 7, 262144, 1179676, 7, 327681, 1179677, 7, 131072, 1179678, 7, 131072, 1179679, 7, 131072, 1179680, 7, 131072, 1310719, 7, 131072, 1245184, 7, 131072, 1245185, 7, 131072, 1245186, 7, 65536, 1245210, 7, 262144, 1245211, 7, 327681, 1245212, 7, 131072, 1245213, 7, 131072, 1245214, 7, 131072, 1245215, 7, 131072, 1245216, 7, 131072 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )

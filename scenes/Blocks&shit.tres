@@ -1,0 +1,550 @@
+[gd_resource type="TileSet" load_steps=82 format=2]
+
+[ext_resource path="res://Assets/Blocks.png" type="Texture2D" id=1]
+[ext_resource path="res://Assets/Chains.png" type="Texture2D" id=2]
+[ext_resource path="res://Assets/redgradiant.png" type="Texture2D" id=3]
+[ext_resource path="res://Assets/Stars.png" type="Texture2D" id=4]
+[ext_resource path="res://Assets/MOOM.png" type="Texture2D" id=5]
+[ext_resource path="res://Assets/Window.png" type="Texture2D" id=6]
+[ext_resource path="res://Assets/WindowBroken.png" type="Texture2D" id=7]
+[ext_resource path="res://Assets/CreepyColorfades.png" type="Texture2D" id=8]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PackedVector2Array( 0, 10.2546, 32, 10.2546, 32, 0, 0, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PackedVector2Array( 0, 0, 32, 0, 32, 11.1353, 20.2015, 11.1353, 20.2015, 32, 11.8032, 32, 11.6417, 10.9738, 0, 10.9738 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PackedVector2Array( 0, 32, 32, 32, 32, 0, 0, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PackedVector2Array( 32, 32, 32, 32, 0, 0, 32, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PackedVector2Array( 32, 19.6811, 0.326019, 19.6811, 0.326019, 12.1459, 32, 12.1459 )
+
+[sub_resource type="OccluderPolygon2D" id=6]
+polygon = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=7]
+polygon = PackedVector2Array( 0, 32, 10.2441, 32, 10.2441, 0, 0, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=8]
+polygon = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=9]
+polygon = PackedVector2Array( 0, 32, 32, 32, 32, 0, 0, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=10]
+polygon = PackedVector2Array( 32, 32, 32, 32, 0, 32, 0, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=11]
+polygon = PackedVector2Array( 20.1796, 32, 11.6198, 32, 11.6198, 0, 20.1796, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=12]
+polygon = PackedVector2Array( 20.8431, 32, 32, 32, 32, 0, 20.8431, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=13]
+polygon = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=14]
+polygon = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=15]
+polygon = PackedVector2Array( 0, 32, 32, 32, 32, 32, 0, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=16]
+polygon = PackedVector2Array( 19.8347, 32, 11.7594, 32, 11.7594, 0, 19.8347, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=17]
+polygon = PackedVector2Array( 0, 32, 32, 32, 32, 20.5427, 0, 20.5427 )
+
+[sub_resource type="OccluderPolygon2D" id=18]
+polygon = PackedVector2Array( 32, 32, 0, 32, 0, 32, 32, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=19]
+polygon = PackedVector2Array( 0, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=20]
+polygon = PackedVector2Array( 0, 0, 32, 0, 32, 11.4802, 20.2754, 11.4802, 20.4369, 32, 12.0386, 32, 11.8771, 11.3187, 0, 11.3187 )
+
+[sub_resource type="OccluderPolygon2D" id=21]
+polygon = PackedVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=22]
+polygon = PackedVector2Array( 32, 32, 0, 32, 32, 0, 32, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=23]
+polygon = PackedVector2Array( 32, 19.896, 0, 19.896, 0, 11.9823, 32, 11.9823 )
+
+[sub_resource type="OccluderPolygon2D" id=24]
+polygon = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=25]
+points = PackedVector2Array( 32, 11.7014, 0, 11.7014, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=26]
+points = PackedVector2Array( 11.0478, 32, 0, 32, 0, 0, 11.0478, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=27]
+points = PackedVector2Array( 21.245, 0, 32, 0, 32, 32, 21.245, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=28]
+points = PackedVector2Array( 0, 21.3465, 32, 21.3465, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=29]
+points = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=30]
+points = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=31]
+points = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=32]
+points = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=33]
+points = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=34]
+points = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=35]
+points = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=36]
+points = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=37]
+points = PackedVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=38]
+points = PackedVector2Array( 32, 19.9379, 0, 19.9379, 0, 11.9003, 32, 11.9003 )
+
+[sub_resource type="ConvexPolygonShape2D" id=39]
+points = PackedVector2Array( 20.291, 32, 11.8516, 32, 11.8516, 0, 20.291, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=40]
+points = PackedVector2Array( 20.0393, 32, 12.4037, 32, 12.4037, 0, 20.0393, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=41]
+points = PackedVector2Array( 32, 19.7877, 0.647736, 19.7877, 0, 12.5539, 32, 12.152 )
+
+[sub_resource type="ConvexPolygonShape2D" id=42]
+points = PackedVector2Array( 32, 32, 32, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=43]
+points = PackedVector2Array( 0, 0, 32, 32, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=44]
+points = PackedVector2Array( 32, 32, 0, 32, 0, 32, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=45]
+points = PackedVector2Array( 0, 0, 32, 0, 32, 11.1353, 20.04, 11.1353, 20.04, 32, 12.1263, 32, 12.1263, 11.1353, 0, 11.1353, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=46]
+points = PackedVector2Array( 0, 0, 32, 0, 32, 11.1572, 19.9524, 11.1572, 19.9524, 32, 12.0386, 32, 12.0386, 11.3187, 0, 11.3187 )
+
+[sub_resource type="ConvexPolygonShape2D" id=47]
+points = PackedVector2Array( 0, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=48]
+points = PackedVector2Array( 0.65432, 4.0985, 4, 6, 6.00338, 10.3778, 11, 13, 13.213, 17.5874, 18, 19, 19.9575, 22.7039, 24, 24, 26.9345, 29.2158, 32, 32, 0, 32, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=49]
+points = PackedVector2Array( 32, 0, 32, 32, 0, 32, 4.79672, 29.1215, 7.00714, 25.0833, 11.3087, 23.0747, 13.9608, 19.0269, 18.9834, 17.4931, 21.0267, 13.0826, 25.9604, 10.7486, 27.9804, 6.12886, 31.3095, 4.46925 )
+
+[sub_resource type="OccluderPolygon2D" id=50]
+polygon = PackedVector2Array( 20.4276, 32, 12.094, 32, 12.094, 0, 20.2338, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=51]
+polygon = PackedVector2Array( 20.04, 0, 12.2878, 0, 12.2878, 5.72562, 20.04, 5.72562 )
+
+[sub_resource type="OccluderPolygon2D" id=52]
+polygon = PackedVector2Array( 19.8462, 15.2639, 12.2878, 15.2639, 12.2878, 0, 19.6524, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=53]
+polygon = PackedVector2Array( 20.0181, 0, 12.2659, 0, 12.2659, 16.3792, 20.0181, 16.3792 )
+
+[sub_resource type="OccluderPolygon2D" id=54]
+polygon = PackedVector2Array( 20.1348, 29.0506, 12.0595, 29.0506, 11.9473, 0, 20.0226, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=55]
+polygon = PackedVector2Array( 0, 32, 12.1043, 8.48761, 12.1043, 0, 19.6413, 0, 20.1796, 8.62219, 32, 32, 23.006, 32, 17.8916, 26.1186, 16.0074, 15.8899, 14.1232, 26.1186, 9.14341, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=56]
+polygon = PackedVector2Array( 20.19, 0, 12.4378, 0, 12.4378, 27.4261, 20.19, 27.4261 )
+
+[sub_resource type="OccluderPolygon2D" id=57]
+polygon = PackedVector2Array( 20.3838, 0, 12.0502, 0, 12.0502, 31.9095, 20.3838, 31.9095 )
+
+[sub_resource type="OccluderPolygon2D" id=58]
+polygon = PackedVector2Array( 27.0117, 31.0493, 5.2533, 31.0493, 5.2533, 29.367, 27.0117, 29.367 )
+
+[sub_resource type="OccluderPolygon2D" id=59]
+polygon = PackedVector2Array( 27.0885, 30.9372, 5.21793, 30.9372, 5.21793, 29.367, 27.0885, 29.367 )
+
+[sub_resource type="OccluderPolygon2D" id=60]
+polygon = PackedVector2Array( 26.8264, 30.9372, 5.06801, 30.9372, 5.06801, 29.367, 26.8264, 29.367 )
+
+[sub_resource type="OccluderPolygon2D" id=61]
+polygon = PackedVector2Array( 27.0482, 31.1615, 5.28978, 31.1615, 5.28978, 29.4791, 27.0482, 29.4791 )
+
+[sub_resource type="OccluderPolygon2D" id=62]
+polygon = PackedVector2Array( 26.9638, 30.9372, 4.98114, 30.9372, 4.98114, 29.2548, 26.9638, 29.2548 )
+
+[sub_resource type="OccluderPolygon2D" id=63]
+polygon = PackedVector2Array( 27.1528, 31.0493, 5.05792, 31.0493, 5.05792, 29.4791, 27.1528, 29.4791 )
+
+[sub_resource type="OccluderPolygon2D" id=64]
+polygon = PackedVector2Array( 5.36014, 31.3858, 27.0064, 31.3858, 27.0064, 29.367, 5.36014, 29.367 )
+
+[sub_resource type="OccluderPolygon2D" id=65]
+polygon = PackedVector2Array( 26.7467, 31.1615, 5.21262, 31.1615, 5.21262, 29.367, 26.7467, 29.367 )
+
+[sub_resource type="OccluderPolygon2D" id=66]
+polygon = PackedVector2Array( 27.1238, 31.0493, 5.14114, 31.0493, 5.14114, 29.367, 27.1238, 29.367 )
+
+[sub_resource type="OccluderPolygon2D" id=67]
+polygon = PackedVector2Array( 27.3128, 31.0493, 5.33009, 31.0493, 5.33009, 29.367, 27.3128, 29.367 )
+
+[sub_resource type="OccluderPolygon2D" id=68]
+polygon = PackedVector2Array( 27.208, 31.1615, 5.2253, 31.1615, 5.2253, 29.367, 27.208, 29.367 )
+
+[sub_resource type="OccluderPolygon2D" id=69]
+polygon = PackedVector2Array( 5.18993, 31.0493, 27.2848, 31.0493, 27.2848, 29.4791, 5.18993, 29.4791 )
+
+[sub_resource type="OccluderPolygon2D" id=70]
+polygon = PackedVector2Array( 26.9129, 30.9372, 5.26674, 30.9372, 5.26674, 29.2548, 26.9129, 29.2548 )
+
+[sub_resource type="OccluderPolygon2D" id=71]
+polygon = PackedVector2Array( 26.6691, 30.9372, 5.02292, 30.9372, 5.02292, 29.2548, 26.6691, 29.2548 )
+
+[sub_resource type="OccluderPolygon2D" id=72]
+polygon = PackedVector2Array( 27.1945, 30.9372, 5.0997, 30.9372, 5.0997, 29.2548, 27.1945, 29.2548 )
+
+[sub_resource type="OccluderPolygon2D" id=73]
+polygon = PackedVector2Array( 27.1393, 30.9372, 5.08179, 30.9372, 5.08179, 29.1613, 27.1393, 29.1613 )
+
+[resource]
+0/name = "Blocks.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 160, 192 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 2 )
+0/autotile/tile_size = Vector2( 32, 32 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [ Vector2( 0, 0 ), SubResource( 1 ), Vector2( 0, 1 ), SubResource( 2 ), Vector2( 0, 2 ), SubResource( 3 ), Vector2( 0, 3 ), SubResource( 4 ), Vector2( 0, 4 ), SubResource( 5 ), Vector2( 0, 5 ), SubResource( 6 ), Vector2( 1, 0 ), SubResource( 7 ), Vector2( 1, 1 ), SubResource( 8 ), Vector2( 1, 2 ), SubResource( 9 ), Vector2( 1, 3 ), SubResource( 10 ), Vector2( 1, 4 ), SubResource( 11 ), Vector2( 2, 0 ), SubResource( 12 ), Vector2( 2, 1 ), SubResource( 13 ), Vector2( 2, 2 ), SubResource( 14 ), Vector2( 2, 3 ), SubResource( 15 ), Vector2( 2, 4 ), SubResource( 16 ), Vector2( 3, 0 ), SubResource( 17 ), Vector2( 3, 2 ), SubResource( 18 ), Vector2( 3, 3 ), SubResource( 19 ), Vector2( 4, 0 ), SubResource( 20 ), Vector2( 4, 1 ), SubResource( 21 ), Vector2( 4, 2 ), SubResource( 22 ), Vector2( 4, 3 ), SubResource( 23 ), Vector2( 4, 4 ), SubResource( 24 ) ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 25 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 25 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 26 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 27 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 28 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 29 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 30 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 31 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 32 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 33 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 34 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 35 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 36 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 5 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 37 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 38 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 39 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 4 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 40 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 3 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 41 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 3 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 42 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 3 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 43 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 44 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 1 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 45 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 46 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 3 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 47 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 3 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 48 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 4, 2 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 49 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "Chains.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 96, 128 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 32, 32 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [ Vector2( 0, 0 ), SubResource( 50 ), Vector2( 0, 1 ), SubResource( 51 ), Vector2( 0, 2 ), SubResource( 52 ), Vector2( 1, 0 ), SubResource( 53 ), Vector2( 1, 1 ), SubResource( 54 ), Vector2( 1, 2 ), SubResource( 55 ), Vector2( 2, 0 ), SubResource( 56 ), Vector2( 2, 1 ), SubResource( 57 ) ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "redgradiant.png 2"
+2/texture = ExtResource( 3 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 160, 32 )
+2/tile_mode = 2
+2/autotile/icon_coordinate = Vector2( 0, 0 )
+2/autotile/tile_size = Vector2( 32, 32 )
+2/autotile/spacing = 0
+2/autotile/occluder_map = [  ]
+2/autotile/navpoly_map = [  ]
+2/autotile/priority_map = [  ]
+2/autotile/z_index_map = [  ]
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "MOOM.png 3"
+3/texture = ExtResource( 5 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 192, 32 )
+3/tile_mode = 2
+3/autotile/icon_coordinate = Vector2( 0, 0 )
+3/autotile/tile_size = Vector2( 32, 32 )
+3/autotile/spacing = 0
+3/autotile/occluder_map = [  ]
+3/autotile/navpoly_map = [  ]
+3/autotile/priority_map = [  ]
+3/autotile/z_index_map = [  ]
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "Stars.png 4"
+4/texture = ExtResource( 4 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 192, 32 )
+4/tile_mode = 2
+4/autotile/icon_coordinate = Vector2( 2, 0 )
+4/autotile/tile_size = Vector2( 32, 32 )
+4/autotile/spacing = 0
+4/autotile/occluder_map = [  ]
+4/autotile/navpoly_map = [  ]
+4/autotile/priority_map = [  ]
+4/autotile/z_index_map = [  ]
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "Window.png 5"
+5/texture = ExtResource( 6 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 256, 32 )
+5/tile_mode = 2
+5/autotile/icon_coordinate = Vector2( 6, 0 )
+5/autotile/tile_size = Vector2( 32, 32 )
+5/autotile/spacing = 0
+5/autotile/occluder_map = [ Vector2( 0, 0 ), SubResource( 58 ), Vector2( 1, 0 ), SubResource( 59 ), Vector2( 2, 0 ), SubResource( 60 ), Vector2( 3, 0 ), SubResource( 61 ), Vector2( 4, 0 ), SubResource( 62 ), Vector2( 5, 0 ), SubResource( 63 ), Vector2( 6, 0 ), SubResource( 64 ), Vector2( 7, 0 ), SubResource( 65 ) ]
+5/autotile/navpoly_map = [  ]
+5/autotile/priority_map = [  ]
+5/autotile/z_index_map = [  ]
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "WindowBroken.png 6"
+6/texture = ExtResource( 7 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 256, 32 )
+6/tile_mode = 2
+6/autotile/icon_coordinate = Vector2( 1, 0 )
+6/autotile/tile_size = Vector2( 32, 32 )
+6/autotile/spacing = 0
+6/autotile/occluder_map = [ Vector2( 0, 0 ), SubResource( 66 ), Vector2( 1, 0 ), SubResource( 67 ), Vector2( 2, 0 ), SubResource( 68 ), Vector2( 3, 0 ), SubResource( 69 ), Vector2( 4, 0 ), SubResource( 70 ), Vector2( 5, 0 ), SubResource( 71 ), Vector2( 6, 0 ), SubResource( 72 ), Vector2( 7, 0 ), SubResource( 73 ) ]
+6/autotile/navpoly_map = [  ]
+6/autotile/priority_map = [  ]
+6/autotile/z_index_map = [  ]
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "CreepyColorfades.png 7"
+7/texture = ExtResource( 8 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 64, 224 )
+7/tile_mode = 2
+7/autotile/icon_coordinate = Vector2( 0, 0 )
+7/autotile/tile_size = Vector2( 32, 32 )
+7/autotile/spacing = 0
+7/autotile/occluder_map = [  ]
+7/autotile/navpoly_map = [  ]
+7/autotile/priority_map = [  ]
+7/autotile/z_index_map = [  ]
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
