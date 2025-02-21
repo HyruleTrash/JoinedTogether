@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "joined through realms", "joined through realms.csproj", "{2977229F-8F6E-4BC0-88CC-1141F3540B9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2977229F-8F6E-4BC0-88CC-1141F3540B9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2977229F-8F6E-4BC0-88CC-1141F3540B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2977229F-8F6E-4BC0-88CC-1141F3540B9F}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{2977229F-8F6E-4BC0-88CC-1141F3540B9F}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{2977229F-8F6E-4BC0-88CC-1141F3540B9F}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{2977229F-8F6E-4BC0-88CC-1141F3540B9F}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://drh7r85p3j5qd"]
+
+[ext_resource type="TileSet" path="res://Blocks&shit.tres" id="1"]
+[ext_resource type="Script" path="res://Scripts/Terrain/Terrain.cs" id="2_1wj2n"]
+
+[node name="Terrain" type="TileMap"]
+tile_set = ExtResource("1")
+format = 2
+script = ExtResource("2_1wj2n")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

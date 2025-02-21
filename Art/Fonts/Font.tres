@@ -1,0 +1,8 @@
+[gd_resource type="FontFile" load_steps=2 format=2]
+
+[ext_resource type="FontFile" uid="uid://cmgjrgheilwfx" path="res://Art/Fonts/FixelGlyphes copy.ttf" id="1"]
+
+
+[resource]
+size = 32
+font_data = ExtResource( 1 )

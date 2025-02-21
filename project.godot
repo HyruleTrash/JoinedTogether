@@ -12,15 +12,15 @@ config_version=5
 
 config/name="joined through realms"
 config/description="A game about switching between two realms als two lovers"
-run/main_scene="res://scenes/Menu.tscn"
-config/features=PackedStringArray("4.3")
-config/icon="res://icon.png"
+run/main_scene="res://Scenes/Levels/Menu.tscn"
+config/features=PackedStringArray("4.3", "C#")
+config/icon="res://Art/Sprites/Icons/icon.png"
 config/macos_native_icon="res://Assets/icon32.icns"
 config/windows_native_icon="res://icon_SwG_icon.ico"
 
 [autoload]
 
-Infoholder="*res://scenes/Infoholder.tscn"
+Infoholder="*res://Scenes/Nodes/Infoholder.tscn"
 
 [display]
 

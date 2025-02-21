@@ -1,0 +1,133 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource type="Script" path="res://Scripts/Entities/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://qc5qg7e2fvnw" path="res://Art/Sprites/Entities/Player/Girl.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://brsyk00m4x7lm" path="res://Art/Sprites/Entities/Player/Boy.png" id="3"]
+[ext_resource type="AudioStream" uid="uid://ctsqnlafa4gcp" path="res://Art/Soundeffects/Step.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://bejlxmsyrk0ys" path="res://Art/Soundeffects/DeathSound.wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://dfjekxwemcxdu" path="res://Art/Soundeffects/Change_sound.wav" id="6"]
+[ext_resource type="AudioStream" uid="uid://u3am036rhlg3" path="res://Art/Soundeffects/Jump.wav" id="7"]
+
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "JumpBoy",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "FallGirl",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "FallBoy",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "JumpGirl",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "IdleBoy",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "IdleGirl",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "WalkGirl",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "WalkBoy",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 11.0682
+
+[sub_resource type="OccluderPolygon2D" id=13]
+polygon = PackedVector2Array( -5.86976, 15.0307, -5.86976, 20.8295, 10.4562, 21.0079, 10.4562, 16.5473, 7.51214, 16.5473, 7.51214, 13.6925, 10.4562, 13.6925, 10.4562, 9.05341, 9.02875, 9.05341, 9.02875, 6.1986, 7.51214, 6.10939, 7.42292, 4.59278, 10.3669, 4.59278, 10.3669, 2.98695, 12.062, 3.07616, 12.062, 0.132143, 13.4002, 0.0429287, 13.4002, -2.90109, 12.062, -2.90109, 12.062, -6.02353, 13.4002, -6.02353, 15.006, -7.45093, 15.006, -11.8224, 13.5786, -12.8929, 16.701, -15.034, 16.6118, -16.3722, 15.1844, -16.4614, 14.1139, -15.034, 13.4894, -16.4614, 6.70922, -20.0299, 4.03284, -18.0672, 2.24859, -18.0672, 1.53489, -19.5839, -0.784641, -21.8142, -1.40913, -20.8328, -2.92574, -18.0672, -4.53157, -19.6731, -7.83244, -19.5839, -8.90299, -21.0113, -10.4196, -20.922, -10.3304, -19.5839, -8.9922, -18.1565, -10.5088, -18.0672, -11.9362, -16.4614, -12.0254, -15.1232, -13.4528, -16.4614, -14.8802, -16.3722, -14.8802, -15.034, -13.6313, -13.785, -13.6313, -12.1792, -14.9695, -12.09, -14.9695, -9.05676, -18.0919, -9.05676, -18.0027, -7.80778, -15.0587, -7.62936, -14.8802, -6.02353, -13.7205, -4.59613, -14.9695, -2.9903, -18.1811, -1.29526, -18.0919, 0.0429287, -13.6313, 2.89773, -11.9362, 2.89773, -11.4009, 1.55955, -9.70591, 4.50356, -12.1146, 4.50356, -12.1146, 7.26916, -10.598, 8.87498, -7.5648, 8.87498, -9.08142, 10.4808, -8.9922, 15.0307 )
+
+[node name="Player" type="CharacterBody2D" groups=[
+"player",
+]]
+collision_mask = 4
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 11 )
+animation = "IdleBoy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.503113, 1.50935 )
+shape = SubResource( 12 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 13 )
+
+[node name="Stepsound2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -12.116
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = -1.0
+
+[node name="Change_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
