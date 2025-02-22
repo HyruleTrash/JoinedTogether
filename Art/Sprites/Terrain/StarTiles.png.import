@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mc41vye0b7y7"
-path="res://.godot/imported/redgradiant.png-300e7a280a0a9426d1066128a7133f48.ctex"
+uid="uid://cdcn8g5j3td66"
+path="res://.godot/imported/StarTiles.png-cc2dc02486d23a2c27cff2b60396b59a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/redgradiant.png"
-dest_files=["res://.godot/imported/redgradiant.png-300e7a280a0a9426d1066128a7133f48.ctex"]
+source_file="res://Art/Sprites/Terrain/StarTiles.png"
+dest_files=["res://.godot/imported/StarTiles.png-cc2dc02486d23a2c27cff2b60396b59a.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

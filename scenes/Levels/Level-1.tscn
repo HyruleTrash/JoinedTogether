@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Entities/Player.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://Scenes/Nodes/Terrain/Blocks&shit.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://drh7r85p3j5qd" path="res://Scenes/Nodes/Terrain/Blocks&shit.tscn" id="2"]
 [ext_resource type="Script" path="res://Scripts/Levels/Level-1.gd" id="3"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Lights/Light2D.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Scenes/Levels/Level-1-boy.tscn" id="5"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Lights/light.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Button.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Entities/Box.tscn" id="11"]
-[ext_resource type="Shader" path="res://Glitch.gdshader" id="12"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/Glitch.gdshader" id="12"]
 
 
 [sub_resource type="AtlasTexture" id=1]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkiufef3x8ady"
-path="res://.godot/imported/MOOM.png-d3515fbe89b95e85fc26ab982e2719c6.ctex"
+uid="uid://fkyavlh8xc6w"
+path="res://.godot/imported/BuildingBlockTiles.png-a177c00c86e898646b1a2dbf8cbb8538.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Terrain/MOOM.png"
-dest_files=["res://.godot/imported/MOOM.png-d3515fbe89b95e85fc26ab982e2719c6.ctex"]
+source_file="res://Art/Sprites/Terrain/BuildingBlockTiles.png"
+dest_files=["res://.godot/imported/BuildingBlockTiles.png-a177c00c86e898646b1a2dbf8cbb8538.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

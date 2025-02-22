@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource type="PackedScene" path="res://Scenes/Nodes/Terrain/Blocks&shit.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://drh7r85p3j5qd" path="res://Scenes/Nodes/Terrain/Blocks&shit.tscn" id="1"]
 [ext_resource type="Script" path="res://Scripts/Levels/Level-1-boy.gd" id="2"]
-[ext_resource type="TileSet" path="res://Level-1-girl.tres" id="3"]
+[ext_resource type="TileSet" path="res://Art/Tilemaps/Level-1-girl.tres" id="3"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Lights/Light2D.tscn" id="4"]
 
 

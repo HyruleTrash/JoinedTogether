@@ -1,13 +1,13 @@
 [gd_resource type="TileSet" load_steps=58 format=2]
 
-[ext_resource type="Texture2D" uid="uid://mc41vye0b7y7" path="res://Art/Sprites/redgradiant.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://svhwvtlk2x2v" path="res://Art/Sprites/Terrain/Window.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://bxeyrn5swixkh" path="res://Art/Sprites/Terrain/WindowBroken.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://cdcn8g5j3td66" path="res://Art/Sprites/Terrain/Stars.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://bkiufef3x8ady" path="res://Art/Sprites/Terrain/MOOM.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://fkyavlh8xc6w" path="res://Art/Sprites/Terrain/Blocks.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://mc41vye0b7y7" path="res://Art/Sprites/Terrain/RedGradiantTiles.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://svhwvtlk2x2v" path="res://Art/Sprites/Terrain/WindowTiles.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bxeyrn5swixkh" path="res://Art/Sprites/Terrain/BrokenWindowTiles.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cdcn8g5j3td66" path="res://Art/Sprites/Terrain/StarTiles.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bkiufef3x8ady" path="res://Art/Sprites/Terrain/MoonTiles.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://fkyavlh8xc6w" path="res://Art/Sprites/Terrain/BuildingBlockTiles.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://buecp824p8m8k" path="res://Art/Sprites/Terrain/Chains.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://daqsp55lwdyjd" path="res://Art/Sprites/Terrain/CreepyColorfades.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://daqsp55lwdyjd" path="res://Art/Sprites/Terrain/CorruptionTiles.png" id="8"]
 
 
 [sub_resource type="ConvexPolygonShape2D" id=1]

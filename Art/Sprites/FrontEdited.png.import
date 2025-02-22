@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bimo0cpbhy8sr"
-path="res://.godot/imported/front_edited.png-e0a860d9c5ccf22fa4057ef90a34986a.ctex"
+path="res://.godot/imported/FrontEdited.png-f5c3508458a9f98055db7b65aed4b8c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/front_edited.png"
-dest_files=["res://.godot/imported/front_edited.png-e0a860d9c5ccf22fa4057ef90a34986a.ctex"]
+source_file="res://Art/Sprites/FrontEdited.png"
+dest_files=["res://.godot/imported/FrontEdited.png-f5c3508458a9f98055db7b65aed4b8c2.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

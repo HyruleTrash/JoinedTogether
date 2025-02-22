@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdcn8g5j3td66"
-path="res://.godot/imported/Stars.png-c60817eb3ce9187ff5cda7fd697d12f2.ctex"
+uid="uid://bej4rvlavm2v3"
+path="res://.godot/imported/GlitchEffectTile.png-e3b103be4299f347d4139779b7c3f90d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Terrain/Stars.png"
-dest_files=["res://.godot/imported/Stars.png-c60817eb3ce9187ff5cda7fd697d12f2.ctex"]
+source_file="res://Art/Sprites/Terrain/GlitchEffectTile.png"
+dest_files=["res://.godot/imported/GlitchEffectTile.png-e3b103be4299f347d4139779b7c3f90d.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

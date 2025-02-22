@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daqsp55lwdyjd"
-path="res://.godot/imported/CreepyColorfades.png-b7cdcbc08d8c74480ba9fe51d110ab77.ctex"
+uid="uid://mc41vye0b7y7"
+path="res://.godot/imported/RedGradiantTiles.png-72edd85b1960a858c7d0180d6bad8115.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Terrain/CreepyColorfades.png"
-dest_files=["res://.godot/imported/CreepyColorfades.png-b7cdcbc08d8c74480ba9fe51d110ab77.ctex"]
+source_file="res://Art/Sprites/Terrain/RedGradiantTiles.png"
+dest_files=["res://.godot/imported/RedGradiantTiles.png-72edd85b1960a858c7d0180d6bad8115.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://svhwvtlk2x2v"
-path="res://.godot/imported/Window.png-bec5612b092750c32e70045cb790b014.ctex"
+path="res://.godot/imported/WindowTiles.png-e19f5bc5e4ce7aa4784701e4d43b4a6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Terrain/Window.png"
-dest_files=["res://.godot/imported/Window.png-bec5612b092750c32e70045cb790b014.ctex"]
+source_file="res://Art/Sprites/Terrain/WindowTiles.png"
+dest_files=["res://.godot/imported/WindowTiles.png-e19f5bc5e4ce7aa4784701e4d43b4a6b.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
