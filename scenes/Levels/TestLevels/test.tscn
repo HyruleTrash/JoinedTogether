@@ -1,31 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=4 uid="uid://bfq0t33noanab"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Nodes/Entities/Player.tscn" id="1"]
-
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 19.9462, 18.9834 )
+[ext_resource type="PackedScene" uid="uid://uidt6td2auk8" path="res://Scenes/Nodes/Entities/Player.tscn" id="1"]
+[ext_resource type="Script" path="res://Scripts/Entities/Player.cs" id="2_hiw8t"]
+[ext_resource type="PackedScene" uid="uid://b7g4yoqhhp3t2" path="res://Scenes/Nodes/Terrain/Terrain.tscn" id="3_485kc"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 403.54, 167.134 )
+[node name="CharacterBody2D" parent="." instance=ExtResource("1")]
+position = Vector2(403.54, 167.134)
+script = ExtResource("2_hiw8t")
+GRAVITY = 23
+MAXFALLSPEED = 400
+SPEED = 2
+JUMPFORCE = 420
+Inertia = 100
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2( 0.1, 0.1 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 510, 600 )
-scale = Vector2( 500, 1 )
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = -20.0
-offset_top = -19.0
-offset_right = 20.0
-offset_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 1 )
+[node name="Terrain" parent="." instance=ExtResource("3_485kc")]
+tile_map_data = PackedByteArray("AAAAAA8AAAAAAAAAAAABAA8AAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAAAAAAAAAALAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANAA8AAAAAAAAAAAAOAA8AAAAAAAAAAAAPAA8AAAAAAAAAAAAQAA8AAAAAAAAAAAARAA8AAAAAAAAAAAASAA8AAAAAAAAAAAATAA8AAAAAAAAAAAAUAA8AAAAAAAAAAAAVAA8AAAAAAAAAAAAWAA8AAAAAAAAAAAAXAA8AAAAAAAAAAAAYAA8AAAAAAAAAAAAZAA8AAAAAAAAAAAAaAA8AAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAdAA8AAAAAAAAAAAAeAA8AAAAAAAAAAAA=")

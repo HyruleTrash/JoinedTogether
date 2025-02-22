@@ -1,14 +1,20 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource type="PackedScene" path="res://Scenes/Nodes/Terrain/Blocks&shit.tscn" id="1"]
-
+[gd_scene format=3 uid="uid://cl70bdpmsysmg"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Blocks&shit" parent="." instance=ExtResource( 1 )]
-tile_data = PackedInt32Array( 524301, 3, 0 )
+[node name="Blocks&shit" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+tile_data = PackedInt32Array(524301, 3, 0)
+script = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 430.3, 275.543 )
-current = true
-zoom = Vector2( 0.5, 0.5 )
+position = Vector2(430.3, 275.543)
+zoom = Vector2(0.5, 0.5)

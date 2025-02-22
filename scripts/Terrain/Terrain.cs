@@ -5,9 +5,8 @@ using System.Collections.Generic;
 public partial class Terrain : TileMapLayer
 {
 	public bool Timer = true;
-	[Export]
-	public bool AnimateForwards = true;
 	private Dictionary<string, int> _sourceIdDict = new Dictionary<string, int>();
+	private Stack<AnimatedTileData> _animatedTileDatas = new Stack<AnimatedTileData>();
 
 	public override void _Ready()
 	{
@@ -16,7 +15,27 @@ public partial class Terrain : TileMapLayer
 		Timer myTimer = GetNode<Timer>("Timer");
 		myTimer.Timeout += () => OnTimerTimeout();
 
-		// Setup sourceIdDict
+		_SetupAnimatedTiles();
+		_SetupSourceIdDictionary();
+	}
+
+	/// <summary>
+	/// Fills the collection _animatedTileDatas, with the data needed to animate different tiles from tilemaps
+	/// </summary>
+	private void _SetupAnimatedTiles()
+	{
+		_animatedTileDatas.Push(new AnimatedTileData("RedGradient", 0, 4, true));
+		_animatedTileDatas.Push(new AnimatedTileData("Moons", 0, 5));
+		_animatedTileDatas.Push(new AnimatedTileData("Stars", 0, 5));
+		_animatedTileDatas.Push(new AnimatedTileData("Windows", 0, 7, true));
+		_animatedTileDatas.Push(new AnimatedTileData("BrokenWindows", 0, 7, true));
+	}
+
+	/// <summary>
+	/// Fills the _sourceIdDict variable with its data
+	/// </summary>
+	private void _SetupSourceIdDictionary()
+	{
 		for (int i = 0; i < TileSet.GetSourceCount(); i++)
 		{
 			TileSetSource source = TileSet.GetSource(i);
@@ -61,18 +80,29 @@ public partial class Terrain : TileMapLayer
 	{
 		if (Timer)
 		{
-			foreach (var cell in _GetUsedCellsByName("RedGradient"))
+			foreach (var data in _animatedTileDatas)
 			{
-				Vector2I tile = GetCellAtlasCoords(cell);
-				if (tile.X >= 4 && AnimateForwards)
-					AnimateForwards = false;
-				if (tile.X <= 0 && !AnimateForwards)
-					AnimateForwards = true;
-				GD.Print(tile);
-				if (AnimateForwards)
-					SetCell(cell, 5, new Vector2I(tile.X + 1, tile.Y));
-				else
-					SetCell(cell, 5, new Vector2I(tile.X - 1, tile.Y));
+				foreach (var cell in _GetUsedCellsByName(data.RecourceName))
+				{
+					Vector2I tile = GetCellAtlasCoords(cell);
+					if (data.PingPong)
+					{
+						if (tile.X >= data.EndTile && data.AnimateForwards)
+							data.AnimateForwards = false;
+						if (tile.X <= data.StartTile && !data.AnimateForwards)
+							data.AnimateForwards = true;
+					}
+					else
+					{
+						if (tile.X >= data.EndTile && data.AnimateForwards)
+							tile.X = data.StartTile;
+					}
+
+					if (data.AnimateForwards)
+						SetCell(cell, _GetSourceIdByName(data.RecourceName), new Vector2I(tile.X + 1, tile.Y));
+					else
+						SetCell(cell, _GetSourceIdByName(data.RecourceName), new Vector2I(tile.X - 1, tile.Y));
+				}
 			}
 			Timer = false;
 		}
