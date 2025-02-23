@@ -21,6 +21,7 @@ config/windows_native_icon="res://icon_SwG_icon.ico"
 [autoload]
 
 Infoholder="*res://Scenes/Nodes/Infoholder.tscn"
+GlobalData="*res://Scripts/GlobalData.cs"
 
 [display]
 

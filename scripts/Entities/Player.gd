@@ -45,7 +45,7 @@ extends CharacterBody2D
 # 		$AnimatedSprite2D.play(walkstate)
 # 		$AnimatedSprite2D.flip_h = false
 # 	elif Input.is_action_pressed("LEFT"):
-# 		position.x += -SPEED
+# 		position.x += - SPEED
 # 		$AnimatedSprite2D.play(walkstate)
 # 		$AnimatedSprite2D.flip_h = true
 # 	else:
@@ -62,7 +62,7 @@ extends CharacterBody2D
 # 		cojotietime = true
 # 		isonfloor == true
 # 		if Input.is_action_just_pressed("UP"):
-# 			motion.y = -JUMPFORCE
+# 			motion.y = - JUMPFORCE
 # 			$JumpSound.play()
 # 		if Input.is_action_pressed("LEFT") or Input.is_action_pressed("RIGHT"):
 # 			if !$Stepsound2D.playing:
@@ -71,7 +71,7 @@ extends CharacterBody2D
 # 		coiotitime()
 # 		if cojotietime:
 # 			if Input.is_action_just_pressed("UP"):
-# 				motion.y = -JUMPFORCE
+# 				motion.y = - JUMPFORCE
 # 				$JumpSound.play()
 # 				cojotietime = false
 # 		isonfloor == false
@@ -92,7 +92,7 @@ extends CharacterBody2D
 # 		var collision = get_slide_collision(index)
 # 		if collision.collider.is_in_group("box"):
 # 			var box = collision.collider
-# 			box.apply_central_impulse(-collision.normal * inertia)
+# 			box.apply_central_impulse(- collision.normal * inertia)
 # 			if global_position.y == box.global_position.y:
 # 				if global_position.x > box.global_position.x:
 # 					box.rotation_degrees -= 1
