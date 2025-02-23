@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public partial class GlobalData : Node2D
 {
     public Player Player;
+    public MainMenu MainMenu;
     public int Level;
     public int OldLevel = 1;
 

@@ -1,14 +1,14 @@
 extends Node
 
-var selection : int = 0
+var selection: int = 0
 
-var lvl1 = preload("res://scenes/Level-1.tscn")
+var lvl1 = preload("res://scenes/Levels/Level-1.tscn")
 
 var selector1 = ""
 var selector2 = ""
 var selector3 = ""
-var mainmenu : bool = true
-var endscreen : bool = false
+var mainmenu: bool = true
+var endscreen: bool = false
 
 
 func _physics_process(delta):
