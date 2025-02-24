@@ -20,12 +20,20 @@ config/windows_native_icon="res://icon_SwG_icon.ico"
 
 [autoload]
 
-Infoholder="*res://Scenes/Nodes/Infoholder.tscn"
 GlobalData="*res://Scripts/GlobalData.cs"
 
 [display]
 
-window/stretch/mode="2d"
+window/size/viewport_width=576
+window/size/viewport_height=324
+window/size/resizable=false
+window/size/always_on_top=true
+window/size/window_width_override=1152
+window/size/window_height_override=648
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+window/per_pixel_transparency/allowed=true
+window/vsync/vsync_mode=0
 
 [dotnet]
 

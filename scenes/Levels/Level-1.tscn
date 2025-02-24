@@ -1,17 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://uu3actw6snjt"]
+[gd_scene load_steps=18 format=3 uid="uid://uu3actw6snjt"]
 
 [ext_resource type="PackedScene" uid="uid://uidt6td2auk8" path="res://Scenes/Nodes/Entities/Player.tscn" id="1"]
 [ext_resource type="Script" path="res://Scripts/Levels/Level-1.gd" id="3"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Lights/Light2D.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://ccxt2puwtykta" path="res://Scenes/Levels/Level-1-boy.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://Scenes/Levels/Level-1-girl.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://y385wx2jqmr3" path="res://Scenes/Levels/Level-1-girl.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/CoverupArea2D.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://d0sb7ujxxjcsi" path="res://Art/Sprites/Door.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://ntdsmp0msk2k" path="res://Art/Sprites/Lights/lights.png" id="8_bdngh"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Lights/light.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Button.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Entities/Box.tscn" id="11"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/Glitch.gdshader" id="12"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("8")
@@ -39,9 +38,6 @@ animations = [{
 "name": &"open",
 "speed": 5.0
 }]
-
-[sub_resource type="ShaderMaterial" id="4"]
-shader = ExtResource("12")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ekqs2"]
 atlas = ExtResource("8_bdngh")
@@ -182,7 +178,6 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
 visible = false
-material = SubResource("4")
 offset_right = 1100.0
 offset_bottom = 700.0
 
@@ -275,41 +270,32 @@ animation = &"green"
 
 [node name="Area2D" parent="buttons" instance=ExtResource("10")]
 position = Vector2(2212.06, 359.552)
-buttonlvl = 3
 
 [node name="Area2D2" parent="buttons" instance=ExtResource("10")]
 position = Vector2(3209.05, 359.552)
-buttonlvl = 4
 
 [node name="Area2D3" parent="buttons" instance=ExtResource("10")]
 position = Vector2(4087.94, 359.52)
-buttonlvl = 5
 
 [node name="boxes" type="Node2D" parent="."]
 
 [node name="Box3" parent="boxes" instance=ExtResource("11")]
 position = Vector2(1947.78, 349.306)
-boxlvl = 3.0
 
 [node name="Box3,5" parent="boxes" instance=ExtResource("11")]
 position = Vector2(2180, 575)
-boxlvl = 3.5
 
 [node name="Box4" parent="boxes" instance=ExtResource("11")]
 position = Vector2(2956.28, -3.08897)
-boxlvl = 4.0
 
 [node name="Box5" parent="boxes" instance=ExtResource("11")]
 position = Vector2(3844.13, 358.623)
-boxlvl = 5.0
 
 [node name="Box6" parent="boxes" instance=ExtResource("11")]
 position = Vector2(4944.6, 295.219)
-boxlvl = 6.0
 
 [node name="Box7" parent="boxes" instance=ExtResource("11")]
 position = Vector2(5402.05, 197.224)
-boxlvl = 7.0
 
 [node name="Player" parent="." instance=ExtResource("1")]
 position = Vector2(0, 328)

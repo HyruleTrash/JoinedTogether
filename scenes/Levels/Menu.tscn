@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://c77nfteagibxy"]
+[gd_scene load_steps=11 format=3 uid="uid://c77nfteagibxy"]
 
-[ext_resource type="Script" path="res://Scripts/UI/Menu.gd" id="1_ec5t8"]
-[ext_resource type="FontFile" uid="uid://cmgjrgheilwfx" path="res://Art/Fonts/FixelGlyphes copy.ttf" id="3_jb00p"]
-[ext_resource type="FontFile" path="res://Art/Fonts/Font.tres" id="4_kem35"]
-[ext_resource type="AudioStream" uid="uid://cechtwablhmwo" path="res://Art/Soundeffects/Blip_Select.wav" id="5_el8dr"]
-[ext_resource type="AudioStream" uid="uid://sf0x41us1v3s" path="res://Art/Soundeffects/Blip_Select_enter.wav" id="6_od7an"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_vb8sl"]
+[ext_resource type="FontFile" uid="uid://cmgjrgheilwfx" path="res://Art/Fonts/FixelGlyphes copy.ttf" id="2_shxi3"]
+[ext_resource type="FontFile" path="res://Art/Fonts/Font.tres" id="3_xmb5p"]
+[ext_resource type="AudioStream" uid="uid://cechtwablhmwo" path="res://Art/Soundeffects/Blip_Select.wav" id="4_c4w3a"]
+[ext_resource type="AudioStream" uid="uid://sf0x41us1v3s" path="res://Art/Soundeffects/Blip_Select_enter.wav" id="5_x3a76"]
 
 [sub_resource type="FontFile" id="1"]
-fallbacks = Array[Font]([ExtResource("3_jb00p")])
+fallbacks = Array[Font]([ExtResource("2_shxi3")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -15,7 +15,7 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
 [sub_resource type="FontFile" id="2"]
-fallbacks = Array[Font]([ExtResource("3_jb00p")])
+fallbacks = Array[Font]([ExtResource("2_shxi3")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -23,7 +23,7 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
 [sub_resource type="FontFile" id="3"]
-fallbacks = Array[Font]([ExtResource("3_jb00p")])
+fallbacks = Array[Font]([ExtResource("2_shxi3")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -31,15 +31,7 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
 [sub_resource type="FontFile" id="4"]
-fallbacks = Array[Font]([ExtResource("3_jb00p")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
-[sub_resource type="FontFile" id="5"]
-fallbacks = Array[Font]([ExtResource("3_jb00p")])
+fallbacks = Array[Font]([ExtResource("2_shxi3")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -47,78 +39,147 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
 [sub_resource type="FontFile" id="6"]
-fallbacks = Array[Font]([ExtResource("3_jb00p")])
+fallbacks = Array[Font]([ExtResource("2_shxi3")])
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
-[node name="MainMenu" type="Node"]
-script = ExtResource("1_ec5t8")
+[node name="MainMenu" type="Node" node_paths=PackedStringArray("MainMenuUI", "TempEndOfDemoUI", "_changeSelectionSound", "_acceptSelectionSound")]
+script = ExtResource("1_vb8sl")
+MainMenuUI = NodePath("MainMenuUI")
+MainMenuSelectors = Array[Array]([[NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Selector"), NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Selector2")], [NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Selector"), NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Selector2")], [NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/Selector"), NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/Selector2")]])
+TempEndOfDemoUI = NodePath("Node2D2")
+_changeSelectionSound = NodePath("AudioStreamPlayer")
+_acceptSelectionSound = NodePath("AudioStreamPlayer2")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="MainMenuUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="Node2D"]
-offset_right = 483.0
-offset_bottom = 620.0
+[node name="ColorRect" type="ColorRect" parent="MainMenuUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_right = -0.5
+size_flags_horizontal = 0
 color = Color(0.027451, 0.0901961, 0.235294, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Node2D"]
-offset_left = 1.0
-offset_top = 60.0
-offset_right = 1025.0
-offset_bottom = 722.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Options" type="CenterContainer" parent="Node2D/HBoxContainer"]
-custom_minimum_size = Vector2(350, 600)
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/HBoxContainer/Options"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="CenterContainer" type="CenterContainer" parent="Node2D/HBoxContainer/Options/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/HBoxContainer/Options/VBoxContainer/CenterContainer"]
+[node name="Selector" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+horizontal_alignment = 1
+uppercase = true
 
-[node name="VBoxOptions" type="VBoxContainer" parent="Node2D/HBoxContainer/Options/VBoxContainer/CenterContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Play" type="Label" parent="Node2D/HBoxContainer/Options/VBoxContainer/CenterContainer/HBoxContainer/VBoxOptions"]
+[node name="Play" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("1")
 text = "Play"
 horizontal_alignment = 1
 
-[node name="Settings" type="Label" parent="Node2D/HBoxContainer/Options/VBoxContainer/CenterContainer/HBoxContainer/VBoxOptions"]
+[node name="Selector2" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Selector" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Settings" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("2")
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="Quit" type="Label" parent="Node2D/HBoxContainer/Options/VBoxContainer/CenterContainer/HBoxContainer/VBoxOptions"]
+[node name="Selector2" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Selector" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Quit" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("3")
 text = "Quit"
 horizontal_alignment = 1
 
-[node name="Blank" type="CenterContainer" parent="Node2D/HBoxContainer"]
-custom_minimum_size = Vector2(372, 600)
+[node name="Selector2" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenuUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Offset" type="Control" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
-[node name="Titel" type="CenterContainer" parent="Node2D/HBoxContainer"]
-custom_minimum_size = Vector2(272, 600)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/HBoxContainer/Titel"]
-layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="Node2D/HBoxContainer/Titel/VBoxContainer"]
-layout_mode = 2
-
-[node name="Joined" type="Label" parent="Node2D/HBoxContainer/Titel/VBoxContainer/CenterContainer"]
+[node name="Joined" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("1")
 text = "Joined
@@ -127,7 +188,7 @@ text = "Joined
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Through" type="Label" parent="Node2D/HBoxContainer/Titel/VBoxContainer/CenterContainer"]
+[node name="Through" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("4")
 text = "
@@ -136,7 +197,7 @@ text = "
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Realms" type="Label" parent="Node2D/HBoxContainer/Titel/VBoxContainer/CenterContainer"]
+[node name="Realms" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("3")
 text = "
@@ -145,83 +206,9 @@ Realms"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="CenterContainer2" type="CenterContainer" parent="Node2D/HBoxContainer/Titel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 460)
+[node name="Offset" type="Control" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Node2D"]
-offset_top = 30.0
-offset_right = 350.0
-offset_bottom = 750.0
-
-[node name="Options2" type="CenterContainer" parent="Node2D/HBoxContainer2"]
-custom_minimum_size = Vector2(350, 600)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/HBoxContainer2/Options2"]
-layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="Node2D/HBoxContainer2/Options2/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer"]
-layout_mode = 2
-
-[node name="VboxSelectorLeft" type="VBoxContainer" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Selector" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorLeft"]
-layout_mode = 2
-theme_override_fonts/font = SubResource("1")
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Selector2" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorLeft"]
-layout_mode = 2
-theme_override_fonts/font = SubResource("2")
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Selector3" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorLeft"]
-layout_mode = 2
-theme_override_fonts/font = SubResource("3")
-horizontal_alignment = 1
-uppercase = true
-
-[node name="CenterContainer" type="CenterContainer" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(216, 0)
-layout_mode = 2
-
-[node name="VboxSelectorRight" type="VBoxContainer" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Selector" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorRight"]
-layout_mode = 2
-theme_override_fonts/font = SubResource("1")
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Selector2" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorRight"]
-layout_mode = 2
-theme_override_fonts/font = SubResource("2")
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Selector3" type="Label" parent="Node2D/HBoxContainer2/Options2/VBoxContainer/CenterContainer/HBoxContainer/VboxSelectorRight"]
-layout_mode = 2
-theme_override_fonts/font = SubResource("3")
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Label" type="Label" parent="Node2D"]
-visible = false
-offset_left = 68.3486
-offset_top = 472.898
-offset_right = 932.349
-offset_bottom = 600.898
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = SubResource("5")
-text = "No Settings yet."
 
 [node name="Node2D2" type="Node2D" parent="."]
 visible = false
@@ -249,12 +236,12 @@ offset_left = 375.532
 offset_top = 555.528
 offset_right = 645.532
 offset_bottom = 587.528
-theme_override_fonts/font = ExtResource("4_kem35")
+theme_override_fonts/font = ExtResource("3_xmb5p")
 text = "leave a review!"
 uppercase = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_el8dr")
+stream = ExtResource("4_c4w3a")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_od7an")
+stream = ExtResource("5_x3a76")
