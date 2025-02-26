@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://c77nfteagibxy"]
+[gd_scene load_steps=16 format=4 uid="uid://c77nfteagibxy"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_vb8sl"]
+[ext_resource type="PackedScene" uid="uid://uu3actw6snjt" path="res://Scenes/Levels/Level-1.tscn" id="2_12yhs"]
+[ext_resource type="Script" path="res://Scripts/UI/MenuPlayItem.cs" id="2_dk82h"]
 [ext_resource type="FontFile" uid="uid://cmgjrgheilwfx" path="res://Art/Fonts/FixelGlyphes copy.ttf" id="2_shxi3"]
 [ext_resource type="FontFile" path="res://Art/Fonts/Font.tres" id="3_xmb5p"]
 [ext_resource type="AudioStream" uid="uid://cechtwablhmwo" path="res://Art/Soundeffects/Blip_Select.wav" id="4_c4w3a"]
+[ext_resource type="Script" path="res://Scripts/UI/MenuSettingsItem.cs" id="4_eq6g3"]
+[ext_resource type="Script" path="res://Scripts/UI/MenuQuitItem.cs" id="5_u7vth"]
 [ext_resource type="AudioStream" uid="uid://sf0x41us1v3s" path="res://Art/Soundeffects/Blip_Select_enter.wav" id="5_x3a76"]
+[ext_resource type="PackedScene" uid="uid://b7g4yoqhhp3t2" path="res://Scenes/Nodes/Terrain/Terrain.tscn" id="7_a5rui"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("2_shxi3")])
@@ -37,6 +42,16 @@ cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
+cache/0/2/0/ascent = 0.0
+cache/0/2/0/descent = 0.0
+cache/0/2/0/underline_position = 0.0
+cache/0/2/0/underline_thickness = 0.0
+cache/0/2/0/scale = 1.0
+cache/0/1/0/ascent = 0.0
+cache/0/1/0/descent = 0.0
+cache/0/1/0/underline_position = 0.0
+cache/0/1/0/underline_thickness = 0.0
+cache/0/1/0/scale = 1.0
 
 [sub_resource type="FontFile" id="6"]
 fallbacks = Array[Font]([ExtResource("2_shxi3")])
@@ -46,13 +61,14 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
-[node name="MainMenu" type="Node" node_paths=PackedStringArray("MainMenuUI", "TempEndOfDemoUI", "_changeSelectionSound", "_acceptSelectionSound")]
+[node name="MainMenu" type="Node" node_paths=PackedStringArray("MainMenuUI", "MainMenuItems", "TempEndOfDemoUI", "_changeSelectionSound", "_acceptSelectionSound")]
 script = ExtResource("1_vb8sl")
+LevelOne = ExtResource("2_12yhs")
 MainMenuUI = NodePath("MainMenuUI")
-MainMenuSelectors = Array[Array]([[NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Selector"), NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/Selector2")], [NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Selector"), NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/Selector2")], [NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/Selector"), NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/Selector2")]])
-TempEndOfDemoUI = NodePath("Node2D2")
-_changeSelectionSound = NodePath("AudioStreamPlayer")
-_acceptSelectionSound = NodePath("AudioStreamPlayer2")
+MainMenuItems = [NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"), NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"), NodePath("MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3")]
+TempEndOfDemoUI = NodePath("EndScreenUI")
+_changeSelectionSound = NodePath("ChangeSound")
+_acceptSelectionSound = NodePath("AcceptSound")
 
 [node name="MainMenuUI" type="Control" parent="."]
 layout_mode = 3
@@ -94,9 +110,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("MainMenu", "Selectors")]
 layout_mode = 2
 size_flags_horizontal = 4
+script = ExtResource("2_dk82h")
+MainMenu = NodePath("../../../../..")
+Selectors = [NodePath("Selector"), NodePath("Selector2")]
 
 [node name="Selector" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -116,9 +135,12 @@ theme_override_fonts/font = SubResource("1")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("NotAvailable", "Selectors")]
 layout_mode = 2
 size_flags_horizontal = 4
+script = ExtResource("4_eq6g3")
+NotAvailable = NodePath("../../../../NotAvailableText")
+Selectors = [NodePath("Selector"), NodePath("Selector2")]
 
 [node name="Selector" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -138,9 +160,11 @@ theme_override_fonts/font = SubResource("1")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("Selectors")]
 layout_mode = 2
 size_flags_horizontal = 4
+script = ExtResource("5_u7vth")
+Selectors = [NodePath("Selector"), NodePath("Selector2")]
 
 [node name="Selector" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
@@ -210,20 +234,62 @@ uppercase = true
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="Node2D2" type="Node2D" parent="."]
-visible = false
+[node name="Terrain" parent="MainMenuUI" instance=ExtResource("7_a5rui")]
+tile_map_data = PackedByteArray("AAAMAAIABAAAAAAAAAAOAAcABgABAAAAAAAJAAIABgABAAAAAAAKAAcABgAFAAAAAAD//wkAAgAAAAIAAAAAAAkAAgAAAAIAAAAAAAoAAgAAAAIAAAAAAAgAAgAAAAIAAAAAAAcAAgAAAAIAAAD//wcAAgAAAAIAAAD//wYAAgAAAAIAAAAAAAYAAgAAAAIAAAAAAAUAAgAAAAIAAAABAAgAAgAAAAIAAAABAAkAAgAAAAIAAAACAAkAAgAAAAIAAAACAAoAAgAAAAIAAAADAAoAAgAAAAIAAAABAAoAAgAAAAIAAAD//woAAgAAAAIAAAD//wgAAgAAAAIAAAADAAkAAgAAAAYAAAAEAAkAAgAAAAAAAAAEAAoAAgAAAAIAAAADAAgAAgABAAMAAAACAAgAAgAAAAYAAAABAAcAAgAAAAYAAAACAAcAAgABAAMAAAABAAYAAgAAAAEAAAABAAUAAgAAAAEAAAABAAQAAgABAAMAAAAAAAQAAgAAAAYAAAAAAAMAAgAAAAEAAAAAAAIAAgABAAMAAAAFAAkAAgABAAMAAAAFAAoAAgAAAAEAAAD//wIAAgAAAAAAAAD//wMAAgAAAAIAAAD//wQAAgAAAAIAAAD//wUAAgAAAAIAAAACAAEABgAAAAAAAAAHAAgABgACAAAAAAA=")
 
-[node name="ColorRect" type="ColorRect" parent="Node2D2"]
-offset_left = -1.29492
-offset_right = 1030.7
-offset_bottom = 620.0
+[node name="NotAvailableText" type="Label" parent="MainMenuUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.5
+offset_top = -35.0
+offset_right = 140.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.939737, 0.396421, 0.400861, 1)
+theme_override_fonts/font = SubResource("4")
+theme_override_font_sizes/font_size = 0
+text = "Not available in current demo
+"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="EndScreenUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="EndScreenUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label2" type="Label" parent="Node2D2"]
-offset_left = 425.0
-offset_top = 215.0
-offset_right = 601.0
-offset_bottom = 413.0
+[node name="Label2" type="Label" parent="EndScreenUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -27.0
+offset_right = 22.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = SubResource("6")
 text = "END
 OF
@@ -231,17 +297,24 @@ DEMO"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Label" type="Label" parent="Node2D2"]
-offset_left = 375.532
-offset_top = 555.528
-offset_right = 645.532
-offset_bottom = 587.528
+[node name="Label" type="Label" parent="EndScreenUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.5
+offset_top = -16.0
+offset_right = 67.5
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_xmb5p")
 text = "leave a review!"
 uppercase = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="ChangeSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_c4w3a")
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+[node name="AcceptSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_x3a76")

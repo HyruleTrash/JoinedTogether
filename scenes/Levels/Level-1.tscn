@@ -87,7 +87,6 @@ animation = &"closed"
 [node name="Area2D" parent="goals/Door1" instance=ExtResource("7")]
 position = Vector2(0, 12)
 scale = Vector2(1, 2)
-kind = "goal"
 
 [node name="Door2" type="AnimatedSprite2D" parent="goals"]
 position = Vector2(1516, 336)
@@ -98,7 +97,6 @@ animation = &"closed"
 [node name="Area2D" parent="goals/Door2" instance=ExtResource("7")]
 position = Vector2(0, 12)
 scale = Vector2(1, 2)
-kind = "goal"
 
 [node name="Door3" type="AnimatedSprite2D" parent="goals"]
 position = Vector2(2408, 336)
@@ -109,7 +107,6 @@ animation = &"closed"
 [node name="Area2D" parent="goals/Door3" instance=ExtResource("7")]
 position = Vector2(0, 12)
 scale = Vector2(1, 2)
-kind = "goal"
 
 [node name="Door3,5" type="AnimatedSprite2D" parent="goals"]
 position = Vector2(2338, 848)
@@ -120,7 +117,6 @@ animation = &"closed"
 [node name="Area2D" parent="goals/Door3,5" instance=ExtResource("7")]
 position = Vector2(0, 12)
 scale = Vector2(1, 2)
-kind = "goal"
 
 [node name="Door4" type="AnimatedSprite2D" parent="goals"]
 position = Vector2(5976, 208)
@@ -131,7 +127,6 @@ animation = &"closed"
 [node name="Area2D" parent="goals/Door4" instance=ExtResource("7")]
 position = Vector2(0, 12)
 scale = Vector2(1, 2)
-kind = "goal"
 
 [node name="Door5" type="AnimatedSprite2D" parent="goals"]
 position = Vector2(3300, 336)
@@ -142,7 +137,6 @@ animation = &"closed"
 [node name="Area2D" parent="goals/Door5" instance=ExtResource("7")]
 position = Vector2(0, 12)
 scale = Vector2(1, 2)
-kind = "goal"
 
 [node name="Door6" type="AnimatedSprite2D" parent="goals"]
 position = Vector2(4192, 336)
@@ -153,7 +147,6 @@ animation = &"closed"
 [node name="Area2D" parent="goals/Door6" instance=ExtResource("7")]
 position = Vector2(0, 12)
 scale = Vector2(1, 2)
-kind = "goal"
 
 [node name="Door7" type="AnimatedSprite2D" parent="goals"]
 position = Vector2(5084, 240)
@@ -164,7 +157,6 @@ animation = &"closed"
 [node name="Area2D" parent="goals/Door7" instance=ExtResource("7")]
 position = Vector2(0, 12)
 scale = Vector2(1, 2)
-kind = "goal"
 
 [node name="level-1-girl" parent="." instance=ExtResource("6")]
 
@@ -186,27 +178,22 @@ offset_bottom = 700.0
 [node name="DeathArea2D" parent="Deathplanes" instance=ExtResource("7")]
 position = Vector2(304.42, 465.884)
 scale = Vector2(12, 1)
-kind = "deathplane"
 
 [node name="DeathArea2D2" parent="Deathplanes" instance=ExtResource("7")]
 position = Vector2(2959.9, 462.183)
 scale = Vector2(12, 1)
-kind = "deathplane"
 
 [node name="DeathArea2D5" parent="Deathplanes" instance=ExtResource("7")]
 position = Vector2(2019.88, 975.546)
 scale = Vector2(12, 1)
-kind = "deathplane"
 
 [node name="DeathArea2D3" parent="Deathplanes" instance=ExtResource("7")]
 position = Vector2(4735, 462.183)
 scale = Vector2(33, 1)
-kind = "deathplane"
 
 [node name="DeathArea2D4" parent="Deathplanes" instance=ExtResource("7")]
 position = Vector2(5589.03, 463.105)
 scale = Vector2(33, 1)
-kind = "deathplane"
 
 [node name="Goallights" type="Node2D" parent="."]
 
