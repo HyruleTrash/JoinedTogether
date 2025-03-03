@@ -48,6 +48,7 @@ public partial class Level : Node
         foreach (var terrain in array)
         {
             terrain.Visible = state;
+            terrain.SetState(state);
         }
     }
 }

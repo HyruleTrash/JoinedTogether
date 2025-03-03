@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7g4yoqhhp3t2"]
+[gd_scene load_steps=4 format=3 uid="uid://b7g4yoqhhp3t2"]
 
 [ext_resource type="TileSet" uid="uid://cfgrutnig50kb" path="res://Art/Tilemaps/TerrainTileMap.tres" id="1_kpifg"]
 [ext_resource type="Script" path="res://Scripts/Terrain/Terrain.cs" id="2_o0ju3"]
+[ext_resource type="Script" path="res://Scripts/Terrain/AnimatedTiles.cs" id="3_8mqii"]
 
-[node name="Terrain" type="TileMapLayer"]
+[node name="Terrain" type="TileMapLayer" node_paths=PackedStringArray("AnimatedTiles")]
 use_parent_material = true
 tile_set = ExtResource("1_kpifg")
 script = ExtResource("2_o0ju3")
+AnimatedTiles = NodePath("AnimatedTiles")
+CollisionLayerActive = 4
+CollisionMaskActive = 1
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true
+[node name="AnimatedTiles" type="Node" parent="."]
+script = ExtResource("3_8mqii")
