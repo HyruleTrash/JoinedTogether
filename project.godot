@@ -21,6 +21,7 @@ config/windows_native_icon="res://icon_SwG_icon.ico"
 [autoload]
 
 GlobalData="*res://Scripts/GlobalData.cs"
+GlobalSoundManager="*res://Scenes/Nodes/global_sound_manager.tscn"
 
 [display]
 

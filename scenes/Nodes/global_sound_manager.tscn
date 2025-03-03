@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c274rmrh10c5h"]
+
+[ext_resource type="Script" path="res://Scripts/GlobalSoundManager.cs" id="1_mmeyo"]
+[ext_resource type="AudioStream" uid="uid://cijf202lm4hi8" path="res://Art/Soundeffects/Music/Aciddrops.wav" id="1_n8dwp"]
+[ext_resource type="AudioStream" uid="uid://kebeiqpd4y0u" path="res://Art/Soundeffects/Music/Pause.wav" id="2_jtjbq"]
+
+[node name="GlobalSoundManager" type="Node2D"]
+script = ExtResource("1_mmeyo")
+
+[node name="StateGirlMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_n8dwp")
+volume_db = -17.0
+
+[node name="Raindrops" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jtjbq")
+volume_db = -17.0
+autoplay = true
