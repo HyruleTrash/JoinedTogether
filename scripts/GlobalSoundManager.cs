@@ -7,11 +7,11 @@ public partial class GlobalSoundManager : Node2D
 	public GlobalData GlobalData;
 
 	[Export]
-	public AudioStreamPlayer2D MusicPlayer;
-	
+	public AudioStreamPlayer MusicPlayer;
+
 	public Dictionary<string, AudioStream> Raindrops = new Dictionary<string, AudioStream>();
 	[Export]
-	public AudioStreamPlayer2D RaindropsPlayer;
+	public AudioStreamPlayer RaindropsPlayer;
 	public float SongTime;
 
 	// Called when the node enters the scene tree for the first time.
@@ -32,38 +32,32 @@ public partial class GlobalSoundManager : Node2D
 		Raindrops.Add("Pause", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Pause.wav"));
 	}
 
-	// Called when the node needs to check if it should run.
-	private bool _ShouldRun()
-    {
-        return (
-            GlobalData != null &&
-            GlobalData.Player != null &&
-            GlobalData.MainMenu != null
-        );
-    }
-
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (_ShouldRun())
-			return;
-		
 		// main music
-		if (!MusicPlayer.Playing && !GlobalData.MainMenu.IsActive){
-			if (GlobalData.Player.IsInGirlState){
+		if (MusicPlayer.Playing == false && GlobalData.MainMenu.IsActive == false)
+		{
+			if (GlobalData.Player.IsInGirlState)
+			{
 				MusicPlayer.Play();
-			} else {
+			}
+			else
+			{
 				MusicPlayer.Stop();
 			}
 		}
 
 		// ambient raindrops, an
-		if (!RaindropsPlayer.Playing){
-			if (GlobalData.MainMenu.IsActive){
+		if (!RaindropsPlayer.Playing)
+		{
+			if (GlobalData.MainMenu.IsActive)
+			{
 				RaindropsPlayer.Stream = Raindrops["Pause"];
 				RaindropsPlayer.Play();
 			}
-			else{
+			else
+			{
 				RaindropsPlayer.Stream = Raindrops["Raindrops0_" + GlobalData.Level];
 				RaindropsPlayer.Play(SongTime);
 				SongTime = 0;

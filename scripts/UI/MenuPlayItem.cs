@@ -11,7 +11,7 @@ public partial class MenuPlayItem : MenuItem
 		GlobalData globalData = GetNode<GlobalData>("/root/GlobalData");
 		globalData.Level = globalData.OldLevel;
 
-		// Infoholder.get_node("Song1").play(3.994)
+		GetNode<GlobalSoundManager>("/root/GlobalSoundManager").MusicPlayer.Play(3.994f);
 
 		MainMenu.LevelOneInstance = MainMenu.LevelOne.Instantiate();
 		MainMenu.AddChild(MainMenu.LevelOneInstance);

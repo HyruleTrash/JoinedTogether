@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://uu3actw6snjt"]
+[gd_scene load_steps=17 format=4 uid="uid://uu3actw6snjt"]
 
 [ext_resource type="PackedScene" uid="uid://uidt6td2auk8" path="res://Scenes/Nodes/Entities/Player.tscn" id="1"]
+[ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_kudbp"]
 [ext_resource type="PackedScene" uid="uid://b7g4yoqhhp3t2" path="res://Scenes/Nodes/Terrain/Terrain.tscn" id="2_sr37m"]
-[ext_resource type="Script" path="res://Scripts/Levels/Level-1.gd" id="3"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Lights/Light2D.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/CoverupArea2D.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://d0sb7ujxxjcsi" path="res://Art/Sprites/Door.png" id="8"]
@@ -65,16 +65,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Level-1" type="Node2D"]
-script = ExtResource("3")
+[node name="Level-1" type="Node2D" node_paths=PackedStringArray("Player", "StateGirlTerrain", "StateBoyTerrain")]
+script = ExtResource("1_kudbp")
+Player = NodePath("Player")
+StateGirlTerrain = [NodePath("TerrainGirl/Terrain")]
+StateBoyTerrain = [NodePath("TerrainBoy/Terrain")]
 
 [node name="TerrainGirl" type="Node" parent="."]
 
 [node name="Terrain" parent="TerrainGirl" instance=ExtResource("2_sr37m")]
+visible = false
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAUAAAD+/wEAAAAAAAUAAAD+/wIAAAAAAAUAAAD+/wMAAAAAAAUAAAD+/wQAAAAAAAUAAAD+/wUAAAAAAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD+/wgAAAAAAAUAAAD+/wkAAAAAAAUAAAD+/woAAAAAAAUAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAEAAEAAAANAAsAAAAEAAEAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAAAAAAEAAQAAAAVAAEAAAAEAAQAAAAVAAIAAAAEAAQAAAAVAAMAAAAEAAQAAAAVAAQAAAAEAAQAAAAVAAUAAAAEAAQAAAAVAAYAAAAEAAQAAAAVAAcAAAAEAAQAAAAVAAgAAAAEAAQAAAAVAAkAAAAEAAQAAAAVAAoAAAAEAAQAAAAFAAwAAAAEAAEAAAAFAA0AAAAEAAEAAAAFAA4AAAAEAAEAAAANAAwAAAAEAAEAAAANAA0AAAAEAAEAAAANAA4AAAAEAAEAAAAGAAwABQAAAAAAAAAHAAwABQAAAAAAAAAIAAwABQAAAAAAAAAJAAwABQAAAAAAAAAKAAwABQAAAAAAAAALAAwABQAAAAAAAAAMAAwABQAAAAAAAAA=")
 
 [node name="TerrainBoy" type="Node" parent="."]
 
 [node name="Terrain" parent="TerrainBoy" instance=ExtResource("2_sr37m")]
+visible = false
+tile_map_data = PackedByteArray("AAAVAAAAAAAEAAQAAAAVAAEAAAAEAAQAAAAVAAIAAAAEAAQAAAAVAAMAAAAEAAQAAAAVAAQAAAAEAAQAAAAVAAUAAAAEAAQAAAAVAAYAAAAEAAQAAAAVAAcAAAAEAAQAAAAVAAgAAAAEAAQAAAAVAAkAAAAEAAQAAAAVAAoAAAAEAAQAAAD+/wAAAAAAAAUAAAD+/wEAAAAAAAUAAAD+/wIAAAAAAAUAAAD+/wMAAAAAAAUAAAD+/wQAAAAAAAUAAAD+/wUAAAAAAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD+/wgAAAAAAAUAAAD+/wkAAAAAAAUAAAD+/woAAAAAAAUAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAA=")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -114.0

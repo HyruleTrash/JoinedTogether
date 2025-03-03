@@ -20,8 +20,8 @@ config/windows_native_icon="res://icon_SwG_icon.ico"
 
 [autoload]
 
-GlobalData="*res://Scripts/GlobalData.cs"
-GlobalSoundManager="*res://Scenes/Nodes/global_sound_manager.tscn"
+GlobalData="*res://Scenes/Nodes/GlobalData.tscn"
+GlobalSoundManager="*res://Scenes/Nodes/GlobalSoundManager.tscn"
 
 [display]
 

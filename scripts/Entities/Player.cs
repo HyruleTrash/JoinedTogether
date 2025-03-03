@@ -7,13 +7,13 @@ public partial class Player : CharacterBody2D
     // Const variables, sadly const c# doesnt really work with godot
     private Vector2I UP = new(0, -1);
     [Export]
-    public int GRAVITY = 23;
+    public float GRAVITY = 1;
     [Export]
-    public int MAXFALLSPEED = 400;
+    public float MAXFALLSPEED = 400;
     [Export]
-    public int SPEED = 2;
+    public float SPEED = 2;
     [Export]
-    public int JUMPFORCE = 420;
+    public float JUMPFORCE = 420;
     // [Export]
     // public int Inertia = 100;
 
@@ -42,6 +42,8 @@ public partial class Player : CharacterBody2D
     // Misc, variables
     [Export]
     public bool IsInGirlState = false;
+    [Signal]
+    public delegate void OnStateSwitchedEventHandler();
 
     public override void _Ready()
     {
@@ -56,6 +58,7 @@ public partial class Player : CharacterBody2D
         // Misc setup
         GetNode<GlobalData>("/root/GlobalData").Player = this;
         _animatedSprite2D.AnimationFinished += () => _StepSoundLogic();
+        CorrectStates();
     }
 
     private bool _ShouldRun()
@@ -85,17 +88,17 @@ public partial class Player : CharacterBody2D
             _changeSound.Play();
         }
 
-        _Physics();
+        _Physics(delta);
     }
 
     /// <summary>
     /// The physics function holds all logic regarding to player physics.
     /// Like player input(movement), and gravity
     /// </summary>
-    private void _Physics()
+    private void _Physics(double delta)
     {
-        _HorizontalMotion();
-        _VerticalMotion();
+        _HorizontalMotion(delta);
+        _VerticalMotion(delta);
         SetVelocity(Motion);
         MoveAndSlide();
 
@@ -119,17 +122,17 @@ public partial class Player : CharacterBody2D
     /// <summary>
     /// The player's horizontal physics, and animation references
     /// </summary>
-    private void _HorizontalMotion()
+    private void _HorizontalMotion(double delta)
     {
         if (Input.IsActionPressed("RIGHT"))
         {
-            Position = new(Position.X + SPEED, Position.Y);
+            Position = new(Position.X + SPEED * (float)delta, Position.Y);
             _animatedSprite2D.Play(WalkState);
             _animatedSprite2D.FlipH = false;
         }
         else if (Input.IsActionPressed("LEFT"))
         {
-            Position = new(Position.X - SPEED, Position.Y);
+            Position = new(Position.X - SPEED * (float)delta, Position.Y);
             _animatedSprite2D.Play(WalkState);
             _animatedSprite2D.FlipH = true;
         }
@@ -152,7 +155,7 @@ public partial class Player : CharacterBody2D
     /// <summary>
     /// The player's vertical physics
     /// </summary>
-    private void _VerticalMotion()
+    private void _VerticalMotion(double delta)
     {
         Motion.Y = Velocity.Y;
         // Gravity
@@ -223,6 +226,16 @@ public partial class Player : CharacterBody2D
     /// </summary>
     public void SwitchStates()
     {
+        IsInGirlState = !IsInGirlState;
+        CorrectStates();
+        EmitSignal(SignalName.OnStateSwitched);
+    }
+
+    /// <summary>
+    /// Corrects the animation names, based on the set state
+    /// </summary>
+    public void CorrectStates()
+    {
         if (!IsInGirlState)
         {
             JumpState = "JumpGirl";
@@ -230,14 +243,13 @@ public partial class Player : CharacterBody2D
             FallState = "FallGirl";
             WalkState = "WalkGirl";
         }
-        else if (IsInGirlState)
+        else
         {
             JumpState = "JumpBoy";
             IdleState = "IdleBoy";
             FallState = "FallBoy";
             WalkState = "WalkBoy";
         }
-        IsInGirlState = !IsInGirlState;
     }
 
     /// <summary>
