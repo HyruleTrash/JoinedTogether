@@ -7,7 +7,7 @@ public partial class MainMenu : Node
 {
     [Export]
     public PackedScene LevelOne;
-    public Node LevelOneInstance;
+    public Level LevelOneInstance;
     [Export]
     public bool IsActive = true;
     [Export]

@@ -13,7 +13,7 @@ public partial class MenuPlayItem : MenuItem
 
 		GetNode<GlobalSoundManager>("/root/GlobalSoundManager").MusicPlayer.Play(3.994f);
 
-		MainMenu.LevelOneInstance = MainMenu.LevelOne.Instantiate();
+		MainMenu.LevelOneInstance = (Level)MainMenu.LevelOne.Instantiate();
 		MainMenu.AddChild(MainMenu.LevelOneInstance);
 		// Infoholder.buttonspressed = 0
 		// lvl1.instantiate().get_node("Player").respawn2()

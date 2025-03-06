@@ -24,10 +24,10 @@ public partial class Player : CharacterBody2D
     // Animation variables
     [Export]
     private AnimatedSprite2D _animatedSprite2D;
-    public string JumpState = "JumpBoy";
-    public string IdleState = "IdleBoy";
-    public string FallState = "FallBoy";
-    public string WalkState = "WalkBoy";
+    public string JumpState;
+    public string IdleState;
+    public string FallState;
+    public string WalkState;
 
     // Sound variables
     [Export]
@@ -38,8 +38,11 @@ public partial class Player : CharacterBody2D
     private AudioStreamPlayer2D _jumpSound;
     [Export]
     private AudioStreamPlayer2D _stepSound;
+    [Export]
+    private AudioStreamPlayer2D _doorSound;
 
     // Misc, variables
+    public GlobalData _globalData;
     [Export]
     public bool IsInGirlState = false;
     [Signal]
@@ -56,7 +59,8 @@ public partial class Player : CharacterBody2D
         SetFloorMaxAngle(MathF.PI / 4);
 
         // Misc setup
-        GetNode<GlobalData>("/root/GlobalData").Player = this;
+        _globalData = GetNode<GlobalData>("/root/GlobalData");
+        _globalData.Player = this;
         _animatedSprite2D.AnimationFinished += () => _StepSoundLogic();
         CorrectStates();
     }
@@ -79,8 +83,8 @@ public partial class Player : CharacterBody2D
 
         if (Input.IsActionJustPressed("R"))
         {
-            // $DeathSound.stream = preload("res://Soundeffects/Door.wav")
-            // _Respawn();
+            _doorSound.Play();
+            Respawn();
         }
         if (Input.IsActionJustPressed("DOWN"))
         {
@@ -266,5 +270,23 @@ public partial class Player : CharacterBody2D
         {
             _stepSound.Play();
         }
+    }
+
+    public void Death()
+    {
+        _deathSound.Play();
+        Respawn();
+    }
+
+    public void Respawn()
+    {
+        bool isInIndexRange;
+        int offset = 1; // Offset is used to remove 0 indexing from level count
+        Vector2 spawnPoint = _globalData.MainMenu.LevelOneInstance.SpawnPointManager.GetSpawnPoint(_globalData.Level - offset, out isInIndexRange);
+        GD.Print(isInIndexRange, " ", spawnPoint);
+        if (isInIndexRange)
+            GlobalPosition = spawnPoint;
+        else
+            _globalData.MainMenu.TempIsOnEndScreen = true;
     }
 }

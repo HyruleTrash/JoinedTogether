@@ -11,6 +11,7 @@ public partial class Level : Node
     public Array<Terrain> StateGirlTerrain = new Array<Terrain>();
     [Export]
     public Array<Terrain> StateBoyTerrain = new Array<Terrain>();
+    public SpawnPointManager SpawnPointManager;
 
     public override void _Ready()
     {

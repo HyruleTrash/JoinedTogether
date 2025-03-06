@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=4 uid="uid://uu3actw6snjt"]
+[gd_scene load_steps=19 format=4 uid="uid://uu3actw6snjt"]
 
 [ext_resource type="PackedScene" uid="uid://uidt6td2auk8" path="res://Scenes/Nodes/Entities/Player.tscn" id="1"]
 [ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_kudbp"]
+[ext_resource type="Script" path="res://Scripts/Levels/SpawnPointManager.cs" id="2_46tbh"]
 [ext_resource type="PackedScene" uid="uid://b7g4yoqhhp3t2" path="res://Scenes/Nodes/Terrain/Terrain.tscn" id="2_sr37m"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Lights/Light2D.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Scenes/Nodes/CoverupArea2D.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://dnf1ily5i6hqy" path="res://Scenes/Nodes/CoverupArea2D.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bjoo85m8c2dk2" path="res://Scenes/Nodes/DeathArea2d.tscn" id="7_e8lge"]
 [ext_resource type="Texture2D" uid="uid://d0sb7ujxxjcsi" path="res://Art/Sprites/Door.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://ntdsmp0msk2k" path="res://Art/Sprites/Lights/lights.png" id="8_bdngh"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Lights/light.tscn" id="9"]
@@ -71,17 +73,26 @@ Player = NodePath("Player")
 StateGirlTerrain = [NodePath("TerrainGirl/Terrain")]
 StateBoyTerrain = [NodePath("TerrainBoy/Terrain")]
 
+[node name="SpawnPointManager" type="Node" parent="." node_paths=PackedStringArray("_spawnPoints")]
+script = ExtResource("2_46tbh")
+_spawnPoints = [NodePath("SpawnPoint"), NodePath("SpawnPoint2")]
+
+[node name="SpawnPoint" type="Node2D" parent="SpawnPointManager"]
+position = Vector2(0, 326)
+
+[node name="SpawnPoint2" type="Node2D" parent="SpawnPointManager"]
+position = Vector2(918, 328)
+
 [node name="TerrainGirl" type="Node" parent="."]
 
 [node name="Terrain" parent="TerrainGirl" instance=ExtResource("2_sr37m")]
-visible = false
-tile_map_data = PackedByteArray("AAD+/wAAAAAAAAUAAAD+/wEAAAAAAAUAAAD+/wIAAAAAAAUAAAD+/wMAAAAAAAUAAAD+/wQAAAAAAAUAAAD+/wUAAAAAAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD+/wgAAAAAAAUAAAD+/wkAAAAAAAUAAAD+/woAAAAAAAUAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAEAAEAAAANAAsAAAAEAAEAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAAAAAAEAAQAAAAVAAEAAAAEAAQAAAAVAAIAAAAEAAQAAAAVAAMAAAAEAAQAAAAVAAQAAAAEAAQAAAAVAAUAAAAEAAQAAAAVAAYAAAAEAAQAAAAVAAcAAAAEAAQAAAAVAAgAAAAEAAQAAAAVAAkAAAAEAAQAAAAVAAoAAAAEAAQAAAAFAAwAAAAEAAEAAAAFAA0AAAAEAAEAAAAFAA4AAAAEAAEAAAANAAwAAAAEAAEAAAANAA0AAAAEAAEAAAANAA4AAAAEAAEAAAAGAAwABQAAAAAAAAAHAAwABQAAAAAAAAAIAAwABQAAAAAAAAAJAAwABQAAAAAAAAAKAAwABQAAAAAAAAALAAwABQAAAAAAAAAMAAwABQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAUAAAD+/wEAAAAAAAUAAAD+/wIAAAAAAAUAAAD+/wMAAAAAAAUAAAD+/wQAAAAAAAUAAAD+/wUAAAAAAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD+/wgAAAAAAAUAAAD+/wkAAAAAAAUAAAD+/woAAAAAAAUAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAEAAEAAAANAAsAAAAEAAEAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAAAAAAEAAQAAAAVAAEAAAAEAAQAAAAVAAIAAAAEAAQAAAAVAAMAAAAEAAQAAAAVAAQAAAAEAAQAAAAVAAUAAAAEAAQAAAAVAAYAAAAEAAQAAAAVAAcAAAAEAAQAAAAVAAgAAAAEAAQAAAAVAAkAAAAEAAQAAAAVAAoAAAAEAAQAAAAFAAwAAAAEAAEAAAAFAA0AAAAEAAEAAAAFAA4AAAAEAAEAAAANAAwAAAAEAAEAAAANAA0AAAAEAAEAAAANAA4AAAAEAAEAAAAGAAwABQAAAAAAAAAHAAwABQAAAAAAAAAIAAwABQAAAAAAAAAJAAwABQAAAAAAAAAKAAwABQAAAAAAAAALAAwABQAAAAAAAAAMAAwABQAAAAAAAAAaAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAhAAwAAAAAAAAAAAAiAAwAAAAAAAAAAAAjAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAlAAwAAAAAAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAApAAwAAAAAAAAAAAAqAAwAAAAAAAAAAAArAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAtAAwAAAAAAAAAAAAuAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAwAAwAAAAAAAAAAAAxAAwAAAAAAAAAAAAxAAAAAAAEAAQAAAAxAAEAAAAEAAQAAAAxAAIAAAAEAAQAAAAxAAMAAAAEAAQAAAAxAAQAAAAEAAQAAAAxAAUAAAAEAAQAAAAxAAYAAAAEAAQAAAAxAAcAAAAEAAQAAAAxAAgAAAAEAAQAAAAxAAkAAAAEAAQAAAAxAAoAAAAEAAQAAAAxAAsAAAAEAAQAAAAaAAAAAAAAAAUAAAAaAAEAAAAAAAUAAAAaAAIAAAAAAAUAAAAaAAMAAAAAAAUAAAAaAAQAAAAAAAUAAAAaAAUAAAAAAAUAAAAaAAYAAAAAAAUAAAAaAAcAAAAAAAUAAAAaAAgAAAAAAAUAAAAaAAkAAAAAAAUAAAAaAAoAAAAAAAUAAAAaAAsAAAAAAAUAAAA=")
 
 [node name="TerrainBoy" type="Node" parent="."]
 
 [node name="Terrain" parent="TerrainBoy" instance=ExtResource("2_sr37m")]
 visible = false
-tile_map_data = PackedByteArray("AAAVAAAAAAAEAAQAAAAVAAEAAAAEAAQAAAAVAAIAAAAEAAQAAAAVAAMAAAAEAAQAAAAVAAQAAAAEAAQAAAAVAAUAAAAEAAQAAAAVAAYAAAAEAAQAAAAVAAcAAAAEAAQAAAAVAAgAAAAEAAQAAAAVAAkAAAAEAAQAAAAVAAoAAAAEAAQAAAD+/wAAAAAAAAUAAAD+/wEAAAAAAAUAAAD+/wIAAAAAAAUAAAD+/wMAAAAAAAUAAAD+/wQAAAAAAAUAAAD+/wUAAAAAAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD+/wgAAAAAAAUAAAD+/wkAAAAAAAUAAAD+/woAAAAAAAUAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAVAAAAAAAEAAQAAAAVAAEAAAAEAAQAAAAVAAIAAAAEAAQAAAAVAAMAAAAEAAQAAAAVAAQAAAAEAAQAAAAVAAUAAAAEAAQAAAAVAAYAAAAEAAQAAAAVAAcAAAAEAAQAAAAVAAgAAAAEAAQAAAAVAAkAAAAEAAQAAAAVAAoAAAAEAAQAAAD+/wAAAAAAAAUAAAD+/wEAAAAAAAUAAAD+/wIAAAAAAAUAAAD+/wMAAAAAAAUAAAD+/wQAAAAAAAUAAAD+/wUAAAAAAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD+/wgAAAAAAAUAAAD+/wkAAAAAAAUAAAD+/woAAAAAAAUAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAaAAoAAAAAAAUAAAAaAAkAAAAAAAUAAAAaAAgAAAAAAAUAAAAaAAcAAAAAAAUAAAAaAAYAAAAAAAUAAAAaAAUAAAAAAAUAAAAaAAQAAAAAAAUAAAAaAAMAAAAAAAUAAAAaAAIAAAAAAAUAAAAaAAEAAAAAAAUAAAAaAAAAAAAAAAUAAAAxAAoAAAAEAAQAAAAxAAkAAAAEAAQAAAAxAAgAAAAEAAQAAAAxAAcAAAAEAAQAAAAxAAYAAAAEAAQAAAAxAAUAAAAEAAQAAAAxAAQAAAAEAAQAAAAxAAMAAAAEAAQAAAAxAAIAAAAEAAQAAAAxAAEAAAAEAAQAAAAxAAAAAAAEAAQAAAAxAAsAAAAEAAQAAAAaAAsAAAAAAAUAAAAaAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAhAAwAAAAAAAAAAAAiAAwAAAAAAAAAAAAjAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAlAAwAAAAAAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAApAAwAAAAAAAAAAAAqAAwAAAAAAAAAAAArAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAtAAwAAAAAAAAAAAAuAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAwAAwAAAAAAAAAAAAxAAwAAAAAAAAAAAA=")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -114.0
@@ -188,25 +199,8 @@ scale = Vector2(1, 2)
 
 [node name="Deathplanes" type="Node2D" parent="."]
 
-[node name="DeathArea2D" parent="Deathplanes" instance=ExtResource("7")]
-position = Vector2(304.42, 465.884)
-scale = Vector2(12, 1)
-
-[node name="DeathArea2D2" parent="Deathplanes" instance=ExtResource("7")]
-position = Vector2(2959.9, 462.183)
-scale = Vector2(12, 1)
-
-[node name="DeathArea2D5" parent="Deathplanes" instance=ExtResource("7")]
-position = Vector2(2019.88, 975.546)
-scale = Vector2(12, 1)
-
-[node name="DeathArea2D3" parent="Deathplanes" instance=ExtResource("7")]
-position = Vector2(4735, 462.183)
-scale = Vector2(33, 1)
-
-[node name="DeathArea2D4" parent="Deathplanes" instance=ExtResource("7")]
-position = Vector2(5589.03, 463.105)
-scale = Vector2(33, 1)
+[node name="DeathArea2D" parent="Deathplanes" instance=ExtResource("7_e8lge")]
+position = Vector2(304.42, 426.884)
 
 [node name="Goallights" type="Node2D" parent="."]
 
@@ -296,174 +290,3 @@ position = Vector2(4944.6, 295.219)
 
 [node name="Box7" parent="boxes" instance=ExtResource("11")]
 position = Vector2(5402.05, 197.224)
-
-[node name="Light3D" type="Node" parent="."]
-
-[node name="PointLight2D" parent="Light3D" instance=ExtResource("4")]
-position = Vector2(304, 250)
-color = Color(0, 0, 1, 1)
-energy = 1.7
-
-[node name="Light2D2" parent="Light3D" instance=ExtResource("4")]
-position = Vector2(1199.41, 217.011)
-energy = 1.7
-
-[node name="Light2D3" parent="Light3D" instance=ExtResource("4")]
-position = Vector2(2096.04, 153.987)
-energy = 1.7
-
-[node name="Light2D4" parent="Light3D" instance=ExtResource("4")]
-position = Vector2(1999.88, 217.011)
-energy = 1.7
-
-[node name="Light2D5" parent="Light3D" instance=ExtResource("4")]
-position = Vector2(2191.55, 217.661)
-energy = 1.7
-
-[node name="Light2D6" parent="Light3D" instance=ExtResource("4")]
-position = Vector2(2768.51, 186.474)
-energy = 1.7
-
-[node name="Light2D7" parent="Light3D" instance=ExtResource("4")]
-position = Vector2(4015.35, 153.06)
-energy = 1.7
-
-[node name="Light2D8" parent="Light3D" instance=ExtResource("4")]
-position = Vector2(4560.48, 122.8)
-energy = 1.7
-
-[node name="Light2D9" parent="Light3D" instance=ExtResource("4")]
-position = Vector2(5775.2, 121.5)
-energy = 1.7
-
-[node name="Windows" type="Node2D" parent="Light3D"]
-
-[node name="Light2D10" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(111.382, 177.412)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D11" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(495.43, 178.138)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D12" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(944.818, 145.468)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D13" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(1456.64, 144.742)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D15" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(2095.51, 239.847)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D16" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(1839.24, 145.468)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D28" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(1968.35, 561.115)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D29" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(2064.62, 559.983)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D30" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(2384, 657.382)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D31" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(2064.62, 689.094)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D32" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(1967.22, 689.094)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D33" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(1808.66, 818.205)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D34" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(1968.35, 848.784)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D35" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(2064.62, 848.784)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D14" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(2353.24, 144.742)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D17" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(2703.89, 304.46)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D18" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(3184.5, 303.734)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D19" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(3248.38, 144.742)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D20" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(2959.44, 176.686)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D21" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(3791.42, 208.629)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D22" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(3567.82, 336.404)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D23" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(3631.71, 337.856)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D24" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(3983.81, 367.621)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D25" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(5456.12, 175.234)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D26" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(5743.61, 176.686)
-energy = 0.5
-texture_scale = 1.0
-
-[node name="Light2D27" parent="Light3D/Windows" instance=ExtResource("4")]
-position = Vector2(5807.5, 176.686)
-energy = 0.5
-texture_scale = 1.0
