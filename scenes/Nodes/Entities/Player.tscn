@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://uidt6td2auk8"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/Player.cs" id="1_uro0h"]
+[ext_resource type="Script" path="res://Scripts/Entities/Player/Player.cs" id="1_uro0h"]
 [ext_resource type="Texture2D" uid="uid://qc5qg7e2fvnw" path="res://Art/Sprites/Entities/Player/Girl.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://brsyk00m4x7lm" path="res://Art/Sprites/Entities/Player/Boy.png" id="3"]
 [ext_resource type="AudioStream" uid="uid://ctsqnlafa4gcp" path="res://Art/Soundeffects/Step.wav" id="4"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dfjekxwemcxdu" path="res://Art/Soundeffects/Change_sound.wav" id="6"]
 [ext_resource type="AudioStream" uid="uid://u3am036rhlg3" path="res://Art/Soundeffects/Jump.wav" id="7"]
 [ext_resource type="AudioStream" uid="uid://ch4lqmsq1yaok" path="res://Art/Soundeffects/Door.wav" id="8_7c5u7"]
+
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("3")

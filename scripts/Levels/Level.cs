@@ -12,13 +12,38 @@ public partial class Level : Node
     [Export]
     public Array<Terrain> StateBoyTerrain = new Array<Terrain>();
     public SpawnPointManager SpawnPointManager;
+    public CameraBoundingBoxManager CameraBoundingBoxManager;
+    public Vector2 CurrentSpawnPoint;
+    public GlobalData _globalData;
 
     public override void _Ready()
     {
         base._Ready();
-        CorrectSetState();
         Player = GetNode<Player>("Player");
         Player.OnStateSwitched += () => CorrectSetState();
+        _globalData = GetNode<GlobalData>("/root/GlobalData");
+        UpdateLevelData();
+    }
+
+    /// <summary>
+    /// Updates all level data, and its dependant components
+    /// </summary>
+    private void UpdateLevelData()
+    {
+        CorrectSetState();
+
+        // Update spawnpoint
+        bool isInIndexRange;
+        int offset = 1; // Offset is used to remove 0 indexing from level count
+        Vector2 spawnPoint = SpawnPointManager.GetSpawnPoint(_globalData.Level - offset, out isInIndexRange);
+        GD.Print(spawnPoint, ", ", isInIndexRange);
+        if (isInIndexRange)
+            CurrentSpawnPoint = spawnPoint;
+        else
+            _globalData.MainMenu.TempIsOnEndScreen = true;
+
+        // Update Cam boundingbox
+        CameraBoundingBoxManager.Camera.BoundingBox = CameraBoundingBoxManager.BoundingBoxes[_globalData.Level - offset].BoundingBox;
     }
 
     /// <summary>

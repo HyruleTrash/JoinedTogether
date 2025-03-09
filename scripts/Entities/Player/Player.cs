@@ -280,13 +280,6 @@ public partial class Player : CharacterBody2D
 
     public void Respawn()
     {
-        bool isInIndexRange;
-        int offset = 1; // Offset is used to remove 0 indexing from level count
-        Vector2 spawnPoint = _globalData.MainMenu.LevelOneInstance.SpawnPointManager.GetSpawnPoint(_globalData.Level - offset, out isInIndexRange);
-        GD.Print(isInIndexRange, " ", spawnPoint);
-        if (isInIndexRange)
-            GlobalPosition = spawnPoint;
-        else
-            _globalData.MainMenu.TempIsOnEndScreen = true;
+        GlobalPosition = _globalData.MainMenu.LevelOneInstance.CurrentSpawnPoint;
     }
 }

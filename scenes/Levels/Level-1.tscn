@@ -1,10 +1,13 @@
-[gd_scene load_steps=19 format=4 uid="uid://uu3actw6snjt"]
+[gd_scene load_steps=22 format=4 uid="uid://uu3actw6snjt"]
 
 [ext_resource type="PackedScene" uid="uid://uidt6td2auk8" path="res://Scenes/Nodes/Entities/Player.tscn" id="1"]
 [ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_kudbp"]
 [ext_resource type="Script" path="res://Scripts/Levels/SpawnPointManager.cs" id="2_46tbh"]
 [ext_resource type="PackedScene" uid="uid://b7g4yoqhhp3t2" path="res://Scenes/Nodes/Terrain/Terrain.tscn" id="2_sr37m"]
+[ext_resource type="Script" path="res://Scripts/Levels/CameraBoundingBoxManager.cs" id="3_f7lg4"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Lights/Light2D.tscn" id="4"]
+[ext_resource type="Script" path="res://Scripts/Levels/CameraBoundingBox.cs" id="4_loh7e"]
+[ext_resource type="Script" path="res://Scripts/Entities/Player/Camera.cs" id="4_mx5ql"]
 [ext_resource type="PackedScene" uid="uid://dnf1ily5i6hqy" path="res://Scenes/Nodes/CoverupArea2D.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://bjoo85m8c2dk2" path="res://Scenes/Nodes/DeathArea2d.tscn" id="7_e8lge"]
 [ext_resource type="Texture2D" uid="uid://d0sb7ujxxjcsi" path="res://Art/Sprites/Door.png" id="8"]
@@ -73,15 +76,24 @@ Player = NodePath("Player")
 StateGirlTerrain = [NodePath("TerrainGirl/Terrain")]
 StateBoyTerrain = [NodePath("TerrainBoy/Terrain")]
 
-[node name="SpawnPointManager" type="Node" parent="." node_paths=PackedStringArray("_spawnPoints")]
+[node name="SpawnPointManager" type="Node" parent="."]
 script = ExtResource("2_46tbh")
-_spawnPoints = [NodePath("SpawnPoint"), NodePath("SpawnPoint2")]
 
 [node name="SpawnPoint" type="Node2D" parent="SpawnPointManager"]
 position = Vector2(0, 326)
 
 [node name="SpawnPoint2" type="Node2D" parent="SpawnPointManager"]
 position = Vector2(918, 328)
+
+[node name="CameraBoundingBoxManager" type="Node" parent="." node_paths=PackedStringArray("Camera")]
+script = ExtResource("3_f7lg4")
+Camera = NodePath("../Camera")
+
+[node name="CameraBoundingBox" type="Node2D" parent="CameraBoundingBoxManager"]
+position = Vector2(304, 209)
+script = ExtResource("4_loh7e")
+MinMaxX = Vector2(-390, 420)
+MinMaxY = Vector2(-229.435, 270.76)
 
 [node name="TerrainGirl" type="Node" parent="."]
 
@@ -101,13 +113,17 @@ offset_right = 6088.0
 offset_bottom = 1005.0
 color = Color(0.0109012, 0, 0.15625, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(304, 208)
+[node name="Camera" type="Node2D" parent="." node_paths=PackedStringArray("Player")]
+position = Vector2(307, 216)
+script = ExtResource("4_mx5ql")
+Player = NodePath("../Player")
+
+[node name="Camera2D" type="Camera2D" parent="Camera"]
 zoom = Vector2(0.8, 0.8)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera/Camera2D"]
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Camera/Camera2D/CanvasLayer"]
 visible = false
 offset_right = 1100.0
 offset_bottom = 700.0
