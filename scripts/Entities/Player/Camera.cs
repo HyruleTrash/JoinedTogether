@@ -16,7 +16,7 @@ public partial class Camera : Camera2D
     public override void _Process(double delta)
     {
         Vector2 newPosition = Position.Lerp(Player.Position - FollowOffset, (float)(delta * Speed));
-        // LimitTop = (int)MathF.Round(BoundingBox.MinMaxY.X);
+        LimitTop = (int)MathF.Round(BoundingBox.MinMaxY.X);
         LimitBottom = (int)MathF.Round(BoundingBox.MinMaxY.Y);
         LimitLeft = (int)MathF.Round(BoundingBox.MinMaxX.X);
         LimitRight = (int)MathF.Round(BoundingBox.MinMaxX.Y);

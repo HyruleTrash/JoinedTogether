@@ -25,12 +25,12 @@ GlobalSoundManager="*res://Scenes/Nodes/GlobalSoundManager.tscn"
 
 [display]
 
-window/size/viewport_width=576
-window/size/viewport_height=324
+window/size/viewport_width=704
+window/size/viewport_height=384
 window/size/resizable=false
 window/size/always_on_top=true
-window/size/window_width_override=1152
-window/size/window_height_override=648
+window/size/window_width_override=1408
+window/size/window_height_override=768
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/per_pixel_transparency/allowed=true
@@ -116,4 +116,5 @@ common/enable_pause_aware_picking=true
 
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0.0117647, 0, 0.168627, 1)
+2d/snap/snap_2d_vertices_to_pixel=true
 environment/defaults/default_environment="res://default_env.tres"
