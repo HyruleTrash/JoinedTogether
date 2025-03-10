@@ -9,8 +9,8 @@
 polygon = PackedVector2Array(-23.9213, -23.9615, 23.9049, -23.9615, 24.0421, 24.0258, -23.9584, 24.0781)
 
 [node name="Box" type="RigidBody2D" node_paths=PackedStringArray("_deathSound") groups=["box"]]
-collision_layer = 4
-collision_mask = 5
+collision_layer = 2
+collision_mask = 9
 mass = 5.10204
 gravity_scale = 5.0
 script = ExtResource("1_lyxrv")

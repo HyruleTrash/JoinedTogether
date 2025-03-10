@@ -105,8 +105,9 @@ R={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="Map"
-2d_physics/layer_3="Blocks/interactibles"
+2d_physics/layer_2="Misc Entities"
+2d_physics/layer_3="Player Terrain"
+2d_physics/layer_4="Misc Entities Terrain"
 
 [physics]
 

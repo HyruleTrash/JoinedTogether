@@ -1,0 +1,7 @@
+TODO:
+
+- check if art files in folders are still ordered well (since we added props in scripts)
+- weird inertia kicking logic that is inside the player when bumping against a box
+- remaking the old levels
+- LitTiles, needs their own data class, that holds light intensity, or energy
+- Global ESC key
