@@ -16,5 +16,12 @@ public partial class DeathPlane : Area2D
         {
             player.Death();
         }
+        if (body is Box box)
+        {
+            // TODO
+            // #body.get_node("AudioStreamPlayer2D").stream = preload("res://Soundeffects/DeathSound.wav")
+            // #body.ParticlesBox = preload("res://scenes/BoxParticles2D.tscn")
+            // #body.respawn()
+        }
     }
 }

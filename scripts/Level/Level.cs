@@ -58,9 +58,27 @@ public partial class Level : Node
     {
         if (CameraBoundingBoxManager == null || _globalData == null)
             return;
+
         int offset = 1; // Offset is used to remove 0 indexing from level count
-        CameraBoundingBox cameraBoundingBox = CameraBoundingBoxManager.BoundingBoxes[_globalData.Level - offset];
+        int index = _globalData.Level - offset;
+        if (index > CameraBoundingBoxManager.BoundingBoxes.Count - 1 || index < 0)
+        {
+            GD.PushError("Index out of range");
+            _globalData.MainMenu.TempIsOnEndScreen = true;
+            return;
+        }
+        CameraBoundingBox cameraBoundingBox = CameraBoundingBoxManager.BoundingBoxes[index];
         CameraBoundingBoxManager.Camera.BoundingBox = cameraBoundingBox.BoundingBox + cameraBoundingBox.Position;
+    }
+
+    /// <summary>
+    /// Updates to the next subLevel
+    /// </summary>
+    public void SetNextLevel()
+    {
+        _globalData.Level++;
+        UpdateSpawnPoint();
+        UpdateCameraBoundingBox();
     }
 
     /// <summary>

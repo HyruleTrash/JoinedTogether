@@ -30,8 +30,8 @@ public class Bounds2D
     public static Bounds2D operator +(Bounds2D bounds, Vector2 offset)
     {
         return new Bounds2D(
-            bounds.MinMaxX + offset,
-            bounds.MinMaxY + offset
+            new(bounds.MinMaxX.X + offset.X, bounds.MinMaxX.Y + offset.X),
+            new(bounds.MinMaxY.X + offset.Y, bounds.MinMaxY.Y + offset.Y)
         );
     }
 

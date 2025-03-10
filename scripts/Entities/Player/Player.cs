@@ -39,10 +39,10 @@ public partial class Player : CharacterBody2D
     [Export]
     private AudioStreamPlayer2D _stepSound;
     [Export]
-    private AudioStreamPlayer2D _doorSound;
+    public AudioStreamPlayer2D DoorSound;
 
     // Misc, variables
-    public GlobalData _globalData;
+    public GlobalData GlobalData;
     [Export]
     public bool IsInGirlState = false;
     [Signal]
@@ -59,8 +59,8 @@ public partial class Player : CharacterBody2D
         SetFloorMaxAngle(MathF.PI / 4);
 
         // Misc setup
-        _globalData = GetNode<GlobalData>("/root/GlobalData");
-        _globalData.Player = this;
+        GlobalData = GetNode<GlobalData>("/root/GlobalData");
+        GlobalData.Player = this;
         _animatedSprite2D.AnimationFinished += () => _StepSoundLogic();
         CorrectStates();
     }
@@ -83,7 +83,7 @@ public partial class Player : CharacterBody2D
 
         if (Input.IsActionJustPressed("R"))
         {
-            _doorSound.Play();
+            DoorSound.Play();
             Respawn();
         }
         if (Input.IsActionJustPressed("DOWN"))
@@ -280,6 +280,6 @@ public partial class Player : CharacterBody2D
 
     public void Respawn()
     {
-        GlobalPosition = _globalData.MainMenu.LevelOneInstance.CurrentSpawnPoint;
+        GlobalPosition = GlobalData.MainMenu.LevelOneInstance.CurrentSpawnPoint;
     }
 }

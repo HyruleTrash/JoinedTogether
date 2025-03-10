@@ -1,74 +1,17 @@
-[gd_scene load_steps=22 format=4 uid="uid://uu3actw6snjt"]
+[gd_scene load_steps=13 format=4 uid="uid://uu3actw6snjt"]
 
 [ext_resource type="PackedScene" uid="uid://uidt6td2auk8" path="res://Scenes/Nodes/Entities/Player.tscn" id="1"]
-[ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_kudbp"]
-[ext_resource type="Script" path="res://Scripts/Levels/SpawnPointManager.cs" id="2_46tbh"]
+[ext_resource type="Script" path="res://Scripts/Level/Level.cs" id="1_kudbp"]
+[ext_resource type="Script" path="res://Scripts/Level/SpawnPointManager.cs" id="2_46tbh"]
+[ext_resource type="Script" path="res://Scripts/Level/SubLevel/SubLevel.cs" id="2_l54jy"]
 [ext_resource type="PackedScene" uid="uid://b7g4yoqhhp3t2" path="res://Scenes/Nodes/Terrain/Terrain.tscn" id="2_sr37m"]
-[ext_resource type="Script" path="res://Scripts/Levels/CameraBoundingBoxManager.cs" id="3_f7lg4"]
-[ext_resource type="PackedScene" uid="uid://g17l84qaoxe7" path="res://Scenes/Nodes/Lights/Light2D.tscn" id="4"]
-[ext_resource type="Script" path="res://Scripts/Levels/CameraBoundingBox.cs" id="4_loh7e"]
+[ext_resource type="Script" path="res://Scripts/Level/CameraBoundingBoxManager.cs" id="3_f7lg4"]
+[ext_resource type="Script" path="res://Scripts/Level/CameraBoundingBox.cs" id="4_loh7e"]
 [ext_resource type="Script" path="res://Scripts/Entities/Player/Camera.cs" id="4_mx5ql"]
-[ext_resource type="PackedScene" uid="uid://dnf1ily5i6hqy" path="res://Scenes/Nodes/CoverupArea2D.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://bjoo85m8c2dk2" path="res://Scenes/Nodes/DeathArea2d.tscn" id="7_e8lge"]
-[ext_resource type="Texture2D" uid="uid://d0sb7ujxxjcsi" path="res://Art/Sprites/Door.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://ntdsmp0msk2k" path="res://Art/Sprites/Lights/lights.png" id="8_bdngh"]
-[ext_resource type="PackedScene" path="res://Scenes/Nodes/Lights/light.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://Scenes/Nodes/Button.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://ct5xm4feuq8ys" path="res://Scenes/Nodes/Door.tscn" id="7_sys8i"]
+[ext_resource type="PackedScene" uid="uid://qvvdjfoeo2ci" path="res://Scenes/Nodes/Button.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Scenes/Nodes/Entities/Box.tscn" id="11"]
-
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("8")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="2"]
-atlas = ExtResource("8")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="SpriteFrames" id="3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("1")
-}],
-"loop": true,
-"name": &"closed",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("2")
-}],
-"loop": true,
-"name": &"open",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ekqs2"]
-atlas = ExtResource("8_bdngh")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_foyht"]
-atlas = ExtResource("8_bdngh")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_636xc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ekqs2")
-}],
-"loop": true,
-"name": &"green",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_foyht")
-}],
-"loop": true,
-"name": &"red",
-"speed": 5.0
-}]
 
 [node name="Level-1" type="Node2D" node_paths=PackedStringArray("Player", "StateGirlTerrain", "StateBoyTerrain")]
 script = ExtResource("1_kudbp")
@@ -95,16 +38,113 @@ script = ExtResource("4_loh7e")
 MinMaxX = Vector2(-475.225, 521.35)
 MinMaxY = Vector2(-343.605, 270.76)
 
+[node name="CameraBoundingBox2" type="Node2D" parent="CameraBoundingBoxManager"]
+position = Vector2(1213.71, 209)
+script = ExtResource("4_loh7e")
+MinMaxX = Vector2(-475.225, 521.35)
+MinMaxY = Vector2(-343.605, 270.76)
+
 [node name="TerrainGirl" type="Node" parent="."]
 
 [node name="Terrain" parent="TerrainGirl" instance=ExtResource("2_sr37m")]
-tile_map_data = PackedByteArray("AAD+/wAAAAAAAAUAAAD+/wEAAAAAAAUAAAD+/wIAAAAAAAUAAAD+/wMAAAAAAAUAAAD+/wQAAAAAAAUAAAD+/wUAAAAAAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAEAAEAAAANAAsAAAAEAAEAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAAAAAAEAAQAAAAVAAEAAAAEAAQAAAAVAAIAAAAEAAQAAAAVAAMAAAAEAAQAAAAVAAQAAAAEAAQAAAAVAAUAAAAEAAQAAAAVAAYAAAAEAAQAAAAVAAcAAAAEAAQAAAAFAAwAAAAEAAEAAAAFAA0AAAAEAAEAAAAFAA4AAAAEAAEAAAANAAwAAAAEAAEAAAANAA0AAAAEAAEAAAANAA4AAAAEAAEAAAAGAAwABQAAAAAAAAAHAAwABQAAAAAAAAAIAAwABQAAAAAAAAAJAAwABQAAAAAAAAAKAAwABQAAAAAAAAALAAwABQAAAAAAAAAMAAwABQAAAAAAAAAaAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAhAAwAAAAAAAAAAAAiAAwAAAAAAAAAAAAjAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAlAAwAAAAAAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAApAAwAAAAAAAAAAAAqAAwAAAAAAAAAAAArAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAtAAwAAAAAAAAAAAAuAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAwAAwAAAAAAAAAAAAxAAwAAAAAAAAAAAAxAAAAAAAEAAQAAAAxAAEAAAAEAAQAAAAxAAIAAAAEAAQAAAAxAAMAAAAEAAQAAAAxAAQAAAAEAAQAAAAxAAUAAAAEAAQAAAAxAAYAAAAEAAQAAAAxAAcAAAAEAAQAAAAxAAgAAAAEAAQAAAAxAAkAAAAEAAQAAAAxAAoAAAAEAAQAAAAxAAsAAAAEAAQAAAAaAAAAAAAAAAUAAAAaAAEAAAAAAAUAAAAaAAIAAAAAAAUAAAAaAAMAAAAAAAUAAAAaAAQAAAAAAAUAAAAaAAUAAAAAAAUAAAAaAAYAAAAAAAUAAAAaAAcAAAAAAAUAAAAVAAgAAAAEAAQAAAAVAAkAAAAEAAQAAAAVAAoAAAAEAAQAAAD+/wgAAAAAAAUAAAD+/wkAAAAAAAUAAAD+/woAAAAAAAUAAAAaAAgAAAAAAAUAAAAaAAkAAAAAAAUAAAAaAAoAAAAAAAUAAAAaAAsAAAAAAAUAAAD+////AAAEAAEAAAD/////AAAEAAEAAAAAAP//AAAEAAEAAAABAP//AAAEAAEAAAACAP//AAAEAAEAAAADAP//AAAEAAEAAAAEAP//AAAEAAEAAAAFAP//AAAEAAEAAAAGAP//AAAEAAEAAAAHAP//AAAEAAEAAAAIAP//AAAEAAEAAAAJAP//AAAEAAEAAAAKAP//AAAEAAEAAAALAP//AAAEAAEAAAAMAP//AAAEAAEAAAANAP//AAAEAAEAAAAOAP//AAAEAAEAAAAPAP//AAAEAAEAAAAQAP//AAAEAAEAAAARAP//AAAEAAEAAAASAP//AAAEAAEAAAATAP//AAAEAAEAAAAUAP//AAAEAAEAAAAVAP//AAAEAAEAAAAJAAAAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAUAAAD+/wEAAAAAAAUAAAD+/wIAAAAAAAUAAAD+/wMAAAAAAAUAAAD+/wQAAAAAAAUAAAD+/wUAAAAAAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAEAAEAAAANAAsAAAAEAAEAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAVAAAAAAAEAAQAAAAVAAEAAAAEAAQAAAAVAAIAAAAEAAQAAAAVAAMAAAAEAAQAAAAVAAQAAAAEAAQAAAAVAAUAAAAEAAQAAAAVAAYAAAAEAAQAAAAVAAcAAAAEAAQAAAAFAAwAAAAEAAEAAAAFAA0AAAAEAAEAAAAFAA4AAAAEAAEAAAANAAwAAAAEAAEAAAANAA0AAAAEAAEAAAANAA4AAAAEAAEAAAAGAAwABQAAAAAAAAAHAAwABQAAAAAAAAAIAAwABQAAAAAAAAAJAAwABQAAAAAAAAAKAAwABQAAAAAAAAALAAwABQAAAAAAAAAMAAwABQAAAAAAAAAaAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAhAAwAAAAAAAAAAAAiAAwAAAAAAAAAAAAjAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAlAAwAAAAAAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAApAAwAAAAAAAAAAAAqAAwAAAAAAAAAAAArAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAtAAwAAAAAAAAAAAAuAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAwAAwAAAAAAAAAAAAxAAwAAAAAAAAAAAAxAAAAAAAEAAQAAAAxAAEAAAAEAAQAAAAxAAIAAAAEAAQAAAAxAAMAAAAEAAQAAAAxAAQAAAAEAAQAAAAxAAUAAAAEAAQAAAAxAAYAAAAEAAQAAAAxAAcAAAAEAAQAAAAxAAgAAAAEAAQAAAAxAAkAAAAEAAQAAAAxAAoAAAAEAAQAAAAxAAsAAAAEAAQAAAAaAAAAAAAAAAUAAAAaAAEAAAAAAAUAAAAaAAIAAAAAAAUAAAAaAAMAAAAAAAUAAAAaAAQAAAAAAAUAAAAaAAUAAAAAAAUAAAAaAAYAAAAAAAUAAAAaAAcAAAAAAAUAAAAVAAgAAAAEAAQAAAAVAAkAAAAEAAQAAAAVAAoAAAAEAAQAAAD+/wgAAAAAAAUAAAD+/wkAAAAAAAUAAAD+/woAAAAAAAUAAAAaAAgAAAAAAAUAAAAaAAkAAAAAAAUAAAAaAAoAAAAAAAUAAAAaAAsAAAAAAAUAAAD+////AAAEAAEAAAD/////AAAEAAEAAAAAAP//AAAEAAEAAAABAP//AAAEAAEAAAACAP//AAAEAAEAAAADAP//AAAEAAEAAAAEAP//AAAEAAEAAAAFAP//AAAEAAEAAAAGAP//AAAEAAEAAAAHAP//AAAEAAEAAAAIAP//AAAEAAEAAAAJAP//AAAEAAEAAAAKAP//AAAEAAEAAAALAP//AAAEAAEAAAAMAP//AAAEAAEAAAANAP//AAAEAAEAAAAOAP//AAAEAAEAAAAPAP//AAAEAAEAAAAQAP//AAAEAAEAAAARAP//AAAEAAEAAAASAP//AAAEAAEAAAATAP//AAAEAAEAAAAUAP//AAAEAAEAAAAVAP//AAAEAAEAAAAJAAAAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAIAAAAaAP//AAAEAAEAAAAbAP//AAAEAAEAAAAcAP//AAAEAAEAAAAdAP//AAAEAAEAAAAeAP//AAAEAAEAAAAfAP//AAAEAAEAAAAgAP//AAAEAAEAAAAhAP//AAAEAAEAAAAiAP//AAAEAAEAAAAjAP//AAAEAAEAAAAkAP//AAAEAAEAAAAlAP//AAAEAAEAAAAmAP//AAAEAAEAAAAnAP//AAAEAAEAAAAoAP//AAAEAAEAAAApAP//AAAEAAEAAAAqAP//AAAEAAEAAAArAP//AAAEAAEAAAAsAP//AAAEAAEAAAAtAP//AAAEAAEAAAAuAP//AAAEAAEAAAAvAP//AAAEAAEAAAAwAP//AAAEAAEAAAAxAP//AAAEAAEAAAA=")
 
 [node name="TerrainBoy" type="Node" parent="."]
 
 [node name="Terrain" parent="TerrainBoy" instance=ExtResource("2_sr37m")]
-visible = false
-tile_map_data = PackedByteArray("AAAVAAAAAAAEAAQAAAAVAAEAAAAEAAQAAAAVAAIAAAAEAAQAAAAVAAMAAAAEAAQAAAAVAAQAAAAEAAQAAAAVAAUAAAAEAAQAAAAVAAYAAAAEAAQAAAAVAAcAAAAEAAQAAAD+/wAAAAAAAAUAAAD+/wEAAAAAAAUAAAD+/wIAAAAAAAUAAAD+/wMAAAAAAAUAAAD+/wQAAAAAAAUAAAD+/wUAAAAAAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAaAAcAAAAAAAUAAAAaAAYAAAAAAAUAAAAaAAUAAAAAAAUAAAAaAAQAAAAAAAUAAAAaAAMAAAAAAAUAAAAaAAIAAAAAAAUAAAAaAAEAAAAAAAUAAAAaAAAAAAAAAAUAAAAxAAoAAAAEAAQAAAAxAAkAAAAEAAQAAAAxAAgAAAAEAAQAAAAxAAcAAAAEAAQAAAAxAAYAAAAEAAQAAAAxAAUAAAAEAAQAAAAxAAQAAAAEAAQAAAAxAAMAAAAEAAQAAAAxAAIAAAAEAAQAAAAxAAEAAAAEAAQAAAAxAAAAAAAEAAQAAAAxAAsAAAAEAAQAAAAaAAsAAAAAAAUAAAAaAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAhAAwAAAAAAAAAAAAiAAwAAAAAAAAAAAAjAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAlAAwAAAAAAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAApAAwAAAAAAAAAAAAqAAwAAAAAAAAAAAArAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAtAAwAAAAAAAAAAAAuAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAwAAwAAAAAAAAAAAAxAAwAAAAAAAAAAAD+/wgAAAAAAAUAAAD+/wkAAAAAAAUAAAD+/woAAAAAAAUAAAAaAAgAAAAAAAUAAAAaAAkAAAAAAAUAAAAaAAoAAAAAAAUAAAAVAAgAAAAEAAQAAAAVAAkAAAAEAAQAAAAVAAoAAAAEAAQAAAD+////AAAEAAEAAAD/////AAAEAAEAAAAAAP//AAAEAAEAAAABAP//AAAEAAEAAAACAP//AAAEAAEAAAADAP//AAAEAAEAAAAEAP//AAAEAAEAAAAFAP//AAAEAAEAAAAGAP//AAAEAAEAAAAHAP//AAAEAAEAAAAIAP//AAAEAAEAAAAJAP//AAAEAAEAAAAKAP//AAAEAAEAAAALAP//AAAEAAEAAAAMAP//AAAEAAEAAAANAP//AAAEAAEAAAAOAP//AAAEAAEAAAAPAP//AAAEAAEAAAAQAP//AAAEAAEAAAARAP//AAAEAAEAAAASAP//AAAEAAEAAAATAP//AAAEAAEAAAAUAP//AAAEAAEAAAAVAP//AAAEAAEAAAA=")
+tile_map_data = PackedByteArray("AAAVAAAAAAAEAAQAAAAVAAEAAAAEAAQAAAAVAAIAAAAEAAQAAAAVAAMAAAAEAAQAAAAVAAQAAAAEAAQAAAAVAAUAAAAEAAQAAAAVAAYAAAAEAAQAAAAVAAcAAAAEAAQAAAD+/wAAAAAAAAUAAAD+/wEAAAAAAAUAAAD+/wIAAAAAAAUAAAD+/wMAAAAAAAUAAAD+/wQAAAAAAAUAAAD+/wUAAAAAAAUAAAD+/wYAAAAAAAUAAAD+/wcAAAAAAAUAAAD+/wsAAAAAAAAAAAD//wsAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAAUAAsAAAAAAAAAAAAVAAsAAAAAAAAAAAAaAAcAAAAAAAUAAAAaAAYAAAAAAAUAAAAaAAUAAAAAAAUAAAAaAAQAAAAAAAUAAAAaAAMAAAAAAAUAAAAaAAIAAAAAAAUAAAAaAAEAAAAAAAUAAAAaAAAAAAAAAAUAAAAxAAoAAAAEAAQAAAAxAAkAAAAEAAQAAAAxAAgAAAAEAAQAAAAxAAcAAAAEAAQAAAAxAAYAAAAEAAQAAAAxAAUAAAAEAAQAAAAxAAQAAAAEAAQAAAAxAAMAAAAEAAQAAAAxAAIAAAAEAAQAAAAxAAEAAAAEAAQAAAAxAAAAAAAEAAQAAAAxAAsAAAAEAAQAAAAaAAsAAAAAAAUAAAAaAAwAAAAAAAAAAAAbAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAdAAwAAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAhAAwAAAAAAAAAAAAiAAwAAAAAAAAAAAAjAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAlAAwAAAAAAAAAAAAmAAwAAAAAAAAAAAAnAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAApAAwAAAAAAAAAAAAqAAwAAAAAAAAAAAArAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAtAAwAAAAAAAAAAAAuAAwAAAAAAAAAAAAvAAwAAAAAAAAAAAAwAAwAAAAAAAAAAAAxAAwAAAAAAAAAAAD+/wgAAAAAAAUAAAD+/wkAAAAAAAUAAAD+/woAAAAAAAUAAAAaAAgAAAAAAAUAAAAaAAkAAAAAAAUAAAAaAAoAAAAAAAUAAAAVAAgAAAAEAAQAAAAVAAkAAAAEAAQAAAAVAAoAAAAEAAQAAAD+////AAAEAAEAAAD/////AAAEAAEAAAAAAP//AAAEAAEAAAABAP//AAAEAAEAAAACAP//AAAEAAEAAAADAP//AAAEAAEAAAAEAP//AAAEAAEAAAAFAP//AAAEAAEAAAAGAP//AAAEAAEAAAAHAP//AAAEAAEAAAAIAP//AAAEAAEAAAAJAP//AAAEAAEAAAAKAP//AAAEAAEAAAALAP//AAAEAAEAAAAMAP//AAAEAAEAAAANAP//AAAEAAEAAAAOAP//AAAEAAEAAAAPAP//AAAEAAEAAAAQAP//AAAEAAEAAAARAP//AAAEAAEAAAASAP//AAAEAAEAAAATAP//AAAEAAEAAAAUAP//AAAEAAEAAAAVAP//AAAEAAEAAAAaAP//AAAEAAEAAAAbAP//AAAEAAEAAAAcAP//AAAEAAEAAAAdAP//AAAEAAEAAAAeAP//AAAEAAEAAAAfAP//AAAEAAEAAAAgAP//AAAEAAEAAAAhAP//AAAEAAEAAAAiAP//AAAEAAEAAAAjAP//AAAEAAEAAAAkAP//AAAEAAEAAAAlAP//AAAEAAEAAAAmAP//AAAEAAEAAAAnAP//AAAEAAEAAAAoAP//AAAEAAEAAAApAP//AAAEAAEAAAAqAP//AAAEAAEAAAArAP//AAAEAAEAAAAsAP//AAAEAAEAAAAtAP//AAAEAAEAAAAuAP//AAAEAAEAAAAvAP//AAAEAAEAAAAwAP//AAAEAAEAAAAxAP//AAAEAAEAAAA=")
+
+[node name="SubLevelHolder" type="Node" parent="."]
+
+[node name="SubLevel-1" type="Node" parent="SubLevelHolder"]
+script = ExtResource("2_l54jy")
+
+[node name="Door" parent="SubLevelHolder/SubLevel-1" instance=ExtResource("7_sys8i")]
+position = Vector2(624, 304)
+
+[node name="LightSprite" parent="SubLevelHolder/SubLevel-1/Door" index="0"]
+position = Vector2(0, -42.85)
+
+[node name="DeathArea2D" parent="SubLevelHolder/SubLevel-1" instance=ExtResource("7_e8lge")]
+position = Vector2(304.42, 426.884)
+
+[node name="SubLevel-2" type="Node" parent="SubLevelHolder"]
+script = ExtResource("2_l54jy")
+
+[node name="Door" parent="SubLevelHolder/SubLevel-2" instance=ExtResource("7_sys8i")]
+position = Vector2(1516, 336)
+
+[node name="SubLevel-3" type="Node" parent="SubLevelHolder"]
+script = ExtResource("2_l54jy")
+
+[node name="Door" parent="SubLevelHolder/SubLevel-3" instance=ExtResource("7_sys8i")]
+position = Vector2(2408, 336)
+
+[node name="Area2D" parent="SubLevelHolder/SubLevel-3" instance=ExtResource("10")]
+position = Vector2(2212.06, 359.552)
+
+[node name="Box3" parent="SubLevelHolder/SubLevel-3" instance=ExtResource("11")]
+position = Vector2(1947.78, 349.306)
+
+[node name="SubLevel-4" type="Node" parent="SubLevelHolder"]
+script = ExtResource("2_l54jy")
+
+[node name="Door" parent="SubLevelHolder/SubLevel-4" instance=ExtResource("7_sys8i")]
+position = Vector2(2338, 848)
+
+[node name="LightSprite" parent="SubLevelHolder/SubLevel-4/Door" index="0"]
+position = Vector2(0, -32.71)
+
+[node name="Box3,5" parent="SubLevelHolder/SubLevel-4" instance=ExtResource("11")]
+position = Vector2(2180, 575)
+
+[node name="SubLevel-5" type="Node" parent="SubLevelHolder"]
+script = ExtResource("2_l54jy")
+
+[node name="Area2D2" parent="SubLevelHolder/SubLevel-5" instance=ExtResource("10")]
+position = Vector2(3209.05, 359.552)
+
+[node name="Door" parent="SubLevelHolder/SubLevel-5" instance=ExtResource("7_sys8i")]
+position = Vector2(3300, 336)
+
+[node name="Box4" parent="SubLevelHolder/SubLevel-5" instance=ExtResource("11")]
+position = Vector2(2956.28, -3.08897)
+
+[node name="SubLevel-6" type="Node" parent="SubLevelHolder"]
+script = ExtResource("2_l54jy")
+
+[node name="Area2D3" parent="SubLevelHolder/SubLevel-6" instance=ExtResource("10")]
+position = Vector2(4087.94, 359.52)
+
+[node name="Door" parent="SubLevelHolder/SubLevel-6" instance=ExtResource("7_sys8i")]
+position = Vector2(4192, 336)
+
+[node name="Box5" parent="SubLevelHolder/SubLevel-6" instance=ExtResource("11")]
+position = Vector2(3844.13, 358.623)
+
+[node name="SubLevel-7" type="Node" parent="SubLevelHolder"]
+script = ExtResource("2_l54jy")
+
+[node name="Door" parent="SubLevelHolder/SubLevel-7" instance=ExtResource("7_sys8i")]
+position = Vector2(5084, 240)
+
+[node name="LightSprite" parent="SubLevelHolder/SubLevel-7/Door" index="0"]
+position = Vector2(0, -42.855)
+
+[node name="Box6" parent="SubLevelHolder/SubLevel-7" instance=ExtResource("11")]
+position = Vector2(4944.6, 295.219)
+
+[node name="SubLevel-8" type="Node" parent="SubLevelHolder"]
+script = ExtResource("2_l54jy")
+
+[node name="Door" parent="SubLevelHolder/SubLevel-8" instance=ExtResource("7_sys8i")]
+position = Vector2(5976, 208)
+
+[node name="LightSprite" parent="SubLevelHolder/SubLevel-8/Door" index="0"]
+position = Vector2(0, -42.7)
+
+[node name="Box7" parent="SubLevelHolder/SubLevel-8" instance=ExtResource("11")]
+position = Vector2(5402.05, 197.224)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("Player")]
 position = Vector2(307, 216)
@@ -114,195 +154,19 @@ script = ExtResource("4_mx5ql")
 Player = NodePath("../Player")
 FollowOffset = Vector2(0, 100)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
-visible = false
-offset_right = 1100.0
-offset_bottom = 700.0
-
 [node name="ColorRect" type="ColorRect" parent="Camera2D"]
-offset_left = -421.0
-offset_top = -295.0
-offset_right = 5781.0
-offset_bottom = 789.0
+offset_left = -1436.0
+offset_top = -986.0
+offset_right = 1398.0
+offset_bottom = 959.0
 color = Color(0.0109012, 0, 0.15625, 1)
 
 [node name="Player" parent="." instance=ExtResource("1")]
 position = Vector2(0, 328)
 
-[node name="goals" type="Node2D" parent="."]
-
-[node name="Door1" type="AnimatedSprite2D" parent="goals"]
-position = Vector2(624, 304)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("3")
-animation = &"closed"
-
-[node name="Area2D" parent="goals/Door1" instance=ExtResource("7")]
-position = Vector2(0, 12)
-scale = Vector2(1, 2)
-
-[node name="Door2" type="AnimatedSprite2D" parent="goals"]
-position = Vector2(1516, 336)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("3")
-animation = &"closed"
-
-[node name="Area2D" parent="goals/Door2" instance=ExtResource("7")]
-position = Vector2(0, 12)
-scale = Vector2(1, 2)
-
-[node name="Door3" type="AnimatedSprite2D" parent="goals"]
-position = Vector2(2408, 336)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("3")
-animation = &"closed"
-
-[node name="Area2D" parent="goals/Door3" instance=ExtResource("7")]
-position = Vector2(0, 12)
-scale = Vector2(1, 2)
-
-[node name="Door3,5" type="AnimatedSprite2D" parent="goals"]
-position = Vector2(2338, 848)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("3")
-animation = &"closed"
-
-[node name="Area2D" parent="goals/Door3,5" instance=ExtResource("7")]
-position = Vector2(0, 12)
-scale = Vector2(1, 2)
-
-[node name="Door4" type="AnimatedSprite2D" parent="goals"]
-position = Vector2(5976, 208)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("3")
-animation = &"closed"
-
-[node name="Area2D" parent="goals/Door4" instance=ExtResource("7")]
-position = Vector2(0, 12)
-scale = Vector2(1, 2)
-
-[node name="Door5" type="AnimatedSprite2D" parent="goals"]
-position = Vector2(3300, 336)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("3")
-animation = &"closed"
-
-[node name="Area2D" parent="goals/Door5" instance=ExtResource("7")]
-position = Vector2(0, 12)
-scale = Vector2(1, 2)
-
-[node name="Door6" type="AnimatedSprite2D" parent="goals"]
-position = Vector2(4192, 336)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("3")
-animation = &"closed"
-
-[node name="Area2D" parent="goals/Door6" instance=ExtResource("7")]
-position = Vector2(0, 12)
-scale = Vector2(1, 2)
-
-[node name="Door7" type="AnimatedSprite2D" parent="goals"]
-position = Vector2(5084, 240)
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("3")
-animation = &"closed"
-
-[node name="Area2D" parent="goals/Door7" instance=ExtResource("7")]
-position = Vector2(0, 12)
-scale = Vector2(1, 2)
-
-[node name="Deathplanes" type="Node2D" parent="."]
-
-[node name="DeathArea2D" parent="Deathplanes" instance=ExtResource("7_e8lge")]
-position = Vector2(304.42, 426.884)
-
-[node name="Goallights" type="Node2D" parent="."]
-
-[node name="AnimatedSprite2D" parent="Goallights" instance=ExtResource("9")]
-position = Vector2(624, 240)
-sprite_frames = SubResource("SpriteFrames_636xc")
-animation = &"green"
-
-[node name="PointLight2D" parent="Goallights/AnimatedSprite2D" instance=ExtResource("4")]
-
-[node name="AnimatedSprite2" parent="Goallights" instance=ExtResource("9")]
-position = Vector2(1516, 240)
-sprite_frames = SubResource("SpriteFrames_636xc")
-animation = &"green"
-
-[node name="PointLight2D" parent="Goallights/AnimatedSprite2" instance=ExtResource("4")]
-
-[node name="AnimatedSprite3" parent="Goallights" instance=ExtResource("9")]
-position = Vector2(2408, 240)
-sprite_frames = SubResource("SpriteFrames_636xc")
-animation = &"green"
-
-[node name="PointLight2D" parent="Goallights/AnimatedSprite3" instance=ExtResource("4")]
-
-[node name="AnimatedSprite8" parent="Goallights" instance=ExtResource("9")]
-position = Vector2(2338, 800)
-sprite_frames = SubResource("SpriteFrames_636xc")
-animation = &"green"
-
-[node name="PointLight2D" parent="Goallights/AnimatedSprite8" instance=ExtResource("4")]
-
-[node name="AnimatedSprite4" parent="Goallights" instance=ExtResource("9")]
-position = Vector2(3300, 240)
-sprite_frames = SubResource("SpriteFrames_636xc")
-animation = &"green"
-
-[node name="PointLight2D" parent="Goallights/AnimatedSprite4" instance=ExtResource("4")]
-
-[node name="AnimatedSprite5" parent="Goallights" instance=ExtResource("9")]
-position = Vector2(4192, 240)
-sprite_frames = SubResource("SpriteFrames_636xc")
-animation = &"green"
-
-[node name="PointLight2D" parent="Goallights/AnimatedSprite5" instance=ExtResource("4")]
-
-[node name="AnimatedSprite6" parent="Goallights" instance=ExtResource("9")]
-position = Vector2(5084, 176)
-sprite_frames = SubResource("SpriteFrames_636xc")
-animation = &"green"
-
-[node name="PointLight2D" parent="Goallights/AnimatedSprite6" instance=ExtResource("4")]
-
-[node name="AnimatedSprite7" parent="Goallights" instance=ExtResource("9")]
-position = Vector2(5976, 144)
-sprite_frames = SubResource("SpriteFrames_636xc")
-animation = &"green"
-
-[node name="PointLight2D" parent="Goallights/AnimatedSprite7" instance=ExtResource("4")]
-
-[node name="buttons" type="Node2D" parent="."]
-
-[node name="Area2D" parent="buttons" instance=ExtResource("10")]
-position = Vector2(2212.06, 359.552)
-
-[node name="Area2D2" parent="buttons" instance=ExtResource("10")]
-position = Vector2(3209.05, 359.552)
-
-[node name="Area2D3" parent="buttons" instance=ExtResource("10")]
-position = Vector2(4087.94, 359.52)
-
-[node name="boxes" type="Node2D" parent="."]
-
-[node name="Box3" parent="boxes" instance=ExtResource("11")]
-position = Vector2(1947.78, 349.306)
-
-[node name="Box3,5" parent="boxes" instance=ExtResource("11")]
-position = Vector2(2180, 575)
-
-[node name="Box4" parent="boxes" instance=ExtResource("11")]
-position = Vector2(2956.28, -3.08897)
-
-[node name="Box5" parent="boxes" instance=ExtResource("11")]
-position = Vector2(3844.13, 358.623)
-
-[node name="Box6" parent="boxes" instance=ExtResource("11")]
-position = Vector2(4944.6, 295.219)
-
-[node name="Box7" parent="boxes" instance=ExtResource("11")]
-position = Vector2(5402.05, 197.224)
+[editable path="SubLevelHolder/SubLevel-1/Door"]
+[editable path="SubLevelHolder/SubLevel-2/Door"]
+[editable path="SubLevelHolder/SubLevel-3/Door"]
+[editable path="SubLevelHolder/SubLevel-4/Door"]
+[editable path="SubLevelHolder/SubLevel-7/Door"]
+[editable path="SubLevelHolder/SubLevel-8/Door"]

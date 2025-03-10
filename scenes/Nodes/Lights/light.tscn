@@ -1,32 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://df2q5pcl258y4"]
 
 [ext_resource type="Texture2D" uid="uid://ntdsmp0msk2k" path="res://Art/Sprites/Lights/lights.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Lights/lightsprite.gd" id="2"]
 
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 32, 32, 32 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ SubResource( 1 ) ],
+[sub_resource type="SpriteFrames" id="3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}],
 "loop": true,
-"name": "green",
+"name": &"green",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("2")
+}],
 "loop": true,
-"name": "red",
+"name": &"red",
 "speed": 5.0
-} ]
+}]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 light_mask = 0
-frames = SubResource( 3 )
-animation = "green"
-script = ExtResource( 2 )
+sprite_frames = SubResource("3")
+animation = &"green"

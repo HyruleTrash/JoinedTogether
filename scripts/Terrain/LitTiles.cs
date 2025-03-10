@@ -8,7 +8,7 @@ public partial class LitTiles : Node2D
     private CustomTileMapLayer _tileMapLayer;
     [Export]
     public PackedScene LightPrefab;
-    private static readonly Vector2I _tileSize = new(32, 32);
+    private static readonly Vector2I _TILESIZE = new(32, 32);
 
     public override void _Ready()
     {
@@ -23,7 +23,7 @@ public partial class LitTiles : Node2D
                 if (tile == lightTile)
                 {
                     Node2D instance = (Node2D)LightPrefab.Instantiate();
-                    instance.Position = (cell * _tileSize) + (_tileSize / 2);
+                    instance.Position = (cell * _TILESIZE) + (_TILESIZE / 2);
                     AddChild(instance);
                 }
             }

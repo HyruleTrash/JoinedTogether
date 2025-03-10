@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://ct5xm4feuq8ys"]
+
+[ext_resource type="Texture2D" uid="uid://d0sb7ujxxjcsi" path="res://Art/Sprites/Door.png" id="1_06ynm"]
+[ext_resource type="Script" path="res://Scripts/Props/GoalArea.cs" id="2_hbu8p"]
+[ext_resource type="PackedScene" uid="uid://df2q5pcl258y4" path="res://Scenes/Nodes/Lights/light.tscn" id="3_b86t5"]
+[ext_resource type="Texture2D" uid="uid://ntdsmp0msk2k" path="res://Art/Sprites/Lights/lights.png" id="4_a0o4q"]
+[ext_resource type="PackedScene" uid="uid://g17l84qaoxe7" path="res://Scenes/Nodes/Lights/Light2D.tscn" id="5_4qw48"]
+
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1_06ynm")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1_06ynm")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("2")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekqs2"]
+atlas = ExtResource("4_a0o4q")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foyht"]
+atlas = ExtResource("4_a0o4q")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_636xc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekqs2")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foyht")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6r242"]
+
+[node name="Door" type="AnimatedSprite2D" node_paths=PackedStringArray("Area2D", "_lightSprite", "_light")]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("3")
+animation = &"closed"
+script = ExtResource("2_hbu8p")
+Area2D = NodePath("Area2D")
+_lightSprite = NodePath("LightSprite")
+_light = NodePath("LightSprite/PointLight2D")
+
+[node name="LightSprite" parent="." instance=ExtResource("3_b86t5")]
+position = Vector2(0, -64)
+scale = Vector2(0.666667, 0.666667)
+sprite_frames = SubResource("SpriteFrames_636xc")
+
+[node name="PointLight2D" parent="LightSprite" instance=ExtResource("5_4qw48")]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 12)
+scale = Vector2(1, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6r242")
