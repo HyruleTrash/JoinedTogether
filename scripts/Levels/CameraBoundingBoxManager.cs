@@ -16,10 +16,13 @@ public partial class CameraBoundingBoxManager : Node
     {
         base._Ready();
 
+        LoadBoundingBoxes();
         Level level = GetNode<Level>("../");
         if (level != null)
+        {
             level.CameraBoundingBoxManager = this;
-        LoadBoundingBoxes();
+            level.UpdateCameraBoundingBox();
+        }
     }
 
     public void LoadBoundingBoxes()

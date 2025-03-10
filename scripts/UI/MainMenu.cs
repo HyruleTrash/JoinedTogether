@@ -97,17 +97,18 @@ public partial class MainMenu : Node
             if (Input.IsActionJustPressed("ESC"))
                 GetTree().Quit();
 
-            LevelOneInstance.GetNode<AudioStreamPlayer2D>("Player/DeathSound").Finished += () =>
-            {
-                if (Input.IsActionJustPressed("ui_accept"))
-                {
-                    _acceptSelectionSound.Play();
-                    _currentSelectedIndex = 0;
-                    _UpdateChangeSelector(_currentSelectedIndex);
-                    TempIsOnEndScreen = false;
-                    IsActive = true;
-                }
-            };
+            // TODO: fix this
+            // LevelOneInstance.GetNode<AudioStreamPlayer2D>("Player/DeathSound").Finished += () =>
+            // {
+            //     if (Input.IsActionJustPressed("ui_accept"))
+            //     {
+            //         _acceptSelectionSound.Play();
+            //         _currentSelectedIndex = 0;
+            //         _UpdateChangeSelector(_currentSelectedIndex);
+            //         TempIsOnEndScreen = false;
+            //         IsActive = true;
+            //     }
+            // };
         }
         else
         {
@@ -115,7 +116,7 @@ public partial class MainMenu : Node
         }
     }
 
-    // IMPLEMENT LATER
+    // TODO: IMPLEMENT LATER
     // func quit(why):
     // if why == "lastlvl":
     // 	endscreen = true

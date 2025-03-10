@@ -22,28 +22,45 @@ public partial class Level : Node
         Player = GetNode<Player>("Player");
         Player.OnStateSwitched += () => CorrectSetState();
         _globalData = GetNode<GlobalData>("/root/GlobalData");
-        UpdateLevelData();
+        _UpdateLevelData();
     }
 
     /// <summary>
     /// Updates all level data, and its dependant components
     /// </summary>
-    private void UpdateLevelData()
+    private void _UpdateLevelData()
     {
         CorrectSetState();
+        UpdateSpawnPoint();
+        UpdateCameraBoundingBox();
+    }
 
-        // Update spawnpoint
+    /// <summary>
+    /// Updates the current spawnpoint
+    /// </summary>
+    public void UpdateSpawnPoint()
+    {
+        if (SpawnPointManager == null || _globalData == null)
+            return;
         bool isInIndexRange;
         int offset = 1; // Offset is used to remove 0 indexing from level count
         Vector2 spawnPoint = SpawnPointManager.GetSpawnPoint(_globalData.Level - offset, out isInIndexRange);
-        GD.Print(spawnPoint, ", ", isInIndexRange);
         if (isInIndexRange)
             CurrentSpawnPoint = spawnPoint;
         else
             _globalData.MainMenu.TempIsOnEndScreen = true;
+    }
 
-        // Update Cam boundingbox
-        CameraBoundingBoxManager.Camera.BoundingBox = CameraBoundingBoxManager.BoundingBoxes[_globalData.Level - offset].BoundingBox;
+    /// <summary>
+    /// Updates the current camera bounding box
+    /// </summary>
+    public void UpdateCameraBoundingBox()
+    {
+        if (CameraBoundingBoxManager == null || _globalData == null)
+            return;
+        int offset = 1; // Offset is used to remove 0 indexing from level count
+        CameraBoundingBox cameraBoundingBox = CameraBoundingBoxManager.BoundingBoxes[_globalData.Level - offset];
+        CameraBoundingBoxManager.Camera.BoundingBox = cameraBoundingBox.BoundingBox + cameraBoundingBox.Position;
     }
 
     /// <summary>

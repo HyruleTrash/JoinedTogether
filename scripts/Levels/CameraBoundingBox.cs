@@ -40,26 +40,29 @@ public partial class CameraBoundingBox : Node2D
 
     public override void _Draw()
     {
-        DrawLine(
-            new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.X),
-            new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.Y),
-            Colors.Red
-            );
-        DrawLine(
-            new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.X),
-            new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.Y),
-            Colors.Red
-            );
-        DrawLine(
-            new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.X),
-            new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.X),
-            Colors.Red
-            );
-        DrawLine(
-            new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.Y),
-            new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.Y),
-            Colors.Red
-            );
+        if (Engine.IsEditorHint())
+        {
+            DrawLine(
+                new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.X),
+                new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.Y),
+                Colors.Red
+                );
+            DrawLine(
+                new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.X),
+                new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.Y),
+                Colors.Red
+                );
+            DrawLine(
+                new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.X),
+                new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.X),
+                Colors.Red
+                );
+            DrawLine(
+                new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.Y),
+                new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.Y),
+                Colors.Red
+                );
+        }
     }
 
     public void UpdateDrawing()

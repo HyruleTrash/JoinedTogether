@@ -12,9 +12,13 @@ public partial class SpawnPointManager : Node
     {
         base._Ready();
 
+        LoadSpawnPoints();
         Level level = GetNode<Level>("../");
         if (level != null)
+        {
             level.SpawnPointManager = this;
+            level.UpdateSpawnPoint();
+        }
     }
 
     public Vector2 GetSpawnPoint(int index, out bool isInIndexRange)
@@ -27,5 +31,18 @@ public partial class SpawnPointManager : Node
 
         isInIndexRange = true;
         return _spawnPoints[index].Position;
+    }
+
+    public void LoadSpawnPoints()
+    {
+        List<Node2D> list = new();
+        foreach (Node item in GetChildren())
+        {
+            if (item is Node2D)
+            {
+                list.Add((Node2D)item);
+            }
+        }
+        _spawnPoints = new(list.ToArray());
     }
 }

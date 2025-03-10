@@ -27,6 +27,14 @@ public class Bounds2D
         MinMaxY = new(minY, maxY);
     }
 
+    public static Bounds2D operator +(Bounds2D bounds, Vector2 offset)
+    {
+        return new Bounds2D(
+            bounds.MinMaxX + offset,
+            bounds.MinMaxY + offset
+        );
+    }
+
     public void IsPointWithinBounds(Vector2 point, out bool insideX, out bool insideY)
     {
         if (point.X > MinMaxX.X && point.X < MinMaxX.Y)
@@ -50,6 +58,15 @@ public class Bounds2D
             return true;
         else
             return false;
+    }
+
+    /// <summary>
+    /// Calculates where the mid point is in between all bounds min max values
+    /// </summary>
+    /// <returns></returns>
+    public Vector2 GetMidPoint()
+    {
+        return new((MinMaxX.X + MinMaxX.Y) / 2, (MinMaxY.X + MinMaxY.Y) / 2);
     }
 
     public override string ToString()
