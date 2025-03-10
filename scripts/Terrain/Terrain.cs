@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Terrain : TileMapLayer
+public partial class Terrain : CustomTileMapLayer
 {
 	[Export]
 	public AnimatedTiles AnimatedTiles;

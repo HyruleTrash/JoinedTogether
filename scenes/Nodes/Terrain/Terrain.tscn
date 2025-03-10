@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7g4yoqhhp3t2"]
+[gd_scene load_steps=6 format=3 uid="uid://b7g4yoqhhp3t2"]
 
 [ext_resource type="TileSet" uid="uid://cfgrutnig50kb" path="res://Art/Tilemaps/TerrainTileMap.tres" id="1_kpifg"]
 [ext_resource type="Script" path="res://Scripts/Terrain/Terrain.cs" id="2_o0ju3"]
 [ext_resource type="Script" path="res://Scripts/Terrain/AnimatedTiles.cs" id="3_8mqii"]
+[ext_resource type="Script" path="res://Scripts/Terrain/LitTiles.cs" id="4_2ma76"]
+[ext_resource type="PackedScene" uid="uid://g17l84qaoxe7" path="res://Scenes/Nodes/Lights/Light2D.tscn" id="5_m2j34"]
 
 [node name="Terrain" type="TileMapLayer" node_paths=PackedStringArray("AnimatedTiles")]
 use_parent_material = true
@@ -14,3 +16,7 @@ CollisionMaskActive = 1
 
 [node name="AnimatedTiles" type="Node" parent="."]
 script = ExtResource("3_8mqii")
+
+[node name="LitTiles" type="Node2D" parent="."]
+script = ExtResource("4_2ma76")
+LightPrefab = ExtResource("5_m2j34")
