@@ -112,6 +112,7 @@ public partial class Player : CharacterBody2D
             KinematicCollision2D collision = GetSlideCollision(i);
             if (IsOnFloor() && collision.GetNormal().Y < 1.0 && Motion.X != 0.0)
                 Motion.Y = collision.GetNormal().Y;
+            // TODO
             // if collision.collider.is_in_group("box"):
             //     var box = collision.collider
             //     box.apply_central_impulse(- collision.normal * inertia)

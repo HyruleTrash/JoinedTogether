@@ -3,7 +3,7 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
-public partial class Level : Node
+public partial class Level : Node2D
 {
     [Export]
     public Player Player;
@@ -14,14 +14,14 @@ public partial class Level : Node
     public SpawnPointManager SpawnPointManager;
     public CameraBoundingBoxManager CameraBoundingBoxManager;
     public Vector2 CurrentSpawnPoint;
-    public GlobalData _globalData;
+    public GlobalData GlobalData;
 
     public override void _Ready()
     {
         base._Ready();
         Player = GetNode<Player>("Player");
         Player.OnStateSwitched += () => CorrectSetState();
-        _globalData = GetNode<GlobalData>("/root/GlobalData");
+        GlobalData = GetNode<GlobalData>("/root/GlobalData");
         _UpdateLevelData();
     }
 
@@ -40,15 +40,15 @@ public partial class Level : Node
     /// </summary>
     public void UpdateSpawnPoint()
     {
-        if (SpawnPointManager == null || _globalData == null)
+        if (SpawnPointManager == null || GlobalData == null)
             return;
         bool isInIndexRange;
         int offset = 1; // Offset is used to remove 0 indexing from level count
-        Vector2 spawnPoint = SpawnPointManager.GetSpawnPoint(_globalData.Level - offset, out isInIndexRange);
+        Vector2 spawnPoint = SpawnPointManager.GetSpawnPoint(GlobalData.Level - offset, out isInIndexRange);
         if (isInIndexRange)
             CurrentSpawnPoint = spawnPoint;
         else
-            _globalData.MainMenu.TempIsOnEndScreen = true;
+            GlobalData.MainMenu.TempIsOnEndScreen = true;
     }
 
     /// <summary>
@@ -56,15 +56,15 @@ public partial class Level : Node
     /// </summary>
     public void UpdateCameraBoundingBox()
     {
-        if (CameraBoundingBoxManager == null || _globalData == null)
+        if (CameraBoundingBoxManager == null || GlobalData == null)
             return;
 
         int offset = 1; // Offset is used to remove 0 indexing from level count
-        int index = _globalData.Level - offset;
+        int index = GlobalData.Level - offset;
         if (index > CameraBoundingBoxManager.BoundingBoxes.Count - 1 || index < 0)
         {
             GD.PushError("Index out of range");
-            _globalData.MainMenu.TempIsOnEndScreen = true;
+            GlobalData.MainMenu.TempIsOnEndScreen = true;
             return;
         }
         CameraBoundingBox cameraBoundingBox = CameraBoundingBoxManager.BoundingBoxes[index];
@@ -72,13 +72,19 @@ public partial class Level : Node
     }
 
     /// <summary>
+    /// Delegate event is invoked the moment the player moves to the next sublevel
+    /// </summary>
+    public event Action NextLevelTriggered;
+
+    /// <summary>
     /// Updates to the next subLevel
     /// </summary>
     public void SetNextLevel()
     {
-        _globalData.Level++;
+        GlobalData.Level++;
         UpdateSpawnPoint();
         UpdateCameraBoundingBox();
+        NextLevelTriggered.Invoke();
     }
 
     /// <summary>

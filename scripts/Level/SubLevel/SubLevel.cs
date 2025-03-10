@@ -36,8 +36,6 @@ public partial class SubLevel : Node
         }
         Buttons = new(list.ToArray());
         ButtonStateChanged();
-
-        IsCompletedStateChanged += () => { GD.Print(IsCompleted); };
     }
 
     public void ButtonStateChanged()

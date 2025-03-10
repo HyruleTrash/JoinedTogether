@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bjoo85m8c2dk2" path="res://Scenes/Nodes/DeathArea2d.tscn" id="7_e8lge"]
 [ext_resource type="PackedScene" uid="uid://ct5xm4feuq8ys" path="res://Scenes/Nodes/Door.tscn" id="7_sys8i"]
 [ext_resource type="PackedScene" uid="uid://qvvdjfoeo2ci" path="res://Scenes/Nodes/Button.tscn" id="10"]
-[ext_resource type="PackedScene" path="res://Scenes/Nodes/Entities/Box.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://bf8m3gucwvo72" path="res://Scenes/Nodes/Entities/Box.tscn" id="11"]
 
 [node name="Level-1" type="Node2D" node_paths=PackedStringArray("Player", "StateGirlTerrain", "StateBoyTerrain")]
 script = ExtResource("1_kudbp")

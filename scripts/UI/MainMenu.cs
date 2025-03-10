@@ -93,42 +93,27 @@ public partial class MainMenu : Node
     {
         if (TempIsOnEndScreen)
         {
+            if (LevelOneInstance != null)
+            {
+                LevelOneInstance.QueueFree();
+                LevelOneInstance = null;
+            }
             TempEndOfDemoUI.Visible = true;
             if (Input.IsActionJustPressed("ESC"))
                 GetTree().Quit();
 
-            // TODO: fix this
-            // LevelOneInstance.GetNode<AudioStreamPlayer2D>("Player/DeathSound").Finished += () =>
-            // {
-            //     if (Input.IsActionJustPressed("ui_accept"))
-            //     {
-            //         _acceptSelectionSound.Play();
-            //         _currentSelectedIndex = 0;
-            //         _UpdateChangeSelector(_currentSelectedIndex);
-            //         TempIsOnEndScreen = false;
-            //         IsActive = true;
-            //     }
-            // };
+            if (Input.IsActionJustPressed("ui_accept"))
+            {
+                _acceptSelectionSound.Play();
+                _currentSelectedIndex = 0;
+                _UpdateChangeSelector(_currentSelectedIndex);
+                TempIsOnEndScreen = false;
+                IsActive = true;
+            }
         }
         else
         {
             TempEndOfDemoUI.Visible = false;
         }
     }
-
-    // TODO: IMPLEMENT LATER
-    // func quit(why):
-    // if why == "lastlvl":
-    // 	endscreen = true
-    // elif why == "ESC":
-    // 	mainmenu = true
-    // 	Infoholder.mainmenu = true
-    // else:
-    // 	mainmenu = true
-    // 	Infoholder.mainmenu = true
-
-    // if Infoholder.oldlvl > 6:
-    // 	Infoholder.oldlvl = 1
-    // else:
-    // 	Infoholder.oldlvl += 1
 }
