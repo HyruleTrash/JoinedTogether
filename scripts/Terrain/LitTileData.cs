@@ -1,0 +1,21 @@
+using Godot;
+using System;
+using System.Collections.Generic;
+
+class LitTileData
+{
+    public string RecourceName = "";
+    public Vector2I Tile = new(0, 0);
+    public float Energy = 1;
+    public Vector2 Offset = new(0, 0);
+    public Color Color = new(1, 1, 1, 1);
+
+    public LitTileData(string RecourceName, Vector2I Tile, Vector2 Offset, Color Color, float Energy = 1)
+    {
+        this.RecourceName = RecourceName;
+        this.Tile = Tile;
+        this.Offset = Offset;
+        this.Energy = Energy;
+        this.Color = Color;
+    }
+}

@@ -9,25 +9,36 @@ public partial class LitTiles : Node2D
     [Export]
     public PackedScene LightPrefab;
     private static readonly Vector2I _TILESIZE = new(32, 32);
+    private Stack<LitTileData> _litTileDatas = new Stack<LitTileData>();
 
     public override void _Ready()
     {
         base._Ready();
+        SetupTileData();
         _tileMapLayer = GetNode<CustomTileMapLayer>("../");
-        _tileMapLayer.SetupDone += () =>
-        {
-            foreach (Vector2I cell in _tileMapLayer.GetUsedCellsByName("Chains"))
+        _tileMapLayer.SetupDone += SetupTileLightSources;
+    }
+
+    public void SetupTileData()
+    {
+        _litTileDatas.Push(new LitTileData("Chains", new(0, 2), _TILESIZE / 2, new Color(0,0,1), 1));
+    }
+
+    public void SetupTileLightSources()
+    {
+        foreach (LitTileData data in _litTileDatas){
+            foreach (Vector2I cell in _tileMapLayer.GetUsedCellsByName(data.RecourceName))
             {
                 Vector2I tile = _tileMapLayer.GetCellAtlasCoords(cell);
-                Vector2I lightTile = new(0, 2);
-                if (tile == lightTile)
+                if (tile == data.Tile)
                 {
-                    Node2D instance = (Node2D)LightPrefab.Instantiate();
-                    instance.Position = (cell * _TILESIZE) + (_TILESIZE / 2);
+                    PointLight2D instance = (PointLight2D)LightPrefab.Instantiate();
+                    instance.Position = (cell * _TILESIZE) + data.Offset;
+                    instance.Energy = data.Energy;
+                    instance.Name = "TileLightSource";
                     AddChild(instance);
                 }
             }
-        };
-
+        }
     }
 }
