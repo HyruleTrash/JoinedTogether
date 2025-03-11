@@ -25,6 +25,7 @@ public partial class Terrain : CustomTileMapLayer
 	{
 		base._Ready();
 		TileSet = (TileSet)TileSet.Duplicate(); // make Tileset unique, so that the physics layer is not shared with all other Tilesets of the same kind
+		SetState(true);
 	}
 
 	public void SetState(bool state)

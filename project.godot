@@ -108,6 +108,7 @@ R={
 2d_physics/layer_2="Misc Entities"
 2d_physics/layer_3="Player Terrain"
 2d_physics/layer_4="Misc Entities Terrain"
+2d_physics/layer_5="All Entities Terrain"
 
 [physics]
 
