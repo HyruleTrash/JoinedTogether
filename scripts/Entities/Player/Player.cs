@@ -7,18 +7,18 @@ public partial class Player : CharacterBody2D
     // Const variables, sadly const c# doesnt really work with godot
     private Vector2I UP = new(0, -1);
     [Export]
-    public float GRAVITY = 1;
-    [Export]
     public float MAXFALLSPEED = 400;
     [Export]
     public float SPEED = 2;
     [Export]
     public float JUMPFORCE = 420;
-    // [Export]
-    // public int Inertia = 100;
 
     // Physics variables
-    public Vector2 Motion = new();
+    [Export]
+    public float Weight = 50;
+    // [Export]
+    // public int Inertia = 100;
+    private float _gravity;
     private bool _coyoteTime;
 
     // Animation variables
@@ -57,6 +57,7 @@ public partial class Player : CharacterBody2D
         SetFloorStopOnSlopeEnabled(true);
         SetMaxSlides(4);
         SetFloorMaxAngle(MathF.PI / 4);
+        _gravity = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
         // Misc setup
         GlobalData = GetNode<GlobalData>("/root/GlobalData");
@@ -103,15 +104,14 @@ public partial class Player : CharacterBody2D
     {
         _HorizontalMotion(delta);
         _VerticalMotion(delta);
-        SetVelocity(Motion);
         MoveAndSlide();
 
         // Collision logic
         for (int i = 0; i < GetSlideCollisionCount(); i++)
         {
             KinematicCollision2D collision = GetSlideCollision(i);
-            if (IsOnFloor() && collision.GetNormal().Y < 1.0 && Motion.X != 0.0)
-                Motion.Y = collision.GetNormal().Y;
+            if (IsOnFloor() && collision.GetNormal().Y < 1.0 && Velocity.X != 0.0)
+                Velocity = new(Velocity.X, collision.GetNormal().Y);
             // TODO
             // if collision.collider.is_in_group("box"):
             //     var box = collision.collider
@@ -129,22 +129,18 @@ public partial class Player : CharacterBody2D
     /// </summary>
     private void _HorizontalMotion(double delta)
     {
-        if (Input.IsActionPressed("RIGHT"))
+        float direction = Input.GetAxis("LEFT", "RIGHT");
+        if (direction != 0)
         {
-            Position = new(Position.X + SPEED * (float)delta, Position.Y);
+            _animatedSprite2D.FlipH = direction < 0;
             _animatedSprite2D.Play(WalkState);
-            _animatedSprite2D.FlipH = false;
-        }
-        else if (Input.IsActionPressed("LEFT"))
-        {
-            Position = new(Position.X - SPEED * (float)delta, Position.Y);
-            _animatedSprite2D.Play(WalkState);
-            _animatedSprite2D.FlipH = true;
+            Velocity = new(SPEED * direction, Velocity.Y);
         }
         else
         {
             _animatedSprite2D.Play(IdleState);
-            Motion.X = 0;
+            Velocity = new(0, Velocity.Y);
+
         }
 
         if (IsOnFloor())
@@ -162,18 +158,17 @@ public partial class Player : CharacterBody2D
     /// </summary>
     private void _VerticalMotion(double delta)
     {
-        Motion.Y = Velocity.Y;
         // Gravity
-        Motion.Y += GRAVITY;
+        Velocity = new(Velocity.X, Velocity.Y + _gravity * Weight * (float)delta);
         // Limit negative vertical speed
-        if (Motion.Y > MAXFALLSPEED)
-            Motion.Y = MAXFALLSPEED;
+        if (Velocity.Y > MAXFALLSPEED)
+            Velocity = new(Velocity.X, MAXFALLSPEED);
         if (IsOnFloor())
         {
             _coyoteTime = true;
             if (Input.IsActionJustPressed("UP"))
             {
-                _Jump();
+                _Jump(delta);
             }
         }
         else
@@ -183,13 +178,13 @@ public partial class Player : CharacterBody2D
             {
                 if (Input.IsActionJustPressed("UP"))
                 {
-                    _Jump();
+                    _Jump(delta);
                     _coyoteTime = false;
                 }
             }
 
             // if falling
-            if (Motion.Y > 0)
+            if (Velocity.Y > 0)
             {
                 _animatedSprite2D.Play(FallState);
             }
@@ -203,9 +198,9 @@ public partial class Player : CharacterBody2D
     /// <summary>
     /// Makes the player jump, when called in the physics function
     /// </summary>
-    private void _Jump()
+    private void _Jump(double delta)
     {
-        Motion.Y = -JUMPFORCE;
+        Velocity = new(Velocity.X, JUMPFORCE * UP.Y);
         _jumpSound.Play();
     }
 
