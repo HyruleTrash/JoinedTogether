@@ -32,6 +32,8 @@ public partial class CameraBoundingBox : Node2D
             BoundingBox.MinMaxY = value;
         }
     }
+    [Export]
+    public Vector2 FollowOffset;
 
     public override void _Process(double delta)
     {

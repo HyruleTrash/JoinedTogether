@@ -133,7 +133,6 @@ polygon = PackedVector2Array(-5.86976, 15.0307, -5.86976, 20.8295, 10.4562, 21.0
 collision_mask = 22
 script = ExtResource("1_uro0h")
 JUMPFORCE = 744.0
-Weight = 3.0
 _animatedSprite2D = NodePath("AnimatedSprite2D")
 _deathSound = NodePath("DeathSound")
 _changeSound = NodePath("ChangeSound")

@@ -69,6 +69,7 @@ public partial class Level : Node2D
         }
         CameraBoundingBox cameraBoundingBox = CameraBoundingBoxManager.BoundingBoxes[index];
         CameraBoundingBoxManager.Camera.BoundingBox = cameraBoundingBox.BoundingBox + cameraBoundingBox.Position;
+        CameraBoundingBoxManager.Camera.FollowOffset = cameraBoundingBox.FollowOffset;
     }
 
     /// <summary>
