@@ -39,8 +39,8 @@ animations = [{
 polygon = PackedVector2Array(-24.0429, 24.4311, 24.0196, 24.3635, 24.0196, 20.0311, 20.7703, 16.9172, 17.7918, 16.9172, 17.7241, 12.5171, 14.7456, 9.53855, -14.8792, 9.42886, -18.2212, 12.4494, -18.2212, 16.9848, -21.0644, 16.9848, -24.1106, 19.9634)
 
 [node name="Button" type="Area2D" node_paths=PackedStringArray("AnimatedSprite2D", "ButtonOnSound", "ButtonOffSound")]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_ra8jh")
 AnimatedSprite2D = NodePath("StaticBody2D/AnimatedSprite2D")
 ButtonOnSound = NodePath("AudioStreamPlayer2D")
@@ -51,8 +51,8 @@ position = Vector2(-0.203079, 10.4678)
 shape = SubResource("1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 4
-collision_mask = 5
+collision_layer = 2
+collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
 scale = Vector2(1.5, 1.5)

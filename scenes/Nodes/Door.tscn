@@ -63,6 +63,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6r242"]
 
 [node name="Door" type="AnimatedSprite2D" node_paths=PackedStringArray("Area2D", "_lightSprite", "_light")]
+z_index = -1
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("3")
 animation = &"closed"

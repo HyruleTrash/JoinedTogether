@@ -123,6 +123,7 @@ public partial class Player : CharacterBody2D
             ){
                 Vector2 pushDirection = Vector2.Right * playerPushAxis - new Vector2(0, -0.75f);
                 box.ApplyCentralImpulse(pushDirection.Normalized() * PushForce);
+                box.ApplyCentralImpulse(new Vector2(UP.X, UP.Y) * box.Mass);
             }
         }
     }
@@ -283,7 +284,7 @@ public partial class Player : CharacterBody2D
     public void Death()
     {
         _deathSound.Play();
-        Respawn();
+        GlobalData.ReloadLevel?.Invoke();
     }
 
     public void Respawn()

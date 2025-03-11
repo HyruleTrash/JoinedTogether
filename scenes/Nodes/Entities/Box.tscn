@@ -17,6 +17,7 @@ polygon = PackedVector2Array(-23.9213, -23.9615, 23.9049, -23.9615, 24.0421, 24.
 [node name="Box" type="RigidBody2D" node_paths=PackedStringArray("_deathSound") groups=["box"]]
 collision_layer = 2
 collision_mask = 27
+mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_6u6i4")
 script = ExtResource("1_lyxrv")
 _deathParticleEffect = ExtResource("2_dxyb8")

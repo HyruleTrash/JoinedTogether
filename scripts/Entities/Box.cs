@@ -43,13 +43,13 @@ public partial class Box : RigidBody2D
     {
         if (IsInsideCurrentSubLevel())
         {
-            Freeze = true;
+            SetDeferred("Freeze", true);
             Visible = true;
             Respawn();
         }
         else
         {
-            Freeze = false;
+            SetDeferred("Freeze", false);
             Visible = false;
         }
     }
