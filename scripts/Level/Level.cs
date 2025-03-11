@@ -63,7 +63,7 @@ public partial class Level : Node2D
         int index = GlobalData.Level - offset;
         if (index > CameraBoundingBoxManager.BoundingBoxes.Count - 1 || index < 0)
         {
-            GD.PushError("Index out of range");
+            // GD.PushError("Index out of range");
             GlobalData.MainMenu.TempIsOnEndScreen = true;
             return;
         }

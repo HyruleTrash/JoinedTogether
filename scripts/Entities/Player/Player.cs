@@ -62,6 +62,7 @@ public partial class Player : CharacterBody2D
         // Misc setup
         GlobalData = GetNode<GlobalData>("/root/GlobalData");
         GlobalData.Player = this;
+        GlobalData.ReloadLevel += Respawn;
         _animatedSprite2D.AnimationFinished += () => _StepSoundLogic();
         CorrectStates();
     }
@@ -85,7 +86,7 @@ public partial class Player : CharacterBody2D
         if (Input.IsActionJustPressed("R"))
         {
             DoorSound.Play();
-            Respawn();
+            GlobalData.ReloadLevel?.Invoke();
         }
         if (Input.IsActionJustPressed("DOWN"))
         {

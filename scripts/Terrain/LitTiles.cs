@@ -21,9 +21,9 @@ public partial class LitTiles : Node2D
 
     public void SetupTileData()
     {
-        _litTileDatas.Push(new LitTileData("Chains", new(0, 2), new(_TILESIZE.X * 0.5f, _TILESIZE.Y * 0.8f), new Color(0,0,1)));
-        _litTileDatas.Push(new LitTileData("Windows", new(0, 2), _TILESIZE / 2, new Color(0.957f, 0.969f, 0.541f), 1, true));
-        _litTileDatas.Push(new LitTileData("BrokenWindows", new(0, 2), _TILESIZE / 2, new Color(0.957f, 0.969f, 0.541f), 1, true));
+        _litTileDatas.Push(new LitTileData("Chains", new(0, 2), new(_TILESIZE.X * 0.5f, _TILESIZE.Y * 0.8f), new Color(0.8f,1,0.5f), 2.5f));
+        _litTileDatas.Push(new LitTileData("Windows", new(0, 2), _TILESIZE / 2, new Color(0.957f, 0.969f, 0.541f), 0.7f, true));
+        _litTileDatas.Push(new LitTileData("BrokenWindows", new(0, 2), _TILESIZE / 2, new Color(0.957f, 0.5f, 0.2f), 2.5f, true));
     }
 
     public void SetupTileLightSources()
@@ -37,6 +37,7 @@ public partial class LitTiles : Node2D
                     PointLight2D instance = (PointLight2D)LightPrefab.Instantiate();
                     instance.Position = (cell * _TILESIZE) + data.Offset;
                     instance.Energy = data.Energy;
+                    instance.Color = data.Color;
                     instance.Name = "TileLightSource";
                     AddChild(instance);
                 }

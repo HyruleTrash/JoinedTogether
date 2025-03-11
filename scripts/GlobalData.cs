@@ -12,4 +12,7 @@ public partial class GlobalData : Node
     public int Level;
     [Export]
     public int OldLevel = 1;
+
+    // Event used for reloading the level, and there for the current sublevel
+    public Action ReloadLevel;
 }

@@ -21,11 +21,27 @@ public partial class Box : RigidBody2D
         {
             Level.NextLevelTriggered += UpdateState;
         }
+        
+        GlobalData globalData = GetNode<GlobalData>("/root/GlobalData");
+        if (globalData != null)
+        {
+            globalData.ReloadLevel += () => {
+                if (IsInsideCurrentSubLevel())
+                {
+                    Respawn();
+                }
+            };
+        }
+    }
+
+    private bool IsInsideCurrentSubLevel()
+    {
+        return Level.CameraBoundingBoxManager.Camera.BoundingBox.IsPointWithinBounds(_spawnPosition);
     }
 
     public void UpdateState()
     {
-        if (Level.CameraBoundingBoxManager.Camera.BoundingBox.IsPointWithinBounds(_spawnPosition))
+        if (IsInsideCurrentSubLevel())
         {
             Freeze = true;
             Visible = true;

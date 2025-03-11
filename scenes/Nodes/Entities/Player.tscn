@@ -132,7 +132,8 @@ polygon = PackedVector2Array(-5.86976, 15.0307, -5.86976, 20.8295, 10.4562, 21.0
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animatedSprite2D", "_deathSound", "_changeSound", "_jumpSound", "_stepSound", "DoorSound") groups=["player"]]
 collision_mask = 6
 script = ExtResource("1_uro0h")
-SPEED = 220.0
+JUMPFORCE = 744.0
+Weight = 3.0
 _animatedSprite2D = NodePath("AnimatedSprite2D")
 _deathSound = NodePath("DeathSound")
 _changeSound = NodePath("ChangeSound")
