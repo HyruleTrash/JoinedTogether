@@ -17,6 +17,8 @@ public partial class Player : CharacterBody2D
     [Export]
     public float Weight = 5;
     [Export]
+    public float PushForce = 20;
+    [Export]
     private float _jumpReleaseDeceleration = 0.5f;
     private float _gravity;
     private bool _coyoteTime;
@@ -110,18 +112,17 @@ public partial class Player : CharacterBody2D
         // Collision logic
         for (int i = 0; i < GetSlideCollisionCount(); i++)
         {
+            float playerPushAxis = Input.GetAxis("LEFT", "RIGHT");
             KinematicCollision2D collision = GetSlideCollision(i);
             if (IsOnFloor() && collision.GetNormal().Y < 1.0 && Velocity.X != 0.0)
                 Velocity = new(Velocity.X, collision.GetNormal().Y);
-            if (collision.GetCollider() is Box box){
-                box.ApplyCentralImpulse(-collision.GetNormal() * Velocity.Length());
-                if (GlobalPosition.Y == box.GlobalPosition.Y)
-                {
-                    if (GlobalPosition.X > box.GlobalPosition.X)
-                        box.RotationDegrees -= 1;
-                    if (GlobalPosition.X < box.GlobalPosition.X)
-                        box.RotationDegrees += 1;
-                }
+            if (
+                collision.GetCollider() is Box box && // Check if the collider is a box
+                collision.GetNormal().Dot(UP) < 0.1f && // Check if the collision is not from the top
+                playerPushAxis != 0 // Check if the player is pushing
+            ){
+                Vector2 pushDirection = Vector2.Right * playerPushAxis - new Vector2(0, -0.75f);
+                box.ApplyCentralImpulse(pushDirection.Normalized() * PushForce);
             }
         }
     }
