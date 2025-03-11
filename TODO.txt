@@ -4,5 +4,5 @@ TODO:
 [x] Global ESC key
 [x] LitTiles, needs their own data class, that holds light intensity, or energy
 [x] Player movement isnt working properly with delta
-[] weird inertia kicking logic that is inside the player when bumping against a box
 [] remaking the old levels
+[] weird inertia kicking logic that is inside the player when bumping against a box

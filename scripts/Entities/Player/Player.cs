@@ -7,17 +7,17 @@ public partial class Player : CharacterBody2D
     // Const variables, sadly const c# doesnt really work with godot
     private Vector2I UP = new(0, -1);
     [Export]
-    public float MAXFALLSPEED = 400;
+    public float MAXFALLSPEED = 20000;
     [Export]
-    public float SPEED = 2;
+    public float SPEED = 220;
     [Export]
-    public float JUMPFORCE = 420;
+    public float JUMPFORCE = 934;
 
     // Physics variables
     [Export]
-    public float Weight = 50;
-    // [Export]
-    // public int Inertia = 100;
+    public float Weight = 5;
+    [Export]
+    private float _jumpReleaseDeceleration = 0.5f;
     private float _gravity;
     private bool _coyoteTime;
 
@@ -112,15 +112,16 @@ public partial class Player : CharacterBody2D
             KinematicCollision2D collision = GetSlideCollision(i);
             if (IsOnFloor() && collision.GetNormal().Y < 1.0 && Velocity.X != 0.0)
                 Velocity = new(Velocity.X, collision.GetNormal().Y);
-            // TODO
-            // if collision.collider.is_in_group("box"):
-            //     var box = collision.collider
-            //     box.apply_central_impulse(- collision.normal * inertia)
-            //     if global_position.y == box.global_position.y:
-            //         if global_position.x > box.global_position.x:
-            //             box.rotation_degrees -= 1
-            //         if global_position.x < box.global_position.x:
-            //             box.rotation_degrees += 1
+            if (collision.GetCollider() is Box box){
+                box.ApplyCentralImpulse(-collision.GetNormal() * Velocity.Length());
+                if (GlobalPosition.Y == box.GlobalPosition.Y)
+                {
+                    if (GlobalPosition.X > box.GlobalPosition.X)
+                        box.RotationDegrees -= 1;
+                    if (GlobalPosition.X < box.GlobalPosition.X)
+                        box.RotationDegrees += 1;
+                }
+            }
         }
     }
 
@@ -160,9 +161,12 @@ public partial class Player : CharacterBody2D
     {
         // Gravity
         Velocity = new(Velocity.X, Velocity.Y + _gravity * Weight * (float)delta);
+
         // Limit negative vertical speed
         if (Velocity.Y > MAXFALLSPEED)
             Velocity = new(Velocity.X, MAXFALLSPEED);
+        
+        // Jumping
         if (IsOnFloor())
         {
             _coyoteTime = true;
@@ -192,6 +196,12 @@ public partial class Player : CharacterBody2D
             {
                 _animatedSprite2D.Play(JumpState);
             }
+        }
+
+        // Jump release deceleration
+        if (Input.IsActionJustReleased("UP") && Velocity.Y < 0)
+        {
+            Velocity = new(Velocity.X, Velocity.Y * _jumpReleaseDeceleration);
         }
     }
 
