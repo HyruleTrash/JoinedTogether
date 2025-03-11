@@ -21,7 +21,9 @@ public partial class LitTiles : Node2D
 
     public void SetupTileData()
     {
-        _litTileDatas.Push(new LitTileData("Chains", new(0, 2), _TILESIZE / 2, new Color(0,0,1), 1));
+        _litTileDatas.Push(new LitTileData("Chains", new(0, 2), new(_TILESIZE.X * 0.5f, _TILESIZE.Y * 0.8f), new Color(0,0,1)));
+        _litTileDatas.Push(new LitTileData("Windows", new(0, 2), _TILESIZE / 2, new Color(0.957f, 0.969f, 0.541f), 1, true));
+        _litTileDatas.Push(new LitTileData("BrokenWindows", new(0, 2), _TILESIZE / 2, new Color(0.957f, 0.969f, 0.541f), 1, true));
     }
 
     public void SetupTileLightSources()
@@ -30,7 +32,7 @@ public partial class LitTiles : Node2D
             foreach (Vector2I cell in _tileMapLayer.GetUsedCellsByName(data.RecourceName))
             {
                 Vector2I tile = _tileMapLayer.GetCellAtlasCoords(cell);
-                if (tile == data.Tile)
+                if ((tile == data.Tile) || data.AllTilesOfResource)
                 {
                     PointLight2D instance = (PointLight2D)LightPrefab.Instantiate();
                     instance.Position = (cell * _TILESIZE) + data.Offset;
