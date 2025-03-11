@@ -1,7 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjoo85m8c2dk2"]
 
-[ext_resource type="Script" path="res://Scripts/Props/DeathPlane.cs" id="1_w37la"]
-
+[ext_resource type="Script" uid="uid://cgh15owpwcamx" path="res://Scripts/Props/DeathPlane.cs" id="1_w37la"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://g17l84qaoxe7"]
 
-[ext_resource type="Texture2D" uid="uid://0uwkb6l2d0j0" path="res://Art/Sprites/Lights/light.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://0uwkb6l2d0j0" path="res://Art/Sprites/Props/Lights/light.png" id="1"]
 
 [node name="PointLight2D" type="PointLight2D"]
 color = Color(0.956863, 0.968627, 0.541176, 1)

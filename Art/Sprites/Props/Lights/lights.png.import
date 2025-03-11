@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctbavng1mo7nu"
-path="res://.godot/imported/Button.png-bd09c5249c9c822b7d74c69e7c8b7666.ctex"
+uid="uid://ntdsmp0msk2k"
+path="res://.godot/imported/lights.png-09c37d17b7a74a35f259e70cc61594d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Button.png"
-dest_files=["res://.godot/imported/Button.png-bd09c5249c9c822b7d74c69e7c8b7666.ctex"]
+source_file="res://Art/Sprites/Props/Lights/lights.png"
+dest_files=["res://.godot/imported/lights.png-09c37d17b7a74a35f259e70cc61594d6.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

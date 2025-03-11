@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=4 uid="uid://c77nfteagibxy"]
 
-[ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_vb8sl"]
+[ext_resource type="Script" uid="uid://bmdrhn37jnex" path="res://Scripts/UI/MainMenu.cs" id="1_vb8sl"]
 [ext_resource type="PackedScene" uid="uid://uu3actw6snjt" path="res://Scenes/Levels/Level-1.tscn" id="2_12yhs"]
-[ext_resource type="Script" path="res://Scripts/UI/MenuPlayItem.cs" id="2_dk82h"]
+[ext_resource type="Script" uid="uid://br5vepfe8hlme" path="res://Scripts/UI/MenuPlayItem.cs" id="2_dk82h"]
 [ext_resource type="FontFile" uid="uid://cmgjrgheilwfx" path="res://Art/Fonts/FixelGlyphes copy.ttf" id="2_shxi3"]
 [ext_resource type="FontFile" path="res://Art/Fonts/Font.tres" id="3_xmb5p"]
 [ext_resource type="AudioStream" uid="uid://cechtwablhmwo" path="res://Art/Soundeffects/Blip_Select.wav" id="4_c4w3a"]
-[ext_resource type="Script" path="res://Scripts/UI/MenuSettingsItem.cs" id="4_eq6g3"]
-[ext_resource type="Script" path="res://Scripts/UI/MenuQuitItem.cs" id="5_u7vth"]
+[ext_resource type="Script" uid="uid://dkkpsw8106lao" path="res://Scripts/UI/MenuSettingsItem.cs" id="4_eq6g3"]
+[ext_resource type="Script" uid="uid://dqswsngtr4vo6" path="res://Scripts/UI/MenuQuitItem.cs" id="5_u7vth"]
 [ext_resource type="AudioStream" uid="uid://sf0x41us1v3s" path="res://Art/Soundeffects/Blip_Select_enter.wav" id="5_x3a76"]
 [ext_resource type="PackedScene" uid="uid://b7g4yoqhhp3t2" path="res://Scenes/Nodes/Terrain/Terrain.tscn" id="7_a5rui"]
 
@@ -139,7 +139,7 @@ uppercase = true
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("4_eq6g3")
-NotAvailable = NodePath("../../../../NotAvailableText")
+NotAvailable = NodePath("Settings")
 Selectors = [NodePath("Selector"), NodePath("Selector2")]
 
 [node name="Selector" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
@@ -187,17 +187,17 @@ uppercase = true
 [node name="HBoxContainer2" type="HBoxContainer" parent="MainMenuUI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-size_flags_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 3
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 1.6
 
 [node name="Offset" type="Control" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -205,28 +205,24 @@ layout_mode = 2
 
 [node name="Joined" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_fonts/font = SubResource("1")
-text = "Joined
-
-"
+text = "Joined"
 horizontal_alignment = 1
 uppercase = true
 
 [node name="Through" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("4")
-text = "
-~ Trough ~
-"
+text = "~ Trough ~"
 horizontal_alignment = 1
 uppercase = true
 
 [node name="Realms" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("3")
-text = "
-
-Realms"
+text = "Realms"
 horizontal_alignment = 1
 uppercase = true
 

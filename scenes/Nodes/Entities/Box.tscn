@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bf8m3gucwvo72"]
 
 [ext_resource type="Texture2D" uid="uid://d2spfa6dr65sy" path="res://Art/Sprites/Entities/Box.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Entities/Box.cs" id="1_lyxrv"]
+[ext_resource type="Script" uid="uid://b3qmc70yxj4q4" path="res://Scripts/Entities/Box.cs" id="1_lyxrv"]
 [ext_resource type="PackedScene" uid="uid://dlvvwntt33tat" path="res://Scenes/Nodes/Entities/BoxParticles2D.tscn" id="2_dxyb8"]
 [ext_resource type="AudioStream" uid="uid://bejlxmsyrk0ys" path="res://Art/Soundeffects/DeathSound.wav" id="3"]
 

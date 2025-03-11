@@ -40,6 +40,9 @@ public partial class MainMenu : Node
     {
         _MainMenuProcess();
         _TempEndOfDemoProcess();
+
+        if (Input.IsActionJustPressed("ESC"))
+            GetTree().Quit();
     }
 
     private void _MainMenuProcess()
@@ -99,8 +102,6 @@ public partial class MainMenu : Node
                 LevelOneInstance = null;
             }
             TempEndOfDemoUI.Visible = true;
-            if (Input.IsActionJustPressed("ESC"))
-                GetTree().Quit();
 
             if (Input.IsActionJustPressed("ui_accept"))
             {

@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://ct5xm4feuq8ys"]
 
-[ext_resource type="Texture2D" uid="uid://d0sb7ujxxjcsi" path="res://Art/Sprites/Door.png" id="1_06ynm"]
-[ext_resource type="Script" path="res://Scripts/Props/GoalArea.cs" id="2_hbu8p"]
+[ext_resource type="Texture2D" uid="uid://d0sb7ujxxjcsi" path="res://Art/Sprites/Props/Door.png" id="1_06ynm"]
+[ext_resource type="Script" uid="uid://d111fto4flk33" path="res://Scripts/Props/GoalArea.cs" id="2_hbu8p"]
 [ext_resource type="PackedScene" uid="uid://df2q5pcl258y4" path="res://Scenes/Nodes/Lights/light.tscn" id="3_b86t5"]
-[ext_resource type="Texture2D" uid="uid://ntdsmp0msk2k" path="res://Art/Sprites/Lights/lights.png" id="4_a0o4q"]
+[ext_resource type="Texture2D" uid="uid://ntdsmp0msk2k" path="res://Art/Sprites/Props/Lights/lights.png" id="4_a0o4q"]
 [ext_resource type="PackedScene" uid="uid://g17l84qaoxe7" path="res://Scenes/Nodes/Lights/Light2D.tscn" id="5_4qw48"]
 
 [sub_resource type="AtlasTexture" id="1"]

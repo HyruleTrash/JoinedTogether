@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://qvvdjfoeo2ci"]
 
-[ext_resource type="Texture2D" uid="uid://ctbavng1mo7nu" path="res://Art/Sprites/Button.png" id="1"]
-[ext_resource type="Script" path="res://Scripts/Props/Button.cs" id="1_ra8jh"]
+[ext_resource type="Texture2D" uid="uid://ctbavng1mo7nu" path="res://Art/Sprites/Props/Button.png" id="1"]
+[ext_resource type="Script" uid="uid://dlrfb382xf68y" path="res://Scripts/Props/Button.cs" id="1_ra8jh"]
 [ext_resource type="AudioStream" uid="uid://cpuvy2uhj5i4e" path="res://Art/Soundeffects/Buttons.wav" id="3"]
 [ext_resource type="AudioStream" uid="uid://ckdgwkbqi7dv5" path="res://Art/Soundeffects/Buttons2.wav" id="4_sb3ii"]
 
