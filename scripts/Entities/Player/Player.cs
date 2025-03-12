@@ -114,16 +114,14 @@ public partial class Player : CharacterBody2D
         {
             float playerPushAxis = Input.GetAxis("LEFT", "RIGHT");
             KinematicCollision2D collision = GetSlideCollision(i);
-            if (IsOnFloor() && collision.GetNormal().Y < 1.0 && Velocity.X != 0.0)
-                Velocity = new(Velocity.X, collision.GetNormal().Y);
             if (
                 collision.GetCollider() is Box box && // Check if the collider is a box
                 collision.GetNormal().Dot(UP) < 0.1f && // Check if the collision is not from the top
-                playerPushAxis != 0 // Check if the player is pushing
+                playerPushAxis != 0 &&// Check if the player is pushing
+                box.Position.Y < GlobalPosition.Y // Check if the box is below the player
             ){
                 Vector2 pushDirection = Vector2.Right * playerPushAxis - new Vector2(0, -0.75f);
                 box.ApplyCentralImpulse(pushDirection.Normalized() * PushForce);
-                box.ApplyCentralImpulse(new Vector2(UP.X, UP.Y) * box.Mass);
             }
         }
     }

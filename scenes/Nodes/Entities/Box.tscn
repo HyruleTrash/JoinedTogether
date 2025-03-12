@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bf8m3gucwvo72"]
+[gd_scene load_steps=10 format=3 uid="uid://bf8m3gucwvo72"]
 
 [ext_resource type="Texture2D" uid="uid://d2spfa6dr65sy" path="res://Art/Sprites/Entities/Box.png" id="1"]
 [ext_resource type="Script" uid="uid://b3qmc70yxj4q4" path="res://Scripts/Entities/Box.cs" id="1_lyxrv"]
@@ -8,11 +8,17 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6u6i4"]
 bounce = 0.3
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6u6i4"]
-size = Vector2(48, 48)
-
 [sub_resource type="OccluderPolygon2D" id="1"]
 polygon = PackedVector2Array(-23.9213, -23.9615, 23.9049, -23.9615, 24.0421, 24.0258, -23.9584, 24.0781)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6u6i4"]
+size = Vector2(48, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ensme"]
+size = Vector2(32, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rvqb5"]
+radius = 8.0
 
 [node name="Box" type="RigidBody2D" node_paths=PackedStringArray("_deathSound") groups=["box"]]
 collision_layer = 2
@@ -27,15 +33,31 @@ _deathSound = NodePath("AudioStreamPlayer2D")
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6u6i4")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(23.5, -23.5, 18, 0, 23.5, 23.5, 0, 18, -23.5, 23.5, -18, 0, -23.5, -23.5, 0, -18)
-disabled = true
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("1")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_6u6i4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ensme")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(16, -16)
+shape = SubResource("CircleShape2D_rvqb5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("CircleShape2D_rvqb5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-16, 16)
+shape = SubResource("CircleShape2D_rvqb5")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(-16, -16)
+shape = SubResource("CircleShape2D_rvqb5")

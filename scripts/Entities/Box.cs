@@ -10,6 +10,7 @@ public partial class Box : RigidBody2D
     private PackedScene _deathParticleEffect;
     [Export]
     private AudioStreamPlayer2D _deathSound;
+    private bool _freeze = false;
 
     public override void _Ready()
     {
@@ -34,6 +35,12 @@ public partial class Box : RigidBody2D
         }
     }
 
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        Freeze = _freeze;
+    }
+
     private bool IsInsideCurrentSubLevel()
     {
         return Level.CameraBoundingBoxManager.Camera.BoundingBox.IsPointWithinBounds(_spawnPosition);
@@ -43,13 +50,13 @@ public partial class Box : RigidBody2D
     {
         if (IsInsideCurrentSubLevel())
         {
-            SetDeferred("Freeze", true);
+            _freeze = false;
             Visible = true;
             Respawn();
         }
         else
         {
-            SetDeferred("Freeze", false);
+            _freeze = true;
             Visible = false;
         }
     }
