@@ -24,7 +24,7 @@ public partial class Terrain : CustomTileMapLayer
 	public override void _Ready()
 	{
 		base._Ready();
-		TileSet = (TileSet)TileSet.Duplicate(); // make Tileset unique, so that the physics layer is not shared with all other Tilesets of the same kind
+		this.TileSet = (TileSet)this.TileSet.Duplicate(); // make Tileset unique, so that the physics layer is not shared with all other Tilesets of the same kind
 		SetState(true);
 	}
 
@@ -32,13 +32,13 @@ public partial class Terrain : CustomTileMapLayer
 	{
 		if (state == false)
 		{
-			TileSet.SetPhysicsLayerCollisionLayer(0, CollisionLayerSleep);
-			TileSet.SetPhysicsLayerCollisionMask(0, CollisionMaskSleep);
+			this.TileSet.SetPhysicsLayerCollisionLayer(0, CollisionLayerSleep);
+			this.TileSet.SetPhysicsLayerCollisionMask(0, CollisionMaskSleep);
 		}
 		else
 		{
-			TileSet.SetPhysicsLayerCollisionLayer(0, CollisionLayerActive);
-			TileSet.SetPhysicsLayerCollisionMask(0, CollisionMaskActive);
+			this.TileSet.SetPhysicsLayerCollisionLayer(0, CollisionLayerActive);
+			this.TileSet.SetPhysicsLayerCollisionMask(0, CollisionMaskActive);
 		}
 	}
 }

@@ -15,26 +15,27 @@ public partial class LitTiles : Node2D
     {
         base._Ready();
         SetupTileData();
-        _tileMapLayer = GetNode<CustomTileMapLayer>("../");
-        _tileMapLayer.SetupDone += SetupTileLightSources;
+        this._tileMapLayer = GetNode<CustomTileMapLayer>("../");
+        this._tileMapLayer.SetupDone += SetupTileLightSources;
     }
 
     public void SetupTileData()
     {
-        _litTileDatas.Push(new LitTileData("Chains", new(0, 2), new(_TILESIZE.X * 0.5f, _TILESIZE.Y * 0.8f), new Color(0.8f,1,0.5f), 2.5f));
-        _litTileDatas.Push(new LitTileData("Windows", new(0, 2), _TILESIZE / 2, new Color(0.957f, 0.969f, 0.541f), 0.7f, true));
-        _litTileDatas.Push(new LitTileData("BrokenWindows", new(0, 2), _TILESIZE / 2, new Color(0.957f, 0.5f, 0.2f), 2.5f, true));
+        this._litTileDatas.Push(new LitTileData("Chains", new(0, 2), new(_TILESIZE.X * 0.5f, _TILESIZE.Y * 0.8f), new Color(0.8f, 1, 0.5f), 2.5f));
+        this._litTileDatas.Push(new LitTileData("Windows", new(0, 2), _TILESIZE / 2, new Color(0.957f, 0.969f, 0.541f), 0.7f, true));
+        this._litTileDatas.Push(new LitTileData("BrokenWindows", new(0, 2), _TILESIZE / 2, new Color(0.957f, 0.5f, 0.2f), 2.5f, true));
     }
 
     public void SetupTileLightSources()
     {
-        foreach (LitTileData data in _litTileDatas){
-            foreach (Vector2I cell in _tileMapLayer.GetUsedCellsByName(data.RecourceName))
+        foreach (LitTileData data in this._litTileDatas)
+        {
+            foreach (Vector2I cell in this._tileMapLayer.GetUsedCellsByName(data.RecourceName))
             {
-                Vector2I tile = _tileMapLayer.GetCellAtlasCoords(cell);
+                Vector2I tile = this._tileMapLayer.GetCellAtlasCoords(cell);
                 if ((tile == data.Tile) || data.AllTilesOfResource)
                 {
-                    PointLight2D instance = (PointLight2D)LightPrefab.Instantiate();
+                    PointLight2D instance = (PointLight2D)this.LightPrefab.Instantiate();
                     instance.Position = (cell * _TILESIZE) + data.Offset;
                     instance.Energy = data.Energy;
                     instance.Color = data.Color;

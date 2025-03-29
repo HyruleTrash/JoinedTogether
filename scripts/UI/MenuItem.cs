@@ -10,9 +10,9 @@ public partial class MenuItem : HBoxContainer
 
     public void SetSelector(string newText)
     {
-        for (int i = 0; i < Selectors.Count; i++)
+        for (int i = 0; i < this.Selectors.Count; i++)
         {
-            Label label = Selectors[i];
+            Label label = this.Selectors[i];
             if (label != null)
                 label.Text = newText;
         }

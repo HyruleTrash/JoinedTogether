@@ -23,14 +23,14 @@ public partial class SpawnPointManager : Node
 
     public Vector2 GetSpawnPoint(int index, out bool isInIndexRange)
     {
-        if (index < 0 || index >= _spawnPoints.Count)
+        if (index < 0 || index >= this._spawnPoints.Count)
         {
             isInIndexRange = false;
             return Vector2.Zero;
         }
 
         isInIndexRange = true;
-        return _spawnPoints[index].Position;
+        return this._spawnPoints[index].Position;
     }
 
     public void LoadSpawnPoints()
@@ -43,6 +43,6 @@ public partial class SpawnPointManager : Node
                 list.Add((Node2D)item);
             }
         }
-        _spawnPoints = new(list.ToArray());
+        this._spawnPoints = new(list.ToArray());
     }
 }

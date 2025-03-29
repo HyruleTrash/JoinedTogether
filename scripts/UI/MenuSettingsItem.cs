@@ -7,7 +7,7 @@ public partial class MenuSettingsItem : MenuItem
 
     public override void TriggerItem()
     {
-        NotAvailable.Visible = true;
+        this.NotAvailable.Visible = true;
         Timer t = new();
         t.SetWaitTime(1);
         t.SetOneShot(true);
@@ -16,7 +16,7 @@ public partial class MenuSettingsItem : MenuItem
         t.Timeout += () =>
         {
             t.QueueFree();
-            NotAvailable.Visible = false;
+            this.NotAvailable.Visible = false;
         };
     }
 }

@@ -55,28 +55,28 @@ public partial class Player : CharacterBody2D
         base._Ready();
 
         // Physics setup
-        SetUpDirection(UP);
+        SetUpDirection(this.UP);
         SetFloorStopOnSlopeEnabled(true);
         SetMaxSlides(4);
         SetFloorMaxAngle(MathF.PI / 4);
-        _gravity = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
+        this._gravity = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 
         // Misc setup
-        GlobalData = GetNode<GlobalData>("/root/GlobalData");
-        GlobalData.Player = this;
-        GlobalData.ReloadLevel += Respawn;
-        _animatedSprite2D.AnimationFinished += () => _StepSoundLogic();
+        this.GlobalData = GetNode<GlobalData>("/root/GlobalData");
+        this.GlobalData.Player = this;
+        this.GlobalData.ReloadLevel += Respawn;
+        this._animatedSprite2D.AnimationFinished += () => _StepSoundLogic();
         CorrectStates();
     }
 
     private bool _ShouldRun()
     {
         return (
-            _animatedSprite2D != null &&
-            _deathSound != null &&
-            _changeSound != null &&
-            _jumpSound != null &&
-            _stepSound != null
+            this._animatedSprite2D != null &&
+            this._deathSound != null &&
+            this._changeSound != null &&
+            this._jumpSound != null &&
+            this._stepSound != null
         );
     }
 
@@ -87,13 +87,13 @@ public partial class Player : CharacterBody2D
 
         if (Input.IsActionJustPressed("R"))
         {
-            DoorSound.Play();
-            GlobalData.ReloadLevel?.Invoke();
+            this.DoorSound.Play();
+            this.GlobalData.ReloadLevel?.Invoke();
         }
         if (Input.IsActionJustPressed("DOWN"))
         {
             SwitchStates();
-            _changeSound.Play();
+            this._changeSound.Play();
         }
 
         _Physics(delta);
@@ -116,12 +116,13 @@ public partial class Player : CharacterBody2D
             KinematicCollision2D collision = GetSlideCollision(i);
             if (
                 collision.GetCollider() is Box box && // Check if the collider is a box
-                collision.GetNormal().Dot(UP) < 0.1f && // Check if the collision is not from the top
+                collision.GetNormal().Dot(this.UP) < 0.1f && // Check if the collision is not from the top
                 playerPushAxis != 0 &&// Check if the player is pushing
-                box.Position.Y < GlobalPosition.Y // Check if the box is below the player
-            ){
+                box.Position.Y < this.GlobalPosition.Y // Check if the box is below the player
+            )
+            {
                 Vector2 pushDirection = Vector2.Right * playerPushAxis - new Vector2(0, -0.75f);
-                box.ApplyCentralImpulse(pushDirection.Normalized() * PushForce);
+                box.ApplyCentralImpulse(pushDirection.Normalized() * this.PushForce);
             }
         }
     }
@@ -134,14 +135,14 @@ public partial class Player : CharacterBody2D
         float direction = Input.GetAxis("LEFT", "RIGHT");
         if (direction != 0)
         {
-            _animatedSprite2D.FlipH = direction < 0;
-            _animatedSprite2D.Play(WalkState);
-            Velocity = new(SPEED * direction, Velocity.Y);
+            this._animatedSprite2D.FlipH = direction < 0;
+            this._animatedSprite2D.Play(this.WalkState);
+            this.Velocity = new(this.SPEED * direction, this.Velocity.Y);
         }
         else
         {
-            _animatedSprite2D.Play(IdleState);
-            Velocity = new(0, Velocity.Y);
+            this._animatedSprite2D.Play(this.IdleState);
+            this.Velocity = new(0, this.Velocity.Y);
 
         }
 
@@ -149,8 +150,8 @@ public partial class Player : CharacterBody2D
         {
             if (Input.IsActionJustPressed("LEFT") || Input.IsActionJustPressed("RIGHT"))
             {
-                if (!_stepSound.Playing)
-                    _stepSound.Play();
+                if (!this._stepSound.Playing)
+                    this._stepSound.Play();
             }
         }
     }
@@ -161,16 +162,16 @@ public partial class Player : CharacterBody2D
     private void _VerticalMotion(double delta)
     {
         // Gravity
-        Velocity = new(Velocity.X, Velocity.Y + _gravity * Weight * (float)delta);
+        this.Velocity = new(this.Velocity.X, this.Velocity.Y + this._gravity * this.Weight * (float)delta);
 
         // Limit negative vertical speed
-        if (Velocity.Y > MAXFALLSPEED)
-            Velocity = new(Velocity.X, MAXFALLSPEED);
-        
+        if (this.Velocity.Y > this.MAXFALLSPEED)
+            this.Velocity = new(this.Velocity.X, this.MAXFALLSPEED);
+
         // Jumping
         if (IsOnFloor())
         {
-            _coyoteTime = true;
+            this._coyoteTime = true;
             if (Input.IsActionJustPressed("UP"))
             {
                 _Jump(delta);
@@ -179,30 +180,30 @@ public partial class Player : CharacterBody2D
         else
         {
             _CoyoteTime();
-            if (_coyoteTime)
+            if (this._coyoteTime)
             {
                 if (Input.IsActionJustPressed("UP"))
                 {
                     _Jump(delta);
-                    _coyoteTime = false;
+                    this._coyoteTime = false;
                 }
             }
 
             // if falling
-            if (Velocity.Y > 0)
+            if (this.Velocity.Y > 0)
             {
-                _animatedSprite2D.Play(FallState);
+                this._animatedSprite2D.Play(this.FallState);
             }
             else
             {
-                _animatedSprite2D.Play(JumpState);
+                this._animatedSprite2D.Play(this.JumpState);
             }
         }
 
         // Jump release deceleration
-        if (Input.IsActionJustReleased("UP") && Velocity.Y < 0)
+        if (Input.IsActionJustReleased("UP") && this.Velocity.Y < 0)
         {
-            Velocity = new(Velocity.X, Velocity.Y * _jumpReleaseDeceleration);
+            this.Velocity = new(this.Velocity.X, this.Velocity.Y * this._jumpReleaseDeceleration);
         }
     }
 
@@ -211,8 +212,8 @@ public partial class Player : CharacterBody2D
     /// </summary>
     private void _Jump(double delta)
     {
-        Velocity = new(Velocity.X, JUMPFORCE * UP.Y);
-        _jumpSound.Play();
+        this.Velocity = new(this.Velocity.X, this.JUMPFORCE * this.UP.Y);
+        this._jumpSound.Play();
     }
 
     /// <summary>
@@ -227,7 +228,7 @@ public partial class Player : CharacterBody2D
         t.Start();
         t.Timeout += () =>
         {
-            _coyoteTime = false;
+            this._coyoteTime = false;
             t.QueueFree();
         };
     }
@@ -237,7 +238,7 @@ public partial class Player : CharacterBody2D
     /// </summary>
     public void SwitchStates()
     {
-        IsInGirlState = !IsInGirlState;
+        this.IsInGirlState = !this.IsInGirlState;
         CorrectStates();
         EmitSignal(SignalName.OnStateSwitched);
     }
@@ -247,19 +248,19 @@ public partial class Player : CharacterBody2D
     /// </summary>
     public void CorrectStates()
     {
-        if (!IsInGirlState)
+        if (!this.IsInGirlState)
         {
-            JumpState = "JumpGirl";
-            IdleState = "IdleGirl";
-            FallState = "FallGirl";
-            WalkState = "WalkGirl";
+            this.JumpState = "JumpGirl";
+            this.IdleState = "IdleGirl";
+            this.FallState = "FallGirl";
+            this.WalkState = "WalkGirl";
         }
         else
         {
-            JumpState = "JumpBoy";
-            IdleState = "IdleBoy";
-            FallState = "FallBoy";
-            WalkState = "WalkBoy";
+            this.JumpState = "JumpBoy";
+            this.IdleState = "IdleBoy";
+            this.FallState = "FallBoy";
+            this.WalkState = "WalkBoy";
         }
     }
 
@@ -271,22 +272,22 @@ public partial class Player : CharacterBody2D
         if (
             IsOnFloor() &&
             (Input.IsActionJustPressed("LEFT") || Input.IsActionJustPressed("RIGHT")) &&
-            !_stepSound.Playing &&
-            _animatedSprite2D.Frame == 1
+            !this._stepSound.Playing &&
+            this._animatedSprite2D.Frame == 1
         )
         {
-            _stepSound.Play();
+            this._stepSound.Play();
         }
     }
 
     public void Death()
     {
-        _deathSound.Play();
-        GlobalData.ReloadLevel?.Invoke();
+        this._deathSound.Play();
+        this.GlobalData.ReloadLevel?.Invoke();
     }
 
     public void Respawn()
     {
-        GlobalPosition = GlobalData.MainMenu.LevelOneInstance.CurrentSpawnPoint;
+        this.GlobalPosition = this.GlobalData.MainMenu.LevelOneInstance.CurrentSpawnPoint;
     }
 }

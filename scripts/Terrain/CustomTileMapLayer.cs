@@ -21,14 +21,14 @@ public partial class CustomTileMapLayer : TileMapLayer
         for (int i = 0; i < TileSet.GetSourceCount(); i++)
         {
             TileSetSource source = TileSet.GetSource(i);
-            _sourceIdDict[source.ResourceName] = i;
+            this._sourceIdDict[source.ResourceName] = i;
         }
-        SetupDone.Invoke();
+        this.SetupDone.Invoke();
     }
 
     public Dictionary<string, int> GetSourceIdDict()
     {
-        return new Dictionary<string, int>(_sourceIdDict);
+        return new Dictionary<string, int>(this._sourceIdDict);
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ public partial class CustomTileMapLayer : TileMapLayer
     /// <returns></returns>
     public int GetSourceIdByName(string name)
     {
-        if (_sourceIdDict.TryGetValue(name, out int value))
+        if (this._sourceIdDict.TryGetValue(name, out int value))
             return value;
         else
             return -1;

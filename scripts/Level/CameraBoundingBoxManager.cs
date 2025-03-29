@@ -35,6 +35,6 @@ public partial class CameraBoundingBoxManager : Node
                 list.Add((CameraBoundingBox)item);
             }
         }
-        BoundingBoxes = new(list.ToArray());
+        this.BoundingBoxes = new(list.ToArray());
     }
 }

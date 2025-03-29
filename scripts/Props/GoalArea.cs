@@ -19,29 +19,29 @@ public partial class GoalArea : AnimatedSprite2D
     public override void _Ready()
     {
         base._Ready();
-        Area2D.BodyEntered += _OnBodyEntered;
+        this.Area2D.BodyEntered += _OnBodyEntered;
 
-        SubLevel = GetNode<SubLevel>("../");
-        if (SubLevel != null)
+        this.SubLevel = GetNode<SubLevel>("../");
+        if (this.SubLevel != null)
         {
-            SubLevel.IsCompletedStateChanged += UpdateState;
+            this.SubLevel.IsCompletedStateChanged += UpdateState;
         }
-        Level = GetNode<Level>("../../../");
+        this.Level = GetNode<Level>("../../../");
     }
 
     public void UpdateState()
     {
-        if (SubLevel.IsCompleted)
+        if (this.SubLevel.IsCompleted)
         {
             Play("open");
-            _lightSprite.Play("green");
-            _light.Color = _GREEN;
+            this._lightSprite.Play("green");
+            this._light.Color = _GREEN;
         }
         else
         {
             Play("closed");
-            _lightSprite.Play("red");
-            _light.Color = _RED;
+            this._lightSprite.Play("red");
+            this._light.Color = _RED;
         }
     }
 
@@ -49,14 +49,14 @@ public partial class GoalArea : AnimatedSprite2D
     {
         if (
             body is Player player &&
-            isActive &&
-            SubLevel.IsCompleted
+            this.isActive &&
+            this.SubLevel.IsCompleted
         )
         {
             player.DoorSound.Play();
-            Level.SetNextLevel();
+            this.Level.SetNextLevel();
             player.Respawn();
-            isActive = false;
+            this.isActive = false;
         }
     }
 }

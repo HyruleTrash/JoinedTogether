@@ -17,12 +17,12 @@ public partial class AnimatedTiles : Node
         // Add/connect timer
         Timer myTimer = new Timer();
         myTimer.Name = "Timer";
-        myTimer.WaitTime = WaitTime;
+        myTimer.WaitTime = this.WaitTime;
         myTimer.Autostart = true;
         myTimer.Timeout += () => OnTimerTimeout();
         AddChild(myTimer);
 
-        _tileMapLayer = GetNode<CustomTileMapLayer>("../");
+        this._tileMapLayer = GetNode<CustomTileMapLayer>("../");
 
         _SetupAnimatedTiles();
     }
@@ -32,22 +32,22 @@ public partial class AnimatedTiles : Node
     /// </summary>
     private void _SetupAnimatedTiles()
     {
-        _animatedTileDatas.Push(new AnimatedTileData("RedGradient", 0, 4, true));
-        _animatedTileDatas.Push(new AnimatedTileData("Moons", 0, 5));
-        _animatedTileDatas.Push(new AnimatedTileData("Stars", 0, 5));
-        _animatedTileDatas.Push(new AnimatedTileData("Windows", 0, 7, true));
-        _animatedTileDatas.Push(new AnimatedTileData("BrokenWindows", 0, 7, true));
+        this._animatedTileDatas.Push(new AnimatedTileData("RedGradient", 0, 4, true));
+        this._animatedTileDatas.Push(new AnimatedTileData("Moons", 0, 5));
+        this._animatedTileDatas.Push(new AnimatedTileData("Stars", 0, 5));
+        this._animatedTileDatas.Push(new AnimatedTileData("Windows", 0, 7, true));
+        this._animatedTileDatas.Push(new AnimatedTileData("BrokenWindows", 0, 7, true));
     }
 
     public override void _Process(double delta)
     {
-        if (Timer)
+        if (this.Timer)
         {
-            foreach (var data in _animatedTileDatas)
+            foreach (var data in this._animatedTileDatas)
             {
-                foreach (var cell in _tileMapLayer.GetUsedCellsByName(data.RecourceName))
+                foreach (var cell in this._tileMapLayer.GetUsedCellsByName(data.RecourceName))
                 {
-                    Vector2I tile = _tileMapLayer.GetCellAtlasCoords(cell);
+                    Vector2I tile = this._tileMapLayer.GetCellAtlasCoords(cell);
                     if (data.PingPong)
                     {
                         if (tile.X >= data.EndTile && data.AnimateForwards)
@@ -62,17 +62,17 @@ public partial class AnimatedTiles : Node
                     }
 
                     if (data.AnimateForwards)
-                        _tileMapLayer.SetCell(cell, _tileMapLayer.GetSourceIdByName(data.RecourceName), new Vector2I(tile.X + 1, tile.Y));
+                        this._tileMapLayer.SetCell(cell, this._tileMapLayer.GetSourceIdByName(data.RecourceName), new Vector2I(tile.X + 1, tile.Y));
                     else
-                        _tileMapLayer.SetCell(cell, _tileMapLayer.GetSourceIdByName(data.RecourceName), new Vector2I(tile.X - 1, tile.Y));
+                        this._tileMapLayer.SetCell(cell, this._tileMapLayer.GetSourceIdByName(data.RecourceName), new Vector2I(tile.X - 1, tile.Y));
                 }
             }
-            Timer = false;
+            this.Timer = false;
         }
     }
 
     public void OnTimerTimeout()
     {
-        Timer = true;
+        this.Timer = true;
     }
 }

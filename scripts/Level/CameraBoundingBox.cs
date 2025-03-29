@@ -13,11 +13,11 @@ public partial class CameraBoundingBox : Node2D
     {
         get
         {
-            return BoundingBox.MinMaxX;
+            return this.BoundingBox.MinMaxX;
         }
         set
         {
-            BoundingBox.MinMaxX = value;
+            this.BoundingBox.MinMaxX = value;
         }
     }
     [Export]
@@ -25,11 +25,11 @@ public partial class CameraBoundingBox : Node2D
     {
         get
         {
-            return BoundingBox.MinMaxY;
+            return this.BoundingBox.MinMaxY;
         }
         set
         {
-            BoundingBox.MinMaxY = value;
+            this.BoundingBox.MinMaxY = value;
         }
     }
     [Export]
@@ -45,23 +45,23 @@ public partial class CameraBoundingBox : Node2D
         if (Engine.IsEditorHint())
         {
             DrawLine(
-                new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.X),
-                new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.Y),
+                new Vector2(this.BoundingBox.MinMaxX.X, this.BoundingBox.MinMaxY.X),
+                new Vector2(this.BoundingBox.MinMaxX.X, this.BoundingBox.MinMaxY.Y),
                 Colors.Red
                 );
             DrawLine(
-                new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.X),
-                new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.Y),
+                new Vector2(this.BoundingBox.MinMaxX.Y, this.BoundingBox.MinMaxY.X),
+                new Vector2(this.BoundingBox.MinMaxX.Y, this.BoundingBox.MinMaxY.Y),
                 Colors.Red
                 );
             DrawLine(
-                new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.X),
-                new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.X),
+                new Vector2(this.BoundingBox.MinMaxX.X, this.BoundingBox.MinMaxY.X),
+                new Vector2(this.BoundingBox.MinMaxX.Y, this.BoundingBox.MinMaxY.X),
                 Colors.Red
                 );
             DrawLine(
-                new Vector2(BoundingBox.MinMaxX.X, BoundingBox.MinMaxY.Y),
-                new Vector2(BoundingBox.MinMaxX.Y, BoundingBox.MinMaxY.Y),
+                new Vector2(this.BoundingBox.MinMaxX.X, this.BoundingBox.MinMaxY.Y),
+                new Vector2(this.BoundingBox.MinMaxX.Y, this.BoundingBox.MinMaxY.Y),
                 Colors.Red
                 );
         }

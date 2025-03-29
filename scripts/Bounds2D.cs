@@ -11,8 +11,8 @@ public class Bounds2D
 
     public Bounds2D()
     {
-        MinMaxX = new();
-        MinMaxY = new();
+        this.MinMaxX = new();
+        this.MinMaxY = new();
     }
 
     public Bounds2D(Vector2 minMaxX, Vector2 minMaxY)
@@ -23,8 +23,8 @@ public class Bounds2D
 
     public Bounds2D(float minX, float maxX, float minY, float maxY)
     {
-        MinMaxX = new(minX, maxX);
-        MinMaxY = new(minY, maxY);
+        this.MinMaxX = new(minX, maxX);
+        this.MinMaxY = new(minY, maxY);
     }
 
     public static Bounds2D operator +(Bounds2D bounds, Vector2 offset)
@@ -37,12 +37,12 @@ public class Bounds2D
 
     public void IsPointWithinBounds(Vector2 point, out bool insideX, out bool insideY)
     {
-        if (point.X > MinMaxX.X && point.X < MinMaxX.Y)
+        if (point.X > this.MinMaxX.X && point.X < this.MinMaxX.Y)
             insideX = true;
         else
             insideX = false;
 
-        if (point.Y > MinMaxY.X && point.Y < MinMaxY.Y)
+        if (point.Y > this.MinMaxY.X && point.Y < this.MinMaxY.Y)
             insideY = true;
         else
             insideY = false;
@@ -66,11 +66,11 @@ public class Bounds2D
     /// <returns></returns>
     public Vector2 GetMidPoint()
     {
-        return new((MinMaxX.X + MinMaxX.Y) / 2, (MinMaxY.X + MinMaxY.Y) / 2);
+        return new((this.MinMaxX.X + this.MinMaxX.Y) / 2, (this.MinMaxY.X + this.MinMaxY.Y) / 2);
     }
 
     public override string ToString()
     {
-        return base.ToString() + "(" + MinMaxX.ToString() + ", " + MinMaxY.ToString() + ")";
+        return base.ToString() + "(" + this.MinMaxX.ToString() + ", " + this.MinMaxY.ToString() + ")";
     }
 }

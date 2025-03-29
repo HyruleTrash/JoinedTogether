@@ -14,20 +14,20 @@ public partial class Camera : Camera2D
     private Bounds2D _boundingBox = new();
     public Bounds2D BoundingBox
     {
-        get => _boundingBox;
+        get => this._boundingBox;
         set
         {
-            _boundingBox = value;
-            LimitTop = (int)MathF.Round(_boundingBox.MinMaxY.X);
-            LimitBottom = (int)MathF.Round(_boundingBox.MinMaxY.Y);
-            LimitLeft = (int)MathF.Round(_boundingBox.MinMaxX.X);
-            LimitRight = (int)MathF.Round(_boundingBox.MinMaxX.Y);
+            this._boundingBox = value;
+            this.LimitTop = (int)MathF.Round(this._boundingBox.MinMaxY.X);
+            this.LimitBottom = (int)MathF.Round(this._boundingBox.MinMaxY.Y);
+            this.LimitLeft = (int)MathF.Round(this._boundingBox.MinMaxX.X);
+            this.LimitRight = (int)MathF.Round(this._boundingBox.MinMaxX.Y);
         }
     }
 
     public override void _Process(double delta)
     {
-        Vector2 newPosition = Position.Lerp(Player.Position - FollowOffset, (float)(delta * Speed));
-        Position = newPosition;
+        Vector2 newPosition = this.Position.Lerp(this.Player.Position - this.FollowOffset, (float)(delta * this.Speed));
+        this.Position = newPosition;
     }
 }

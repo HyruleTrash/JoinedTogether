@@ -17,50 +17,50 @@ public partial class GlobalSoundManager : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GlobalData = GetNode<GlobalData>("/root/GlobalData");
+		this.GlobalData = GetNode<GlobalData>("/root/GlobalData");
 
-		Raindrops.Add("Raindrops0_1", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_1.wav"));
-		Raindrops.Add("Raindrops0_2", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_2.wav"));
-		Raindrops.Add("Raindrops0_3", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_3.wav"));
-		Raindrops.Add("Raindrops0_4", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_4.wav"));
-		Raindrops.Add("Raindrops0_5", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_5.wav"));
-		Raindrops.Add("Raindrops0_6", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_6.wav"));
-		Raindrops.Add("Raindrops0_7", Raindrops["Raindrops0_3"]);
-		Raindrops.Add("Raindrops0_8", Raindrops["Raindrops0_2"]);
-		Raindrops.Add("Raindrops0_9", null);
+		this.Raindrops.Add("Raindrops0_1", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_1.wav"));
+		this.Raindrops.Add("Raindrops0_2", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_2.wav"));
+		this.Raindrops.Add("Raindrops0_3", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_3.wav"));
+		this.Raindrops.Add("Raindrops0_4", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_4.wav"));
+		this.Raindrops.Add("Raindrops0_5", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_5.wav"));
+		this.Raindrops.Add("Raindrops0_6", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Raindrops0_6.wav"));
+		this.Raindrops.Add("Raindrops0_7", this.Raindrops["Raindrops0_3"]);
+		this.Raindrops.Add("Raindrops0_8", this.Raindrops["Raindrops0_2"]);
+		this.Raindrops.Add("Raindrops0_9", null);
 
-		Raindrops.Add("Pause", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Pause.wav"));
+		this.Raindrops.Add("Pause", GD.Load<AudioStream>("res://Art/Soundeffects/Music/Pause.wav"));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		// main music
-		if (MusicPlayer.Playing == false && GlobalData.MainMenu.IsActive == false)
+		if (this.MusicPlayer.Playing == false && this.GlobalData.MainMenu.IsActive == false)
 		{
-			if (GlobalData.Player.IsInGirlState)
+			if (this.GlobalData.Player.IsInGirlState)
 			{
-				MusicPlayer.Play();
+				this.MusicPlayer.Play();
 			}
 			else
 			{
-				MusicPlayer.Stop();
+				this.MusicPlayer.Stop();
 			}
 		}
 
 		// ambient raindrops, an
-		if (!RaindropsPlayer.Playing)
+		if (!this.RaindropsPlayer.Playing)
 		{
-			if (GlobalData.MainMenu.IsActive)
+			if (this.GlobalData.MainMenu.IsActive)
 			{
-				RaindropsPlayer.Stream = Raindrops["Pause"];
-				RaindropsPlayer.Play();
+				this.RaindropsPlayer.Stream = this.Raindrops["Pause"];
+				this.RaindropsPlayer.Play();
 			}
 			else
 			{
-				RaindropsPlayer.Stream = Raindrops["Raindrops0_" + GlobalData.Level];
-				RaindropsPlayer.Play(SongTime);
-				SongTime = 0;
+				this.RaindropsPlayer.Stream = this.Raindrops["Raindrops0_" + this.GlobalData.Level];
+				this.RaindropsPlayer.Play(this.SongTime);
+				this.SongTime = 0;
 			}
 		}
 	}

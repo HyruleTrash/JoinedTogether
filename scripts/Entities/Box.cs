@@ -15,18 +15,19 @@ public partial class Box : RigidBody2D
     public override void _Ready()
     {
         base._Ready();
-        _spawnPosition = (Vector2I)GlobalPosition;
+        this._spawnPosition = (Vector2I)this.GlobalPosition;
 
-        Level = GetNode<Level>("../../../");
-        if (Level != null)
+        this.Level = GetNode<Level>("../../../");
+        if (this.Level != null)
         {
-            Level.NextLevelTriggered += UpdateState;
+            this.Level.NextLevelTriggered += UpdateState;
         }
-        
+
         GlobalData globalData = GetNode<GlobalData>("/root/GlobalData");
         if (globalData != null)
         {
-            globalData.ReloadLevel += () => {
+            globalData.ReloadLevel += () =>
+            {
                 if (IsInsideCurrentSubLevel())
                 {
                     Respawn();
@@ -38,42 +39,42 @@ public partial class Box : RigidBody2D
     public override void _Process(double delta)
     {
         base._Process(delta);
-        Freeze = _freeze;
+        this.Freeze = this._freeze;
     }
 
     private bool IsInsideCurrentSubLevel()
     {
-        return Level.CameraBoundingBoxManager.Camera.BoundingBox.IsPointWithinBounds(_spawnPosition);
+        return this.Level.CameraBoundingBoxManager.Camera.BoundingBox.IsPointWithinBounds(this._spawnPosition);
     }
 
     public void UpdateState()
     {
         if (IsInsideCurrentSubLevel())
         {
-            _freeze = false;
-            Visible = true;
+            this._freeze = false;
+            this.Visible = true;
             Respawn();
         }
         else
         {
-            _freeze = true;
-            Visible = false;
+            this._freeze = true;
+            this.Visible = false;
         }
     }
 
     public void Death()
     {
-        _deathSound.Play();
+        this._deathSound.Play();
         Respawn();
     }
 
     public void Respawn()
     {
-        Visible = false;
+        this.Visible = false;
 
         // Death Particle
-        GpuParticles2D instance = (GpuParticles2D)_deathParticleEffect.Instantiate();
-        instance.Position = GlobalPosition;
+        GpuParticles2D instance = (GpuParticles2D)this._deathParticleEffect.Instantiate();
+        instance.Position = this.GlobalPosition;
         GetNode("../").AddChild(instance);
         instance.Finished += () => { instance.QueueFree(); };
 
@@ -85,11 +86,11 @@ public partial class Box : RigidBody2D
         t.Start();
         t.Timeout += () =>
         {
-            LinearVelocity = new(0, 0);
-            AngularVelocity = 0f;
-            RotationDegrees = 0;
-            GlobalPosition = _spawnPosition;
-            Visible = true;
+            this.LinearVelocity = new(0, 0);
+            this.AngularVelocity = 0f;
+            this.RotationDegrees = 0;
+            this.GlobalPosition = this._spawnPosition;
+            this.Visible = true;
             t.QueueFree();
         };
     }

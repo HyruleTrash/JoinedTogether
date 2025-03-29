@@ -10,11 +10,11 @@ public partial class SubLevel : Node
     [Export]
     public bool IsCompleted
     {
-        get => isCompleted;
+        get => this.isCompleted;
         set
         {
-            isCompleted = value;
-            IsCompletedStateChanged.Invoke();
+            this.isCompleted = value;
+            this.IsCompletedStateChanged.Invoke();
         }
     }
     [Export]
@@ -51,11 +51,11 @@ public partial class SubLevel : Node
         }
         if (WasUnpressedButtonFound)
         {
-            IsCompleted = false;
+            this.IsCompleted = false;
         }
         else
         {
-            IsCompleted = true;
+            this.IsCompleted = true;
         }
     }
 }

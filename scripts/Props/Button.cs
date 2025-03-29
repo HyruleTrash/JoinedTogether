@@ -14,20 +14,20 @@ public partial class Button : Area2D
     private bool _isPressed = false;
     public bool IsPressed
     {
-        get => _isPressed;
+        get => this._isPressed;
         set
         {
-            _isPressed = value;
-            IsPressedStateChanged.Invoke();
+            this._isPressed = value;
+            this.IsPressedStateChanged.Invoke();
         }
     }
 
     public override void _Ready()
     {
         base._Ready();
-        AnimatedSprite2D.Play("default");
-        BodyEntered += _OnBodyEntered;
-        BodyExited += _OnBodyExited;
+        this.AnimatedSprite2D.Play("default");
+        this.BodyEntered += _OnBodyEntered;
+        this.BodyExited += _OnBodyExited;
     }
 
     private void _OnBodyEntered(Node2D body)
@@ -51,17 +51,17 @@ public partial class Button : Area2D
                 legibleBodies.Add(item);
             }
         }
-        if (legibleBodies.Count != 0 && !IsPressed)
+        if (legibleBodies.Count != 0 && !this.IsPressed)
         {
-            IsPressed = true;
-            ButtonOnSound.Play();
-            AnimatedSprite2D.Play("pressed");
+            this.IsPressed = true;
+            this.ButtonOnSound.Play();
+            this.AnimatedSprite2D.Play("pressed");
         }
-        else if (legibleBodies.Count == 0 && IsPressed)
+        else if (legibleBodies.Count == 0 && this.IsPressed)
         {
-            IsPressed = false;
-            ButtonOffSound.Play();
-            AnimatedSprite2D.Play("default");
+            this.IsPressed = false;
+            this.ButtonOffSound.Play();
+            this.AnimatedSprite2D.Play("default");
         }
     }
 }

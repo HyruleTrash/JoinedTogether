@@ -19,9 +19,9 @@ public partial class Level : Node2D
     public override void _Ready()
     {
         base._Ready();
-        Player = GetNode<Player>("Player");
-        Player.OnStateSwitched += () => CorrectSetState();
-        GlobalData = GetNode<GlobalData>("/root/GlobalData");
+        this.Player = GetNode<Player>("Player");
+        this.Player.OnStateSwitched += () => CorrectSetState();
+        this.GlobalData = GetNode<GlobalData>("/root/GlobalData");
         _UpdateLevelData();
     }
 
@@ -40,15 +40,15 @@ public partial class Level : Node2D
     /// </summary>
     public void UpdateSpawnPoint()
     {
-        if (SpawnPointManager == null || GlobalData == null)
+        if (this.SpawnPointManager == null || this.GlobalData == null)
             return;
         bool isInIndexRange;
         int offset = 1; // Offset is used to remove 0 indexing from level count
-        Vector2 spawnPoint = SpawnPointManager.GetSpawnPoint(GlobalData.Level - offset, out isInIndexRange);
+        Vector2 spawnPoint = this.SpawnPointManager.GetSpawnPoint(this.GlobalData.Level - offset, out isInIndexRange);
         if (isInIndexRange)
-            CurrentSpawnPoint = spawnPoint;
+            this.CurrentSpawnPoint = spawnPoint;
         else
-            GlobalData.MainMenu.TempIsOnEndScreen = true;
+            this.GlobalData.MainMenu.TempIsOnEndScreen = true;
     }
 
     /// <summary>
@@ -56,20 +56,20 @@ public partial class Level : Node2D
     /// </summary>
     public void UpdateCameraBoundingBox()
     {
-        if (CameraBoundingBoxManager == null || GlobalData == null)
+        if (this.CameraBoundingBoxManager == null || this.GlobalData == null)
             return;
 
         int offset = 1; // Offset is used to remove 0 indexing from level count
-        int index = GlobalData.Level - offset;
-        if (index > CameraBoundingBoxManager.BoundingBoxes.Count - 1 || index < 0)
+        int index = this.GlobalData.Level - offset;
+        if (index > this.CameraBoundingBoxManager.BoundingBoxes.Count - 1 || index < 0)
         {
             // GD.PushError("Index out of range");
-            GlobalData.MainMenu.TempIsOnEndScreen = true;
+            this.GlobalData.MainMenu.TempIsOnEndScreen = true;
             return;
         }
-        CameraBoundingBox cameraBoundingBox = CameraBoundingBoxManager.BoundingBoxes[index];
-        CameraBoundingBoxManager.Camera.BoundingBox = cameraBoundingBox.BoundingBox + cameraBoundingBox.Position;
-        CameraBoundingBoxManager.Camera.FollowOffset = cameraBoundingBox.FollowOffset;
+        CameraBoundingBox cameraBoundingBox = this.CameraBoundingBoxManager.BoundingBoxes[index];
+        this.CameraBoundingBoxManager.Camera.BoundingBox = cameraBoundingBox.BoundingBox + cameraBoundingBox.Position;
+        this.CameraBoundingBoxManager.Camera.FollowOffset = cameraBoundingBox.FollowOffset;
     }
 
     /// <summary>
@@ -82,10 +82,10 @@ public partial class Level : Node2D
     /// </summary>
     public void SetNextLevel()
     {
-        GlobalData.Level++;
+        this.GlobalData.Level++;
         UpdateSpawnPoint();
         UpdateCameraBoundingBox();
-        NextLevelTriggered.Invoke();
+        this.NextLevelTriggered.Invoke();
     }
 
     /// <summary>
@@ -94,15 +94,15 @@ public partial class Level : Node2D
     /// </summary>
     public void CorrectSetState()
     {
-        if (Player.IsInGirlState == false)
+        if (this.Player.IsInGirlState == false)
         {
-            _SetTerrainArrayState(StateGirlTerrain, true);
-            _SetTerrainArrayState(StateBoyTerrain, false);
+            _SetTerrainArrayState(this.StateGirlTerrain, true);
+            _SetTerrainArrayState(this.StateBoyTerrain, false);
         }
         else
         {
-            _SetTerrainArrayState(StateGirlTerrain, false);
-            _SetTerrainArrayState(StateBoyTerrain, true);
+            _SetTerrainArrayState(this.StateGirlTerrain, false);
+            _SetTerrainArrayState(this.StateBoyTerrain, true);
         }
     }
 

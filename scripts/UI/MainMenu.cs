@@ -47,9 +47,9 @@ public partial class MainMenu : Node
 
     private void _MainMenuProcess()
     {
-        if (IsActive)
+        if (this.IsActive)
         {
-            MainMenuUI.Visible = true;
+            this.MainMenuUI.Visible = true;
             if (Input.IsActionJustPressed("ESC"))
                 GetTree().Quit();
             if (Input.IsActionJustPressed("DOWN"))
@@ -65,41 +65,41 @@ public partial class MainMenu : Node
             if (Input.IsActionJustPressed("ui_accept"))
             {
                 _acceptSelectionSound.Play();
-                MainMenuItems[_currentSelectedIndex].TriggerItem();
+                this.MainMenuItems[_currentSelectedIndex].TriggerItem();
             }
         }
         else
         {
-            MainMenuUI.Visible = false;
+            this.MainMenuUI.Visible = false;
         }
     }
 
     private void _UpdateChangeSelector(int index)
     {
-        if (MainMenuItems.Count == 0)
+        if (this.MainMenuItems.Count == 0)
             return;
         // Looping back logic, through the selectors
-        if (index > MainMenuItems.Count - 1)
+        if (index > this.MainMenuItems.Count - 1)
             index = 0;
         if (index < 0)
-            index = MainMenuItems.Count - 1;
+            index = this.MainMenuItems.Count - 1;
 
         // Empty the current selector
-        MainMenuItems[_currentSelectedIndex].SetSelector("");
+        this.MainMenuItems[_currentSelectedIndex].SetSelector("");
 
         // Set the new selector
         _currentSelectedIndex = index;
-        MainMenuItems[_currentSelectedIndex].SetSelector("-");
+        this.MainMenuItems[_currentSelectedIndex].SetSelector("-");
     }
 
     private void _TempEndOfDemoProcess()
     {
         if (TempIsOnEndScreen)
         {
-            if (LevelOneInstance != null)
+            if (this.LevelOneInstance != null)
             {
-                LevelOneInstance.QueueFree();
-                LevelOneInstance = null;
+                this.LevelOneInstance.QueueFree();
+                this.LevelOneInstance = null;
             }
             TempEndOfDemoUI.Visible = true;
 
@@ -109,7 +109,7 @@ public partial class MainMenu : Node
                 _currentSelectedIndex = 0;
                 _UpdateChangeSelector(_currentSelectedIndex);
                 TempIsOnEndScreen = false;
-                IsActive = true;
+                this.IsActive = true;
             }
         }
         else
