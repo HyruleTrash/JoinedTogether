@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Handles the logic for switching a tilemap's state, or layout (two are required)
+/// </summary>
 public partial class Terrain : CustomTileMapLayer
 {
 	[Export]

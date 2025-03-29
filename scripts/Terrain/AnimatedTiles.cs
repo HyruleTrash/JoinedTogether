@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Handles logic for animating animated tiles. In a tilemaplayer
+/// </summary>
 public partial class AnimatedTiles : Node
 {
     [Export]

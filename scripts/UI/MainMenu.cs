@@ -3,6 +3,9 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Holds the main menu, and end screen. next to the logic within them
+/// </summary>
 public partial class MainMenu : Node
 {
     [Export]

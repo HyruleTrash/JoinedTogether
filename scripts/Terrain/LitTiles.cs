@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// Handles the logic for loading in all the lights for all the lit tiles
+/// </summary>
 public partial class LitTiles : Node2D
 {
     private CustomTileMapLayer _tileMapLayer;

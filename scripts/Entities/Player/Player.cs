@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// The player, the physical form the user uses inside the 2d game
+/// </summary>
 public partial class Player : CharacterBody2D
 {
     // Const variables, sadly const c# doesnt really work with godot

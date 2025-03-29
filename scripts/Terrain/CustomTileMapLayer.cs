@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// A TileMapLayer with extra search functionality
+/// </summary>
 public partial class CustomTileMapLayer : TileMapLayer
 {
     private Dictionary<string, int> _sourceIdDict = new Dictionary<string, int>();

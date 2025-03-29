@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Handles a sublevel goal's visual state, and player level advancement logic
+/// </summary>
 public partial class GoalArea : AnimatedSprite2D
 {
     public SubLevel SubLevel;

@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Adds all logic a box needs or uses, such as respawning, or when it should be active
+/// </summary>
 public partial class Box : RigidBody2D
 {
     [Export]

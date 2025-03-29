@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Holds all data for a animated tile
+/// </summary>
 class AnimatedTileData
 {
     public bool AnimateForwards = true;

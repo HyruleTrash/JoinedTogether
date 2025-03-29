@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// A utility class meant to holds 4 float values
+/// </summary>
 public class Bounds2D
 {
     [Export]

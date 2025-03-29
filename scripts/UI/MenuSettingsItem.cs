@@ -1,6 +1,9 @@
 using Godot;
 using System;
 
+/// <summary>
+/// Triggers a pop up message to appear, saying that the settings aren't implemented yet
+/// </summary>
 public partial class MenuSettingsItem : MenuItem, IMenuItemTriggerable
 {
     [Export] private Label NotAvailable;

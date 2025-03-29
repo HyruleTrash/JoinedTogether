@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Handles the button logic, and its state
+/// </summary>
 public partial class Button : Area2D
 {
     [Export]

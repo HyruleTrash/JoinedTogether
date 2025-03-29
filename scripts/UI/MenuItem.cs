@@ -3,6 +3,9 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// A class meant to be inherited. adding logic for making a item selectable
+/// </summary>
 public partial class MenuItem : HBoxContainer
 {
     [Export]

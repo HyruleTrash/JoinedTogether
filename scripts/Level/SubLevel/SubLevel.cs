@@ -3,6 +3,9 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Sublevels contain the logic for if the player can leave them or not
+/// </summary>
 public partial class SubLevel : Node
 {
     public event Action IsCompletedStateChanged;

@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// The player camera, meant for following the player around
+/// </summary>
 public partial class Camera : Camera2D
 {
     [Export]

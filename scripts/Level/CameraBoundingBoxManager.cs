@@ -3,6 +3,9 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Holds all the CameraBoundingBoxes per sublevel
+/// </summary>
 public partial class CameraBoundingBoxManager : Node
 {
     [Export]
@@ -21,6 +24,24 @@ public partial class CameraBoundingBoxManager : Node
             level.CameraBoundingBoxManager = this;
             level.UpdateCameraBoundingBox();
         }
+    }
+
+    /// <summary>
+    /// Returns the CameraBoundingBox relative to the given sublevel
+    /// </summary>
+    /// <param name="index">sublevel index</param>
+    /// <param name="isInIndexRange">bool representing if the BoundingBox actually exists or not</param>
+    /// <returns>The spawn location</returns>
+    public CameraBoundingBox GetBoundingBox(int index, out bool isInIndexRange)
+    {
+        if (index < 0 || index >= this.BoundingBoxes.Count)
+        {
+            isInIndexRange = false;
+            return null;
+        }
+
+        isInIndexRange = true;
+        return this.BoundingBoxes[index];
     }
 
     /// <summary>

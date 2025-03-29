@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// A global system that handles all music players and their logic. such as game music or ambience tracks.
+/// </summary>
 public partial class GlobalSoundManager : Node2D
 {
 	public GlobalData GlobalData;

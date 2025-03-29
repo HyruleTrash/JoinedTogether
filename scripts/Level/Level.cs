@@ -3,6 +3,9 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Holds the references for everything inside a level
+/// </summary>
 public partial class Level : Node2D
 {
     [Export]
@@ -61,13 +64,14 @@ public partial class Level : Node2D
 
         int offset = 1; // Offset is used to remove 0 indexing from level count
         int index = this.GlobalData.Level - offset;
-        if (index > this.CameraBoundingBoxManager.BoundingBoxes.Count - 1 || index < 0)
+        bool doesBoundingBoxExist;
+        CameraBoundingBox cameraBoundingBox = this.CameraBoundingBoxManager.GetBoundingBox(index, out doesBoundingBoxExist);
+        if (doesBoundingBoxExist)
         {
             // GD.PushError("Index out of range");
             this.GlobalData.MainMenu.TempIsOnEndScreen = true;
             return;
         }
-        CameraBoundingBox cameraBoundingBox = this.CameraBoundingBoxManager.BoundingBoxes[index];
         this.CameraBoundingBoxManager.Camera.BoundingBox = cameraBoundingBox.BoundingBox + cameraBoundingBox.Position;
         this.CameraBoundingBoxManager.Camera.FollowOffset = cameraBoundingBox.FollowOffset;
     }

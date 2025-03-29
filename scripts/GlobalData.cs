@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Holds all data, that's to be used globally throught the game logic
+/// </summary>
 public partial class GlobalData : Node
 {
     [Export]

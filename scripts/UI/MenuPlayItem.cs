@@ -1,6 +1,9 @@
 using Godot;
 using System;
 
+/// <summary>
+/// Triggers the 2d game to start
+/// </summary>
 public partial class MenuPlayItem : MenuItem, IMenuItemTriggerable
 {
 	[Export]

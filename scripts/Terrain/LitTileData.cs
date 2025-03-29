@@ -2,6 +2,9 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Holds all data for adding a light to a tile
+/// </summary>
 class LitTileData
 {
     public string RecourceName = "";
