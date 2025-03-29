@@ -7,7 +7,7 @@ using System;
 public partial class MenuPlayItem : MenuItem, IMenuItemTriggerable
 {
 	[Export]
-	private MainMenu MainMenu;
+	private MainMenu _MainMenu;
 
 	public void TriggerItem()
 	{
@@ -16,11 +16,11 @@ public partial class MenuPlayItem : MenuItem, IMenuItemTriggerable
 
 		GetNode<GlobalSoundManager>("/root/GlobalSoundManager").MusicPlayer.Play(3.994f);
 
-		this.MainMenu.LevelOneInstance = (Level)this.MainMenu.LevelOne.Instantiate();
-		this.MainMenu.AddChild(this.MainMenu.LevelOneInstance);
+		this._MainMenu.LevelOneInstance = (Level)this._MainMenu.LevelOne.Instantiate();
+		this._MainMenu.AddChild(this._MainMenu.LevelOneInstance);
 		// Infoholder.buttonspressed = 0
 		// lvl1.instantiate().get_node("Player").respawn2()
 
-		this.MainMenu.IsActive = false;
+		this._MainMenu.IsActive = false;
 	}
 }

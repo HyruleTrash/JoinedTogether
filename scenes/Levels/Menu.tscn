@@ -110,11 +110,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("MainMenu", "Selectors")]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("_MainMenu", "Selectors")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("2_dk82h")
-MainMenu = NodePath("../../../../..")
+_MainMenu = NodePath("../../../../..")
 Selectors = [NodePath("Selector"), NodePath("Selector2")]
 
 [node name="Selector" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
@@ -135,11 +135,11 @@ theme_override_fonts/font = SubResource("1")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("NotAvailable", "Selectors")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("_NotAvailable", "Selectors")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("4_eq6g3")
-NotAvailable = NodePath("Settings")
+_NotAvailable = NodePath("../../../../NotAvailableText")
 Selectors = [NodePath("Selector"), NodePath("Selector2")]
 
 [node name="Selector" type="Label" parent="MainMenuUI/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]

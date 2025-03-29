@@ -29,12 +29,14 @@ public partial class CameraBoundingBoxManager : Node
     /// <summary>
     /// Returns the CameraBoundingBox relative to the given sublevel
     /// </summary>
-    /// <param name="index">sublevel index</param>
+    /// <param name="givenIndex">sublevel index</param>
     /// <param name="isInIndexRange">bool representing if the BoundingBox actually exists or not</param>
     /// <returns>The spawn location</returns>
-    public CameraBoundingBox GetBoundingBox(int index, out bool isInIndexRange)
+    public CameraBoundingBox GetBoundingBox(int givenIndex, out bool isInIndexRange)
     {
-        if (index < 0 || index >= this.BoundingBoxes.Count)
+        int offset = 1; // Offset is used to remove 0 indexing from level count
+        int index = givenIndex - offset;
+        if (index < 0 || index > this.BoundingBoxes.Count - offset)
         {
             isInIndexRange = false;
             return null;

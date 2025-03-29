@@ -62,13 +62,12 @@ public partial class Level : Node2D
         if (this.CameraBoundingBoxManager == null || this.GlobalData == null)
             return;
 
-        int offset = 1; // Offset is used to remove 0 indexing from level count
-        int index = this.GlobalData.Level - offset;
+        int index = this.GlobalData.Level;
         bool doesBoundingBoxExist;
         CameraBoundingBox cameraBoundingBox = this.CameraBoundingBoxManager.GetBoundingBox(index, out doesBoundingBoxExist);
-        if (doesBoundingBoxExist)
+        if (!doesBoundingBoxExist)
         {
-            // GD.PushError("Index out of range");
+            // GD.PushWarning("Index out of range");
             this.GlobalData.MainMenu.TempIsOnEndScreen = true;
             return;
         }

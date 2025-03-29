@@ -6,11 +6,12 @@ using System;
 /// </summary>
 public partial class MenuSettingsItem : MenuItem, IMenuItemTriggerable
 {
-    [Export] private Label NotAvailable;
+    [Export]
+    private Label _NotAvailable;
 
     public void TriggerItem()
     {
-        this.NotAvailable.Visible = true;
+        this._NotAvailable.Visible = true;
         Timer t = new();
         t.SetWaitTime(1);
         t.SetOneShot(true);
@@ -19,7 +20,7 @@ public partial class MenuSettingsItem : MenuItem, IMenuItemTriggerable
         t.Timeout += () =>
         {
             t.QueueFree();
-            this.NotAvailable.Visible = false;
+            this._NotAvailable.Visible = false;
         };
     }
 }
