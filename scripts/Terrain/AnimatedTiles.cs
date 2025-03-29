@@ -44,34 +44,56 @@ public partial class AnimatedTiles : Node
 
     public override void _Process(double delta)
     {
-        if (this.Timer)
-        {
-            foreach (var data in this._animatedTileDatas)
-            {
-                foreach (var cell in this._tileMapLayer.GetUsedCellsByName(data.RecourceName))
-                {
-                    Vector2I tile = this._tileMapLayer.GetCellAtlasCoords(cell);
-                    if (data.PingPong)
-                    {
-                        if (tile.X >= data.EndTile && data.AnimateForwards)
-                            data.AnimateForwards = false;
-                        if (tile.X <= data.StartTile && !data.AnimateForwards)
-                            data.AnimateForwards = true;
-                    }
-                    else
-                    {
-                        if (tile.X >= data.EndTile && data.AnimateForwards)
-                            tile.X = data.StartTile;
-                    }
+        if (!this.Timer)
+            return;
 
-                    if (data.AnimateForwards)
-                        this._tileMapLayer.SetCell(cell, this._tileMapLayer.GetSourceIdByName(data.RecourceName), new Vector2I(tile.X + 1, tile.Y));
-                    else
-                        this._tileMapLayer.SetCell(cell, this._tileMapLayer.GetSourceIdByName(data.RecourceName), new Vector2I(tile.X - 1, tile.Y));
-                }
+        foreach (var data in this._animatedTileDatas)
+        {
+            foreach (var cell in this._tileMapLayer.GetUsedCellsByName(data.RecourceName))
+            {
+                Vector2I tile = this._tileMapLayer.GetCellAtlasCoords(cell);
+                _PingPong(data, tile, out tile);
+                _AnimateCell(data, cell, tile);
             }
-            this.Timer = false;
         }
+        this.Timer = false;
+    }
+
+    /// <summary>
+    /// If the animation data requires ping pong logic, then ping pong the tile
+    /// </summary>
+    /// <param name="data">animation data</param>
+    /// <param name="tile">the tile within the tilemap texture</param>
+    /// <param name="newTile">For updating the tile position, or reference inside the tilemap texture</param>
+    private void _PingPong(AnimatedTileData data, Vector2I tile, out Vector2I newTile)
+    {
+        newTile = tile;
+        if (data.PingPong)
+        {
+            if (tile.X >= data.EndTile && data.AnimateForwards)
+                data.AnimateForwards = false;
+            if (tile.X <= data.StartTile && !data.AnimateForwards)
+                data.AnimateForwards = true;
+        }
+        else
+        {
+            if (tile.X >= data.EndTile && data.AnimateForwards)
+                newTile.X = data.StartTile;
+        }
+    }
+
+    /// <summary>
+    /// Sets the given cell to its next corrisponding cell
+    /// </summary>
+    /// <param name="data">animation data</param>
+    /// <param name="cell">the tilecell inside the world</param>
+    /// <param name="tile">the tile within the tilemap texture</param>
+    private void _AnimateCell(AnimatedTileData data, Vector2I cell, Vector2I tile)
+    {
+        if (data.AnimateForwards)
+            this._tileMapLayer.SetCell(cell, this._tileMapLayer.GetSourceIdByName(data.RecourceName), new Vector2I(tile.X + 1, tile.Y));
+        else
+            this._tileMapLayer.SetCell(cell, this._tileMapLayer.GetSourceIdByName(data.RecourceName), new Vector2I(tile.X - 1, tile.Y));
     }
 
     public void OnTimerTimeout()
