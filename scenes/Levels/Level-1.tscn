@@ -21,10 +21,12 @@ StateBoyTerrain = [NodePath("TerrainBoy/Terrain"), NodePath("TerrainBoy/TerrainM
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("Player")]
 position = Vector2(307, 216)
+zoom = Vector2(1.5, 1.5)
 position_smoothing_speed = 10.0
 script = ExtResource("4_mx5ql")
 Player = NodePath("../Player")
 FollowOffset = Vector2(0, 100)
+Speed = 2.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D"]
 z_index = -10
@@ -37,6 +39,7 @@ color = Color(0.0109012, 0, 0.15625, 1)
 
 [node name="Player" parent="." instance=ExtResource("1")]
 position = Vector2(0, 328)
+MAXFALLSPEED = 2000.0
 
 [node name="SpawnPointManager" type="Node" parent="."]
 script = ExtResource("2_46tbh")
