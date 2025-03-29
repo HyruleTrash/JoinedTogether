@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class MenuQuitItem : MenuItem
+public partial class MenuQuitItem : MenuItem, IMenuItemTriggerable
 {
-    public override void TriggerItem()
+    public void TriggerItem()
     {
         GetTree().Quit();
     }

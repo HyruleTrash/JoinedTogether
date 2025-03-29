@@ -17,9 +17,4 @@ public partial class MenuItem : HBoxContainer
                 label.Text = newText;
         }
     }
-
-    public virtual void TriggerItem()
-    {
-        return;
-    }
 }

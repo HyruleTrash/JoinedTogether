@@ -1,11 +1,11 @@
 using Godot;
 using System;
 
-public partial class MenuSettingsItem : MenuItem
+public partial class MenuSettingsItem : MenuItem, IMenuItemTriggerable
 {
     [Export] private Label NotAvailable;
 
-    public override void TriggerItem()
+    public void TriggerItem()
     {
         this.NotAvailable.Visible = true;
         Timer t = new();

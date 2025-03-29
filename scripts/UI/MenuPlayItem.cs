@@ -1,12 +1,12 @@
 using Godot;
 using System;
 
-public partial class MenuPlayItem : MenuItem
+public partial class MenuPlayItem : MenuItem, IMenuItemTriggerable
 {
 	[Export]
 	private MainMenu MainMenu;
 
-	public override void TriggerItem()
+	public void TriggerItem()
 	{
 		GlobalData globalData = GetNode<GlobalData>("/root/GlobalData");
 		globalData.Level = globalData.OldLevel;

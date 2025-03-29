@@ -47,30 +47,36 @@ public partial class MainMenu : Node
 
     private void _MainMenuProcess()
     {
-        if (this.IsActive)
-        {
-            this.MainMenuUI.Visible = true;
-            if (Input.IsActionJustPressed("ESC"))
-                GetTree().Quit();
-            if (Input.IsActionJustPressed("DOWN"))
-            {
-                _changeSelectionSound.Play();
-                _UpdateChangeSelector(_currentSelectedIndex + 1);
-            }
-            if (Input.IsActionJustPressed("ui_up"))
-            {
-                _changeSelectionSound.Play();
-                _UpdateChangeSelector(_currentSelectedIndex - 1);
-            }
-            if (Input.IsActionJustPressed("ui_accept"))
-            {
-                _acceptSelectionSound.Play();
-                this.MainMenuItems[_currentSelectedIndex].TriggerItem();
-            }
-        }
-        else
+        if (!this.IsActive)
         {
             this.MainMenuUI.Visible = false;
+            return;
+        }
+
+        this.MainMenuUI.Visible = true;
+
+        if (Input.IsActionJustPressed("ESC"))
+            GetTree().Quit();
+
+        if (Input.IsActionJustPressed("DOWN"))
+        {
+            _changeSelectionSound.Play();
+            _UpdateChangeSelector(_currentSelectedIndex + 1);
+        }
+
+        if (Input.IsActionJustPressed("ui_up"))
+        {
+            _changeSelectionSound.Play();
+            _UpdateChangeSelector(_currentSelectedIndex - 1);
+        }
+
+        if (Input.IsActionJustPressed("ui_accept"))
+        {
+            _acceptSelectionSound.Play();
+            if (this.MainMenuItems[_currentSelectedIndex] is IMenuItemTriggerable menuItem)
+            {
+                menuItem.TriggerItem();
+            }
         }
     }
 
