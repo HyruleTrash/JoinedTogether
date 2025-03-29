@@ -17,11 +17,11 @@ public partial class DeathPlane : Area2D
     {
         if (body is Player player)
         {
-            player.Death();
+            player.Die();
         }
         if (body is Box box)
         {
-            box.Death();
+            box.Die();
         }
     }
 }

@@ -290,7 +290,7 @@ public partial class Player : CharacterBody2D
     /// <summary>
     /// Causes player's death logic
     /// </summary>
-    public void Death()
+    public void Die()
     {
         this._deathSound.Play();
         this.GlobalData.ReloadLevel?.Invoke();

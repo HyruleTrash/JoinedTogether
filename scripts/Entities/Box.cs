@@ -78,7 +78,7 @@ public partial class Box : RigidBody2D
     /// <summary>
     /// Causes box death logic
     /// </summary>
-    public void Death()
+    public void Die()
     {
         this._deathSound.Play();
         Respawn();
