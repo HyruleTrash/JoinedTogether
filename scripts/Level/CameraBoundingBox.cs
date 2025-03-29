@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 
 [Tool]
+/// <summary>
+/// Holds Camera constraints. or Bounding box, that will/can be applied to the player camera
+/// </summary>
 public partial class CameraBoundingBox : Node2D
 {
     public Bounds2D BoundingBox = new();
@@ -37,13 +40,18 @@ public partial class CameraBoundingBox : Node2D
 
     public override void _Process(double delta)
     {
-        QueueRedraw();
+        // trigger a draw when inside the editor
+        if (Engine.IsEditorHint())
+        {
+            QueueRedraw();
+        }
     }
 
     public override void _Draw()
     {
         if (Engine.IsEditorHint())
         {
+            // draw out the bounding box, for in editor visuals
             DrawLine(
                 new Vector2(this.BoundingBox.MinMaxX.X, this.BoundingBox.MinMaxY.X),
                 new Vector2(this.BoundingBox.MinMaxX.X, this.BoundingBox.MinMaxY.Y),
@@ -65,10 +73,5 @@ public partial class CameraBoundingBox : Node2D
                 Colors.Red
                 );
         }
-    }
-
-    public void UpdateDrawing()
-    {
-        QueueRedraw();
     }
 }

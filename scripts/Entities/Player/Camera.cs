@@ -18,6 +18,8 @@ public partial class Camera : Camera2D
         set
         {
             this._boundingBox = value;
+
+            // Also sets the Camera2D bounding box logic
             this.LimitTop = (int)MathF.Round(this._boundingBox.MinMaxY.X);
             this.LimitBottom = (int)MathF.Round(this._boundingBox.MinMaxY.Y);
             this.LimitLeft = (int)MathF.Round(this._boundingBox.MinMaxX.X);
@@ -27,6 +29,7 @@ public partial class Camera : Camera2D
 
     public override void _Process(double delta)
     {
+        // follow the player
         Vector2 newPosition = this.Position.Lerp(this.Player.Position - this.FollowOffset, (float)(delta * this.Speed));
         this.Position = newPosition;
     }

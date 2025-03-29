@@ -24,6 +24,7 @@ public partial class SubLevel : Node
     {
         base._Ready();
 
+        // Loads all buttons found in the current sublevel into an array, for exit/win condition
         List<Button> list = new();
         foreach (Node item in GetChildren())
         {
@@ -31,14 +32,17 @@ public partial class SubLevel : Node
             {
                 Button button = (Button)item;
                 list.Add(button);
-                button.IsPressedStateChanged += ButtonStateChanged;
+                button.IsPressedStateChanged += CheckExitCondition;
             }
         }
         Buttons = new(list.ToArray());
-        ButtonStateChanged();
+        CheckExitCondition();
     }
 
-    public void ButtonStateChanged()
+    /// <summary>
+    /// Triggers the logic for checking if the win/exit sublevel condition is reached
+    /// </summary>
+    public void CheckExitCondition()
     {
         bool WasUnpressedButtonFound = false;
         foreach (Button button in Buttons)

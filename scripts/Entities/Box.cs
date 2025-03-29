@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public partial class Box : RigidBody2D
 {
+    [Export]
+    public double RESPAWN_TIME = 0.1;
     public Level Level;
     private Vector2I _spawnPosition = new();
     [Export]
@@ -23,6 +25,7 @@ public partial class Box : RigidBody2D
             this.Level.NextLevelTriggered += UpdateState;
         }
 
+        // Make sure the box respawns when the level reload is triggered
         GlobalData globalData = GetNode<GlobalData>("/root/GlobalData");
         if (globalData != null)
         {
@@ -42,11 +45,18 @@ public partial class Box : RigidBody2D
         this.Freeze = this._freeze;
     }
 
+    /// <summary>
+    /// Checks if the box is currently inside the sublevel that the player is also in
+    /// </summary>
+    /// <returns></returns>
     private bool IsInsideCurrentSubLevel()
     {
         return this.Level.CameraBoundingBoxManager.Camera.BoundingBox.IsPointWithinBounds(this._spawnPosition);
     }
 
+    /// <summary>
+    /// Update's the physics state of the box
+    /// </summary>
     public void UpdateState()
     {
         if (IsInsideCurrentSubLevel())
@@ -62,12 +72,18 @@ public partial class Box : RigidBody2D
         }
     }
 
+    /// <summary>
+    /// Causes box death logic
+    /// </summary>
     public void Death()
     {
         this._deathSound.Play();
         Respawn();
     }
 
+    /// <summary>
+    /// Teleports the box to its respawn location, after a certain time period
+    /// </summary>
     public void Respawn()
     {
         this.Visible = false;
@@ -80,7 +96,7 @@ public partial class Box : RigidBody2D
 
         // Respawn timer
         Timer t = new();
-        t.SetWaitTime(0.1);
+        t.SetWaitTime(RESPAWN_TIME);
         t.SetOneShot(true);
         this.AddChild(t);
         t.Start();

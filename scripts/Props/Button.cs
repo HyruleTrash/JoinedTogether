@@ -40,6 +40,9 @@ public partial class Button : Area2D
         UpdateOverlapLogic();
     }
 
+    /// <summary>
+    /// Sets the button to the correct state depending on what is overlapping it
+    /// </summary>
     private void UpdateOverlapLogic()
     {
         Godot.Collections.Array<Node2D> bodies = GetOverlappingBodies();

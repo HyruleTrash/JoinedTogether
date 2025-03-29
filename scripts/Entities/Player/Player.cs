@@ -69,7 +69,11 @@ public partial class Player : CharacterBody2D
         CorrectStates();
     }
 
-    private bool _ShouldRun()
+    /// <summary>
+    /// Returns if the player logic should be processing
+    /// </summary>
+    /// <returns>a boolean, that when true means that the process function should proceed with its logic</returns>
+    private bool _ShouldProcess()
     {
         return (
             this._animatedSprite2D != null &&
@@ -82,15 +86,15 @@ public partial class Player : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        if (!_ShouldRun())
+        if (!_ShouldProcess())
             return;
 
-        if (Input.IsActionJustPressed("R"))
+        if (Input.IsActionJustPressed("R")) // reload level
         {
             this.DoorSound.Play();
             this.GlobalData.ReloadLevel?.Invoke();
         }
-        if (Input.IsActionJustPressed("DOWN"))
+        if (Input.IsActionJustPressed("DOWN")) // change level layout/state
         {
             SwitchStates();
             this._changeSound.Play();
@@ -280,12 +284,18 @@ public partial class Player : CharacterBody2D
         }
     }
 
+    /// <summary>
+    /// Causes player's death logic
+    /// </summary>
     public void Death()
     {
         this._deathSound.Play();
         this.GlobalData.ReloadLevel?.Invoke();
     }
 
+    /// <summary>
+    /// Teleports the player to its respawn location
+    /// </summary>
     public void Respawn()
     {
         this.GlobalPosition = this.GlobalData.MainMenu.LevelOneInstance.CurrentSpawnPoint;

@@ -6,11 +6,9 @@ using System.Collections.Generic;
 public partial class CameraBoundingBoxManager : Node
 {
     [Export]
-    public Array<CameraBoundingBox> BoundingBoxes = new();
+    public Array<CameraBoundingBox> BoundingBoxes = new(); // this array is used and accesed using the sub level index
     [Export]
     public Camera Camera;
-
-    public Callable LoadBoundingBoxesButton => Callable.From(LoadBoundingBoxes);
 
     public override void _Ready()
     {
@@ -25,6 +23,9 @@ public partial class CameraBoundingBoxManager : Node
         }
     }
 
+    /// <summary>
+    /// Loads the Camera bounding boxes into an array.
+    /// </summary>
     public void LoadBoundingBoxes()
     {
         List<CameraBoundingBox> list = new();
