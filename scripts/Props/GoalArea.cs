@@ -66,7 +66,7 @@ public partial class GoalArea : AnimatedSprite2D
             this.SubLevel.IsCompleted
         )
         {
-            this._player.DoorSound.Play();
+            this._player.PlayerSounds.DoorSound.Play();
             this.Level.SetNextLevel();
             this._player.Respawn();
             this._isActive = false;

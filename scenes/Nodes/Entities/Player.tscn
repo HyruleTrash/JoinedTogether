@@ -1,13 +1,26 @@
-[gd_scene load_steps=22 format=3 uid="uid://uidt6td2auk8"]
+[gd_scene load_steps=28 format=3 uid="uid://uidt6td2auk8"]
 
 [ext_resource type="Script" uid="uid://8patcmj3sojx" path="res://Scripts/Entities/Player/Player.cs" id="1_uro0h"]
 [ext_resource type="Texture2D" uid="uid://qc5qg7e2fvnw" path="res://Art/Sprites/Entities/Player/Girl.png" id="2"]
+[ext_resource type="Script" uid="uid://2tb66cx7ae8o" path="res://Scripts/Entities/Player/PlayerAnimator.cs" id="2_4dhoa"]
 [ext_resource type="Texture2D" uid="uid://brsyk00m4x7lm" path="res://Art/Sprites/Entities/Player/Boy.png" id="3"]
 [ext_resource type="AudioStream" uid="uid://ctsqnlafa4gcp" path="res://Art/Soundeffects/Step.wav" id="4"]
 [ext_resource type="AudioStream" uid="uid://bejlxmsyrk0ys" path="res://Art/Soundeffects/DeathSound.wav" id="5"]
+[ext_resource type="Script" uid="uid://cefya8iob5kby" path="res://Scripts/Entities/Player/PlayerMovement.cs" id="5_fi0no"]
 [ext_resource type="AudioStream" uid="uid://dfjekxwemcxdu" path="res://Art/Soundeffects/Change_sound.wav" id="6"]
+[ext_resource type="Script" uid="uid://dg0kgho3ouwgs" path="res://Scripts/Entities/Player/PlayerPush.cs" id="6_a4lq4"]
 [ext_resource type="AudioStream" uid="uid://u3am036rhlg3" path="res://Art/Soundeffects/Jump.wav" id="7"]
+[ext_resource type="Script" uid="uid://jujtx275pft3" path="res://Scripts/Entities/Player/PlayerRespawner.cs" id="7_ywcy6"]
 [ext_resource type="AudioStream" uid="uid://ch4lqmsq1yaok" path="res://Art/Soundeffects/Door.wav" id="8_7c5u7"]
+[ext_resource type="Script" uid="uid://l2dmhv0wnks2" path="res://Scripts/Entities/Player/PlayerState.cs" id="8_nplds"]
+[ext_resource type="Script" uid="uid://2cmyneorfgdu" path="res://Scripts/Entities/Player/PlayerSounds.cs" id="9_56mmk"]
+
+[sub_resource type="CapsuleShape2D" id="12"]
+radius = 13.4969
+height = 40.9813
+
+[sub_resource type="OccluderPolygon2D" id="13"]
+polygon = PackedVector2Array(-5.86976, 15.0307, -5.86976, 20.8295, 10.4562, 21.0079, 10.4562, 16.5473, 7.51214, 16.5473, 7.51214, 13.6925, 10.4562, 13.6925, 10.4562, 9.05341, 9.02875, 9.05341, 9.02875, 6.1986, 7.51214, 6.10939, 7.42292, 4.59278, 10.3669, 4.59278, 10.3669, 2.98695, 12.062, 3.07616, 12.062, 0.132143, 13.4002, 0.0429287, 13.4002, -2.90109, 12.062, -2.90109, 12.062, -6.02353, 13.4002, -6.02353, 15.006, -7.45093, 15.006, -11.8224, 13.5786, -12.8929, 16.701, -15.034, 16.6118, -16.3722, 15.1844, -16.4614, 14.1139, -15.034, 13.4894, -16.4614, 6.70922, -20.0299, 4.03284, -18.0672, 2.24859, -18.0672, 1.53489, -19.5839, -0.784641, -21.8142, -1.40913, -20.8328, -2.92574, -18.0672, -4.53157, -19.6731, -7.83244, -19.5839, -8.90299, -21.0113, -10.4196, -20.922, -10.3304, -19.5839, -8.9922, -18.1565, -10.5088, -18.0672, -11.9362, -16.4614, -12.0254, -15.1232, -13.4528, -16.4614, -14.8802, -16.3722, -14.8802, -15.034, -13.6313, -13.785, -13.6313, -12.1792, -14.9695, -12.09, -14.9695, -9.05676, -18.0919, -9.05676, -18.0027, -7.80778, -15.0587, -7.62936, -14.8802, -6.02353, -13.7205, -4.59613, -14.9695, -2.9903, -18.1811, -1.29526, -18.0919, 0.0429287, -13.6313, 2.89773, -11.9362, 2.89773, -11.4009, 1.55955, -9.70591, 4.50356, -12.1146, 4.50356, -12.1146, 7.26916, -10.598, 8.87498, -7.5648, 8.87498, -9.08142, 10.4808, -8.9922, 15.0307)
 
 [sub_resource type="AtlasTexture" id="3"]
 atlas = ExtResource("3")
@@ -122,31 +135,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="12"]
-radius = 13.4969
-height = 40.9813
-
-[sub_resource type="OccluderPolygon2D" id="13"]
-polygon = PackedVector2Array(-5.86976, 15.0307, -5.86976, 20.8295, 10.4562, 21.0079, 10.4562, 16.5473, 7.51214, 16.5473, 7.51214, 13.6925, 10.4562, 13.6925, 10.4562, 9.05341, 9.02875, 9.05341, 9.02875, 6.1986, 7.51214, 6.10939, 7.42292, 4.59278, 10.3669, 4.59278, 10.3669, 2.98695, 12.062, 3.07616, 12.062, 0.132143, 13.4002, 0.0429287, 13.4002, -2.90109, 12.062, -2.90109, 12.062, -6.02353, 13.4002, -6.02353, 15.006, -7.45093, 15.006, -11.8224, 13.5786, -12.8929, 16.701, -15.034, 16.6118, -16.3722, 15.1844, -16.4614, 14.1139, -15.034, 13.4894, -16.4614, 6.70922, -20.0299, 4.03284, -18.0672, 2.24859, -18.0672, 1.53489, -19.5839, -0.784641, -21.8142, -1.40913, -20.8328, -2.92574, -18.0672, -4.53157, -19.6731, -7.83244, -19.5839, -8.90299, -21.0113, -10.4196, -20.922, -10.3304, -19.5839, -8.9922, -18.1565, -10.5088, -18.0672, -11.9362, -16.4614, -12.0254, -15.1232, -13.4528, -16.4614, -14.8802, -16.3722, -14.8802, -15.034, -13.6313, -13.785, -13.6313, -12.1792, -14.9695, -12.09, -14.9695, -9.05676, -18.0919, -9.05676, -18.0027, -7.80778, -15.0587, -7.62936, -14.8802, -6.02353, -13.7205, -4.59613, -14.9695, -2.9903, -18.1811, -1.29526, -18.0919, 0.0429287, -13.6313, 2.89773, -11.9362, 2.89773, -11.4009, 1.55955, -9.70591, 4.50356, -12.1146, 4.50356, -12.1146, 7.26916, -10.598, 8.87498, -7.5648, 8.87498, -9.08142, 10.4808, -8.9922, 15.0307)
-
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animatedSprite2D", "_deathSound", "_changeSound", "_jumpSound", "_stepSound", "DoorSound") groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 22
 script = ExtResource("1_uro0h")
-MAXFALLSPEED = 500.0
-SPEED = 170.0
-JUMPFORCE = 600.0
-Weight = 3.0
-_animatedSprite2D = NodePath("AnimatedSprite2D")
-_deathSound = NodePath("DeathSound")
-_changeSound = NodePath("ChangeSound")
-_jumpSound = NodePath("JumpSound")
-_stepSound = NodePath("StepSound2D")
-DoorSound = NodePath("DoorSound")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("11")
-animation = &"FallBoy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.503113, 1.50935)
@@ -155,22 +146,55 @@ shape = SubResource("12")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("13")
 
-[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+[node name="Animator" type="Node2D" parent="." node_paths=PackedStringArray("AnimatedSprite2D")]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_4dhoa")
+AnimatedSprite2D = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animator"]
+sprite_frames = SubResource("11")
+animation = &"FallBoy"
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("5_fi0no")
+MAXFALLSPEED = 500.0
+SPEED = 170.0
+JUMPFORCE = 600.0
+Weight = 3.0
+
+[node name="Push" type="Node" parent="."]
+script = ExtResource("6_a4lq4")
+
+[node name="Respawner" type="Node" parent="."]
+script = ExtResource("7_ywcy6")
+
+[node name="State" type="Node" parent="."]
+script = ExtResource("8_nplds")
+
+[node name="Sounds" type="Node2D" parent="." node_paths=PackedStringArray("_deathSound", "_changeSound", "_jumpSound", "_stepSound", "DoorSound")]
+script = ExtResource("9_56mmk")
+_deathSound = NodePath("DeathSound")
+_changeSound = NodePath("ChangeSound")
+_jumpSound = NodePath("JumpSound")
+_stepSound = NodePath("StepSound2D")
+DoorSound = NodePath("DoorSound")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("5")
 volume_db = -1.0
 
-[node name="ChangeSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ChangeSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("6")
 
-[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("7")
 
-[node name="StepSound2D" type="AudioStreamPlayer2D" parent="."]
+[node name="StepSound2D" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("4")
 volume_db = -12.116
 
-[node name="DoorSound" type="AudioStreamPlayer2D" parent="."]
+[node name="DoorSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("8_7c5u7")
 volume_db = -1.0
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="Animator/AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]

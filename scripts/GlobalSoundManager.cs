@@ -41,7 +41,7 @@ public partial class GlobalSoundManager : Node2D
 		// main music
 		if (this.MusicPlayer.Playing == false && this.GlobalData.MainMenu.IsActive == false)
 		{
-			if (this.GlobalData.Player.IsInGirlState)
+			if (this.GlobalData.Player.PlayerState.IsInGirlState)
 			{
 				this.MusicPlayer.Play();
 			}
