@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://uu3actw6snjt"]
+[gd_scene load_steps=24 format=4 uid="uid://uu3actw6snjt"]
 
 [ext_resource type="PackedScene" uid="uid://uidt6td2auk8" path="res://Scenes/Nodes/Entities/Player.tscn" id="1"]
 [ext_resource type="Script" uid="uid://46sidkag5stm" path="res://Scripts/Level/Level.cs" id="1_kudbp"]
@@ -12,12 +12,350 @@
 [ext_resource type="PackedScene" uid="uid://ct5xm4feuq8ys" path="res://Scenes/Nodes/Door.tscn" id="7_sys8i"]
 [ext_resource type="PackedScene" uid="uid://qvvdjfoeo2ci" path="res://Scenes/Nodes/Button.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://bf8m3gucwvo72" path="res://Scenes/Nodes/Entities/Box.tscn" id="11"]
+[ext_resource type="Texture2D" uid="uid://fxyqm5j0pffe" path="res://ThirdParty/Art/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0088.png" id="11_x76w5"]
+[ext_resource type="Texture2D" uid="uid://bfpjln7ik2c1o" path="res://ThirdParty/Art/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0086.png" id="13_evelc"]
+[ext_resource type="Texture2D" uid="uid://md58wkw7g5f8" path="res://ThirdParty/Art/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0121.png" id="14_0gt2n"]
+[ext_resource type="Texture2D" uid="uid://bph35ca86gt5y" path="res://ThirdParty/Art/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0122.png" id="15_x76w5"]
+[ext_resource type="Texture2D" uid="uid://bqe7x0yx1iguy" path="res://ThirdParty/Art/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0166.png" id="16_4ni1j"]
+[ext_resource type="Texture2D" uid="uid://2hs3u1t0u4w5" path="res://ThirdParty/Art/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0167.png" id="17_t1xnt"]
+[ext_resource type="Texture2D" uid="uid://cdna8ugd4rnob" path="res://ThirdParty/Art/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0168.png" id="18_w2smt"]
+[ext_resource type="Texture2D" uid="uid://dgqxfxsyo1n6p" path="res://ThirdParty/Art/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0169.png" id="19_6780p"]
+[ext_resource type="Texture2D" uid="uid://w8mrh7tngbjp" path="res://ThirdParty/Art/kenney_1-bit-input-prompts-pixel-16/Tiles (White)/tile_0120.png" id="20_chhd3"]
+[ext_resource type="FontFile" uid="uid://cmgjrgheilwfx" path="res://Art/Fonts/FixelGlyphes copy.ttf" id="21_0gt2n"]
+
+[sub_resource type="FontFile" id="FontFile_x76w5"]
+fallbacks = Array[Font]([ExtResource("21_0gt2n")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/2/0/ascent = 0.0
+cache/0/2/0/descent = 0.0
+cache/0/2/0/underline_position = 0.0
+cache/0/2/0/underline_thickness = 0.0
+cache/0/2/0/scale = 1.0
+cache/0/3/0/ascent = 0.0
+cache/0/3/0/descent = 0.0
+cache/0/3/0/underline_position = 0.0
+cache/0/3/0/underline_thickness = 0.0
+cache/0/3/0/scale = 1.0
+cache/0/4/0/ascent = 0.0
+cache/0/4/0/descent = 0.0
+cache/0/4/0/underline_position = 0.0
+cache/0/4/0/underline_thickness = 0.0
+cache/0/4/0/scale = 1.0
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/6/0/ascent = 0.0
+cache/0/6/0/descent = 0.0
+cache/0/6/0/underline_position = 0.0
+cache/0/6/0/underline_thickness = 0.0
+cache/0/6/0/scale = 1.0
+cache/0/7/0/ascent = 0.0
+cache/0/7/0/descent = 0.0
+cache/0/7/0/underline_position = 0.0
+cache/0/7/0/underline_thickness = 0.0
+cache/0/7/0/scale = 1.0
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
+cache/0/9/0/ascent = 0.0
+cache/0/9/0/descent = 0.0
+cache/0/9/0/underline_position = 0.0
+cache/0/9/0/underline_thickness = 0.0
+cache/0/9/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/11/0/ascent = 0.0
+cache/0/11/0/descent = 0.0
+cache/0/11/0/underline_position = 0.0
+cache/0/11/0/underline_thickness = 0.0
+cache/0/11/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/13/0/ascent = 0.0
+cache/0/13/0/descent = 0.0
+cache/0/13/0/underline_position = 0.0
+cache/0/13/0/underline_thickness = 0.0
+cache/0/13/0/scale = 1.0
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+cache/0/15/0/ascent = 0.0
+cache/0/15/0/descent = 0.0
+cache/0/15/0/underline_position = 0.0
+cache/0/15/0/underline_thickness = 0.0
+cache/0/15/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/19/0/ascent = 0.0
+cache/0/19/0/descent = 0.0
+cache/0/19/0/underline_position = 0.0
+cache/0/19/0/underline_thickness = 0.0
+cache/0/19/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/21/0/ascent = 0.0
+cache/0/21/0/descent = 0.0
+cache/0/21/0/underline_position = 0.0
+cache/0/21/0/underline_thickness = 0.0
+cache/0/21/0/scale = 1.0
+cache/0/22/0/ascent = 0.0
+cache/0/22/0/descent = 0.0
+cache/0/22/0/underline_position = 0.0
+cache/0/22/0/underline_thickness = 0.0
+cache/0/22/0/scale = 1.0
+cache/0/23/0/ascent = 0.0
+cache/0/23/0/descent = 0.0
+cache/0/23/0/underline_position = 0.0
+cache/0/23/0/underline_thickness = 0.0
+cache/0/23/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/26/0/ascent = 0.0
+cache/0/26/0/descent = 0.0
+cache/0/26/0/underline_position = 0.0
+cache/0/26/0/underline_thickness = 0.0
+cache/0/26/0/scale = 1.0
+cache/0/27/0/ascent = 0.0
+cache/0/27/0/descent = 0.0
+cache/0/27/0/underline_position = 0.0
+cache/0/27/0/underline_thickness = 0.0
+cache/0/27/0/scale = 1.0
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
+cache/0/29/0/ascent = 0.0
+cache/0/29/0/descent = 0.0
+cache/0/29/0/underline_position = 0.0
+cache/0/29/0/underline_thickness = 0.0
+cache/0/29/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/31/0/ascent = 0.0
+cache/0/31/0/descent = 0.0
+cache/0/31/0/underline_position = 0.0
+cache/0/31/0/underline_thickness = 0.0
+cache/0/31/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/33/0/ascent = 0.0
+cache/0/33/0/descent = 0.0
+cache/0/33/0/underline_position = 0.0
+cache/0/33/0/underline_thickness = 0.0
+cache/0/33/0/scale = 1.0
+cache/0/34/0/ascent = 0.0
+cache/0/34/0/descent = 0.0
+cache/0/34/0/underline_position = 0.0
+cache/0/34/0/underline_thickness = 0.0
+cache/0/34/0/scale = 1.0
+cache/0/35/0/ascent = 0.0
+cache/0/35/0/descent = 0.0
+cache/0/35/0/underline_position = 0.0
+cache/0/35/0/underline_thickness = 0.0
+cache/0/35/0/scale = 1.0
+cache/0/36/0/ascent = 0.0
+cache/0/36/0/descent = 0.0
+cache/0/36/0/underline_position = 0.0
+cache/0/36/0/underline_thickness = 0.0
+cache/0/36/0/scale = 1.0
+cache/0/37/0/ascent = 0.0
+cache/0/37/0/descent = 0.0
+cache/0/37/0/underline_position = 0.0
+cache/0/37/0/underline_thickness = 0.0
+cache/0/37/0/scale = 1.0
+cache/0/38/0/ascent = 0.0
+cache/0/38/0/descent = 0.0
+cache/0/38/0/underline_position = 0.0
+cache/0/38/0/underline_thickness = 0.0
+cache/0/38/0/scale = 1.0
+cache/0/39/0/ascent = 0.0
+cache/0/39/0/descent = 0.0
+cache/0/39/0/underline_position = 0.0
+cache/0/39/0/underline_thickness = 0.0
+cache/0/39/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/41/0/ascent = 0.0
+cache/0/41/0/descent = 0.0
+cache/0/41/0/underline_position = 0.0
+cache/0/41/0/underline_thickness = 0.0
+cache/0/41/0/scale = 1.0
+cache/0/42/0/ascent = 0.0
+cache/0/42/0/descent = 0.0
+cache/0/42/0/underline_position = 0.0
+cache/0/42/0/underline_thickness = 0.0
+cache/0/42/0/scale = 1.0
+cache/0/43/0/ascent = 0.0
+cache/0/43/0/descent = 0.0
+cache/0/43/0/underline_position = 0.0
+cache/0/43/0/underline_thickness = 0.0
+cache/0/43/0/scale = 1.0
+cache/0/44/0/ascent = 0.0
+cache/0/44/0/descent = 0.0
+cache/0/44/0/underline_position = 0.0
+cache/0/44/0/underline_thickness = 0.0
+cache/0/44/0/scale = 1.0
+cache/0/45/0/ascent = 0.0
+cache/0/45/0/descent = 0.0
+cache/0/45/0/underline_position = 0.0
+cache/0/45/0/underline_thickness = 0.0
+cache/0/45/0/scale = 1.0
+cache/0/46/0/ascent = 0.0
+cache/0/46/0/descent = 0.0
+cache/0/46/0/underline_position = 0.0
+cache/0/46/0/underline_thickness = 0.0
+cache/0/46/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
 
 [node name="Level-1" type="Node2D" node_paths=PackedStringArray("Player", "StateGirlTerrain", "StateBoyTerrain")]
 script = ExtResource("1_kudbp")
 Player = NodePath("Player")
 StateGirlTerrain = [NodePath("TerrainGirl/Terrain"), NodePath("TerrainGirl/TerrainMiscEntities"), NodePath("TerrainGirl/TerrainPlayer"), NodePath("TerrainGirl/NonTerrain")]
 StateBoyTerrain = [NodePath("TerrainBoy/Terrain"), NodePath("TerrainBoy/TerrainMiscEntities"), NodePath("TerrainBoy/TerrainPlayer"), NodePath("TerrainBoy/NonTerrain")]
+
+[node name="InGameUI" type="Node2D" parent="."]
+
+[node name="Section_1" type="Node2D" parent="InGameUI"]
+
+[node name="Tile0086" type="Sprite2D" parent="InGameUI/Section_1"]
+position = Vector2(80, 256)
+texture = ExtResource("13_evelc")
+
+[node name="Tile0121" type="Sprite2D" parent="InGameUI/Section_1"]
+position = Vector2(80, 272)
+texture = ExtResource("14_0gt2n")
+
+[node name="Tile0122" type="Sprite2D" parent="InGameUI/Section_1"]
+position = Vector2(96, 272)
+texture = ExtResource("15_x76w5")
+
+[node name="Tile0166" type="Sprite2D" parent="InGameUI/Section_1"]
+position = Vector2(144, 256)
+texture = ExtResource("16_4ni1j")
+
+[node name="Tile0167" type="Sprite2D" parent="InGameUI/Section_1"]
+position = Vector2(160, 272)
+texture = ExtResource("17_t1xnt")
+
+[node name="Tile0168" type="Sprite2D" parent="InGameUI/Section_1"]
+position = Vector2(144, 272)
+texture = ExtResource("18_w2smt")
+
+[node name="Tile0169" type="Sprite2D" parent="InGameUI/Section_1"]
+position = Vector2(128, 272)
+texture = ExtResource("19_6780p")
+
+[node name="Tile0120" type="Sprite2D" parent="InGameUI/Section_1"]
+position = Vector2(64, 272)
+texture = ExtResource("20_chhd3")
+
+[node name="TutorialText" type="Label" parent="InGameUI/Section_1"]
+offset_left = 56.0
+offset_top = 226.0
+offset_right = 168.0
+offset_bottom = 258.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_x76w5")
+theme_override_font_sizes/font_size = 16
+text = "Movement:"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Section_2" type="Node2D" parent="InGameUI"]
+
+[node name="Tile0123" type="Sprite2D" parent="InGameUI/Section_2"]
+position = Vector2(271, 278)
+texture = ExtResource("14_0gt2n")
+
+[node name="Line2D" type="Line2D" parent="InGameUI/Section_2"]
+position = Vector2(282, 282)
+points = PackedVector2Array(8, -8, -8, 8)
+width = 2.0
+
+[node name="Tile0170" type="Sprite2D" parent="InGameUI/Section_2"]
+position = Vector2(294, 288)
+texture = ExtResource("18_w2smt")
+
+[node name="TutorialText" type="Label" parent="InGameUI/Section_2"]
+offset_left = 218.0
+offset_top = 304.0
+offset_right = 352.0
+offset_bottom = 336.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_x76w5")
+theme_override_font_sizes/font_size = 16
+text = "Switch layout:"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Section_3" type="Node2D" parent="InGameUI"]
+
+[node name="Tile0088" type="Sprite2D" parent="InGameUI/Section_3"]
+position = Vector2(1920, 256)
+texture = ExtResource("11_x76w5")
+
+[node name="TutorialText" type="Label" parent="InGameUI/Section_3"]
+offset_left = 1934.0
+offset_top = 250.0
+offset_right = 2068.0
+offset_bottom = 282.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_x76w5")
+theme_override_font_sizes/font_size = 16
+text = "To restart"
+uppercase = true
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("Player")]
 position = Vector2(307, 216)
@@ -39,10 +377,6 @@ color = Color(0.0109012, 0, 0.15625, 1)
 
 [node name="Player" parent="." instance=ExtResource("1")]
 position = Vector2(0, 328)
-MAXFALLSPEED = 500.0
-SPEED = 170.0
-JUMPFORCE = 600.0
-Weight = 3.0
 
 [node name="SpawnPointManager" type="Node" parent="."]
 script = ExtResource("2_46tbh")

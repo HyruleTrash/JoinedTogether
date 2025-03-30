@@ -73,7 +73,7 @@ public partial class MainMenu : Node
             _UpdateChangeSelector(_currentSelectedIndex - 1);
         }
 
-        if (Input.IsActionJustPressed("ui_accept"))
+        if (Input.IsActionJustPressed("UI_ACCEPT"))
         {
             _acceptSelectionSound.Play();
             if (this.MainMenuItems[_currentSelectedIndex] is IMenuItemTriggerable menuItem)
