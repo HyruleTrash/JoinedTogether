@@ -565,6 +565,7 @@ position = Vector2(2212.06, 359.552)
 
 [node name="Box3" parent="SubLevelHolder/SubLevel-3" instance=ExtResource("11")]
 position = Vector2(1947.78, 349.306)
+RESPAWN_TIME = null
 
 [node name="SubLevel-4" type="Node2D" parent="SubLevelHolder"]
 script = ExtResource("2_l54jy")
@@ -577,6 +578,7 @@ position = Vector2(0, -32.71)
 
 [node name="Box3,5" parent="SubLevelHolder/SubLevel-4" instance=ExtResource("11")]
 position = Vector2(2180, 543.21)
+RESPAWN_TIME = null
 
 [node name="DeathArea2D" parent="SubLevelHolder/SubLevel-4" instance=ExtResource("7_e8lge")]
 position = Vector2(2048.76, 971)
@@ -593,6 +595,7 @@ position = Vector2(3300, 336)
 
 [node name="Box4" parent="SubLevelHolder/SubLevel-5" instance=ExtResource("11")]
 position = Vector2(2956.28, -3.08897)
+RESPAWN_TIME = null
 
 [node name="DeathArea2D" parent="SubLevelHolder/SubLevel-5" instance=ExtResource("7_e8lge")]
 position = Vector2(2959, 458)
@@ -609,6 +612,7 @@ position = Vector2(4192, 336)
 
 [node name="Box5" parent="SubLevelHolder/SubLevel-6" instance=ExtResource("11")]
 position = Vector2(3844.13, 358.623)
+RESPAWN_TIME = null
 
 [node name="SubLevel-7" type="Node2D" parent="SubLevelHolder"]
 script = ExtResource("2_l54jy")
@@ -621,6 +625,7 @@ position = Vector2(0, -42.855)
 
 [node name="Box6" parent="SubLevelHolder/SubLevel-7" instance=ExtResource("11")]
 position = Vector2(4944.6, 295.219)
+RESPAWN_TIME = null
 
 [node name="DeathArea2D" parent="SubLevelHolder/SubLevel-7" instance=ExtResource("7_e8lge")]
 position = Vector2(4738, 491)
@@ -637,6 +642,7 @@ position = Vector2(0, -42.7)
 
 [node name="Box7" parent="SubLevelHolder/SubLevel-8" instance=ExtResource("11")]
 position = Vector2(5402.05, 197.224)
+RESPAWN_TIME = null
 
 [node name="DeathArea2D" parent="SubLevelHolder/SubLevel-8" instance=ExtResource("7_e8lge")]
 position = Vector2(5604, 491)

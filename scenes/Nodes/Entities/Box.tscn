@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf8m3gucwvo72"]
+[gd_scene load_steps=13 format=3 uid="uid://bf8m3gucwvo72"]
 
 [ext_resource type="Texture2D" uid="uid://d2spfa6dr65sy" path="res://Art/Sprites/Entities/Box.png" id="1"]
-[ext_resource type="Script" uid="uid://b3qmc70yxj4q4" path="res://Scripts/Entities/Box.cs" id="1_lyxrv"]
+[ext_resource type="Script" uid="uid://b3qmc70yxj4q4" path="res://Scripts/Entities/Box/Box.cs" id="1_n13yd"]
 [ext_resource type="PackedScene" uid="uid://dlvvwntt33tat" path="res://Scenes/Nodes/Entities/BoxParticles2D.tscn" id="2_dxyb8"]
+[ext_resource type="Script" uid="uid://dqyfhuxl1fcys" path="res://Scripts/Entities/Box/BoxRespawner.cs" id="2_vxrr2"]
 [ext_resource type="AudioStream" uid="uid://bejlxmsyrk0ys" path="res://Art/Soundeffects/DeathSound.wav" id="3"]
+[ext_resource type="Script" uid="uid://c4htxvo4kqu7f" path="res://Scripts/Entities/Box/BoxLevelTracker.cs" id="5_6rgyx"]
+[ext_resource type="Script" uid="uid://d3fjhgg71op7m" path="res://Scripts/Entities/Box/BoxStateMachine.cs" id="6_c1umc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6u6i4"]
 bounce = 0.3
@@ -20,14 +23,26 @@ size = Vector2(32, 48)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rvqb5"]
 radius = 8.0
 
-[node name="Box" type="RigidBody2D" node_paths=PackedStringArray("_deathSound") groups=["box"]]
+[node name="Box" type="RigidBody2D" groups=["box"]]
 collision_layer = 2
 collision_mask = 27
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_6u6i4")
-script = ExtResource("1_lyxrv")
+script = ExtResource("1_n13yd")
+
+[node name="BoxRespawnLogic" type="Node2D" parent="." node_paths=PackedStringArray("_deathSound")]
+script = ExtResource("2_vxrr2")
 _deathParticleEffect = ExtResource("2_dxyb8")
 _deathSound = NodePath("AudioStreamPlayer2D")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BoxRespawnLogic"]
+stream = ExtResource("3")
+
+[node name="LevelTracker" type="Node" parent="."]
+script = ExtResource("5_6rgyx")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("6_c1umc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
@@ -35,9 +50,6 @@ texture = ExtResource("1")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("1")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
