@@ -1,64 +1,64 @@
 using Godot;
 using System;
-using System.Collections.Generic;
 
 /// <summary>
-/// Handles the player's states, and their switching logic
+/// A class that represents the player's animation state.
+/// Used for carrying the references to both the boy and girl animations. Or in other words, its states
 /// </summary>
-public partial class PlayerState : PlayerComponent
+public class PlayerState
 {
-    [Export]
-    public bool IsInGirlState = false;
-    public string JumpState;
-    public string IdleState;
-    public string FallState;
-    public string WalkState;
-    [Signal]
-    public delegate void OnStateSwitchedEventHandler();
+    public string AnimationReferenceOne;
+    public string AnimationReferenceTwo;
+    public string CurrentAnimationReference;
 
-    public override void _Ready()
+    public PlayerState() : this("") { }
+
+    public PlayerState(string referenceOne)
     {
-        base._Ready();
-        this._playerBody.PlayerState = this;
-        CorrectStates();
+        AnimationReferenceOne = referenceOne;
+        AnimationReferenceTwo = "";
+        CurrentAnimationReference = referenceOne;
     }
 
-    protected override void _ProcessComponent(double delta)
+    public PlayerState(string referenceOne, string referenceTwo) : this(referenceOne)
     {
-        if (Input.IsActionJustPressed("DOWN")) // change level layout/state
-        {
-            SwitchStates();
-        }
+        AnimationReferenceTwo = referenceTwo;
+    }
+
+    public static implicit operator Godot.StringName(PlayerState state)
+    {
+        return state.CurrentAnimationReference;
     }
 
     /// <summary>
-    /// Switched the player state between boy and girl
+    /// Gets the current state of the animation
+    /// </summary>
+    /// <returns>a reference(by name) towards the applicable animation</returns>
+    public string GetState()
+    {
+        return CurrentAnimationReference;
+    }
+
+    /// <summary>
+    /// Switches the currently used state reference, with the other set reference
     /// </summary>
     public void SwitchStates()
     {
-        this.IsInGirlState = !this.IsInGirlState;
-        CorrectStates();
-        EmitSignal(SignalName.OnStateSwitched);
+        if (CurrentAnimationReference == AnimationReferenceOne)
+            CurrentAnimationReference = AnimationReferenceTwo;
+        else
+            CurrentAnimationReference = AnimationReferenceOne;
     }
 
     /// <summary>
-    /// Corrects the animation names, based on the set state
+    /// Sets the state to the first or second reference
     /// </summary>
-    public void CorrectStates()
+    /// <param name="state">A bool that indicates the first or sencond state</param>
+    public void SetState(bool state)
     {
-        if (!this.IsInGirlState)
-        {
-            this.JumpState = "JumpGirl";
-            this.IdleState = "IdleGirl";
-            this.FallState = "FallGirl";
-            this.WalkState = "WalkGirl";
-        }
+        if (state)
+            CurrentAnimationReference = AnimationReferenceTwo;
         else
-        {
-            this.JumpState = "JumpBoy";
-            this.IdleState = "IdleBoy";
-            this.FallState = "FallBoy";
-            this.WalkState = "WalkBoy";
-        }
+            CurrentAnimationReference = AnimationReferenceOne;
     }
 }

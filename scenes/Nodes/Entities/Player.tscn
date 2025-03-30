@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8patcmj3sojx" path="res://Scripts/Entities/Player/Player.cs" id="1_uro0h"]
 [ext_resource type="Texture2D" uid="uid://qc5qg7e2fvnw" path="res://Art/Sprites/Entities/Player/Girl.png" id="2"]
-[ext_resource type="Script" uid="uid://2tb66cx7ae8o" path="res://Scripts/Entities/Player/PlayerAnimator.cs" id="2_4dhoa"]
+[ext_resource type="Script" uid="uid://pu0qxqu7uh17" path="res://Scripts/Entities/Player/PlayerAnimator.cs" id="2_4dhoa"]
 [ext_resource type="Texture2D" uid="uid://brsyk00m4x7lm" path="res://Art/Sprites/Entities/Player/Boy.png" id="3"]
 [ext_resource type="AudioStream" uid="uid://ctsqnlafa4gcp" path="res://Art/Soundeffects/Step.wav" id="4"]
 [ext_resource type="AudioStream" uid="uid://bejlxmsyrk0ys" path="res://Art/Soundeffects/DeathSound.wav" id="5"]
@@ -11,8 +11,8 @@
 [ext_resource type="Script" uid="uid://dg0kgho3ouwgs" path="res://Scripts/Entities/Player/PlayerPush.cs" id="6_a4lq4"]
 [ext_resource type="AudioStream" uid="uid://u3am036rhlg3" path="res://Art/Soundeffects/Jump.wav" id="7"]
 [ext_resource type="Script" uid="uid://jujtx275pft3" path="res://Scripts/Entities/Player/PlayerRespawner.cs" id="7_ywcy6"]
+[ext_resource type="Script" uid="uid://cxjhbnd2tueiv" path="res://Scripts/Entities/Player/PlayerStateMachine.cs" id="8_4dhoa"]
 [ext_resource type="AudioStream" uid="uid://ch4lqmsq1yaok" path="res://Art/Soundeffects/Door.wav" id="8_7c5u7"]
-[ext_resource type="Script" uid="uid://l2dmhv0wnks2" path="res://Scripts/Entities/Player/PlayerState.cs" id="8_nplds"]
 [ext_resource type="Script" uid="uid://2cmyneorfgdu" path="res://Scripts/Entities/Player/PlayerSounds.cs" id="9_56mmk"]
 
 [sub_resource type="CapsuleShape2D" id="12"]
@@ -169,7 +169,7 @@ script = ExtResource("6_a4lq4")
 script = ExtResource("7_ywcy6")
 
 [node name="State" type="Node" parent="."]
-script = ExtResource("8_nplds")
+script = ExtResource("8_4dhoa")
 
 [node name="Sounds" type="Node2D" parent="." node_paths=PackedStringArray("_deathSound", "_changeSound", "_jumpSound", "_stepSound", "DoorSound")]
 script = ExtResource("9_56mmk")

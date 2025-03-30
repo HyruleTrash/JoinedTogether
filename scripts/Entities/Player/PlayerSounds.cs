@@ -24,7 +24,7 @@ public partial class PlayerSounds : PlayerComponent
 
         this._playerBody.PlayerSounds = this;
 
-        this._playerBody.PlayerState.OnStateSwitched += () => this._changeSound.Play();
+        this._playerBody.PlayerStateMachine.OnStateSwitched += () => this._changeSound.Play();
         this._playerBody.PlayerMovement.OnPlayerJump += () => this._jumpSound.Play();
         this._playerBody.PlayerRespawner.OnPlayerLevelReloadTrigger += () => this.DoorSound.Play();
         this._playerBody.PlayerRespawner.OnPlayerDeath += () => this._deathSound.Play();

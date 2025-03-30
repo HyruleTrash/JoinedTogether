@@ -23,7 +23,7 @@ public partial class Level : Node2D
     {
         base._Ready();
         this.Player = GetNode<Player>("Player");
-        this.Player.PlayerState.OnStateSwitched += () => CorrectSetState();
+        this.Player.PlayerStateMachine.OnStateSwitched += () => CorrectSetState();
         this.GlobalData = GetNode<GlobalData>("/root/GlobalData");
         _UpdateLevelData();
     }
@@ -97,7 +97,7 @@ public partial class Level : Node2D
     /// </summary>
     public void CorrectSetState()
     {
-        if (this.Player.PlayerState.IsInGirlState == false)
+        if (this.Player.PlayerStateMachine.IsInGirlState == false)
         {
             _SetTerrainArrayState(this.StateGirlTerrain, true);
             _SetTerrainArrayState(this.StateBoyTerrain, false);

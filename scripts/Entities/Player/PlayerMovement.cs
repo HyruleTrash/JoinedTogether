@@ -84,21 +84,16 @@ public partial class PlayerMovement : PlayerComponent
         else
         {
             _CoyoteTime();
-            if (this._coyoteTime)
+            if (this._coyoteTime == true && Input.IsActionJustPressed("UP"))
             {
-                if (Input.IsActionJustPressed("UP"))
-                {
-                    _Jump(delta);
-                    this._coyoteTime = false;
-                }
+                _Jump(delta);
+                this._coyoteTime = false;
             }
         }
 
         // Jump release deceleration
         if (Input.IsActionJustReleased("UP") && this._playerBody.Velocity.Y < 0)
-        {
             this._playerBody.Velocity = new(this._playerBody.Velocity.X, this._playerBody.Velocity.Y * this._jumpReleaseDeceleration);
-        }
     }
 
     /// <summary>

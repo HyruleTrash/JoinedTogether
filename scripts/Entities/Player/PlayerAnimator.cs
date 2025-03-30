@@ -24,11 +24,11 @@ public partial class PlayerAnimator : PlayerComponent
         if (direction != 0)
         {
             this.AnimatedSprite2D.FlipH = direction < 0;
-            this.AnimatedSprite2D.Play(this._playerBody.PlayerState.WalkState);
+            this.AnimatedSprite2D.Play(this._playerBody.PlayerStateMachine.WalkState);
         }
         else
         {
-            this.AnimatedSprite2D.Play(this._playerBody.PlayerState.IdleState);
+            this.AnimatedSprite2D.Play(this._playerBody.PlayerStateMachine.IdleState);
         }
 
         // Jumping
@@ -37,11 +37,11 @@ public partial class PlayerAnimator : PlayerComponent
             // if falling
             if (this._playerBody.Velocity.Y > 0)
             {
-                this.AnimatedSprite2D.Play(this._playerBody.PlayerState.FallState);
+                this.AnimatedSprite2D.Play(this._playerBody.PlayerStateMachine.FallState);
             }
             else
             {
-                this.AnimatedSprite2D.Play(this._playerBody.PlayerState.JumpState);
+                this.AnimatedSprite2D.Play(this._playerBody.PlayerStateMachine.JumpState);
             }
         }
     }

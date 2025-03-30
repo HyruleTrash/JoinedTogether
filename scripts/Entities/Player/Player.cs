@@ -8,7 +8,7 @@ using System.Collections.Generic;
 public partial class Player : CharacterBody2D
 {
     // Misc, variables
-    public PlayerState PlayerState;
+    public PlayerStateMachine PlayerStateMachine;
     public PlayerMovement PlayerMovement;
     public PlayerRespawner PlayerRespawner;
     public PlayerAnimator PlayerAnimator;
