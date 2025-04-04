@@ -1,9 +1,9 @@
 // RULE 		=> Follow Exactly (or else...?)
 // GUIDELINE 	=> "Be Mindful Of ..."
 
-/////////////////////////
+//////////////////////
 // GIT CONVENTIONS ///
-/////////////////////////
+//////////////////////
 
 #1 GIT COMMIT RULE:
 start your commit messages with "Added: ..", "Updated: ..." or "Bugfix: ..." something allong these lines, that describes the main purpose of the commit or change
