@@ -10,6 +10,7 @@ public partial class SpawnPointManager : Node
 {
     [Export]
     private Array<Node2D> _spawnPoints = new Array<Node2D>(); // this array is used and accesed using the sub level index
+    public Vector2 CurrentSpawnPoint;
 
     public override void _Ready()
     {

@@ -27,7 +27,6 @@ public partial class PlayerRespawner : EntityRespawner
 
     public override void _Process(double delta)
     {
-
         if (Input.IsActionJustPressed("R")) // reload level
         {
             this.GlobalData.ReloadLevel?.Invoke();
@@ -50,7 +49,7 @@ public partial class PlayerRespawner : EntityRespawner
     /// </summary>
     public override void Respawn()
     {
-        this._respawnPoint = this.GlobalData.MainMenu.LevelOneInstance.CurrentSpawnPoint;
+        this._respawnPoint = this.GlobalData.GetLevel().GetCurrentSpawnPoint();
         base.Respawn();
     }
 }

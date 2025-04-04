@@ -16,7 +16,6 @@ public partial class Level : Node2D
     public Array<Terrain> StateBoyTerrain = new Array<Terrain>();
     public SpawnPointManager SpawnPointManager;
     public CameraBoundingBoxManager CameraBoundingBoxManager;
-    public Vector2 CurrentSpawnPoint;
     public GlobalData GlobalData;
 
     public override void _Ready()
@@ -49,9 +48,14 @@ public partial class Level : Node2D
         int offset = 1; // Offset is used to remove 0 indexing from level count
         Vector2 spawnPoint = this.SpawnPointManager.GetSpawnPoint(this.GlobalData.Level - offset, out isInIndexRange);
         if (isInIndexRange)
-            this.CurrentSpawnPoint = spawnPoint;
+            this.SpawnPointManager.CurrentSpawnPoint = spawnPoint;
         else
-            this.GlobalData.MainMenu.TempIsOnEndScreen = true;
+            this.GlobalData.SetEndScreen(true);
+    }
+
+    public Vector2 GetCurrentSpawnPoint()
+    {
+        return this.SpawnPointManager.CurrentSpawnPoint;
     }
 
     /// <summary>
@@ -68,7 +72,7 @@ public partial class Level : Node2D
         if (!doesBoundingBoxExist)
         {
             // GD.PushWarning("Index out of range");
-            this.GlobalData.MainMenu.TempIsOnEndScreen = true;
+            this.GlobalData.SetEndScreen(true);
             return;
         }
         this.CameraBoundingBoxManager.Camera.BoundingBox = cameraBoundingBox.BoundingBox + cameraBoundingBox.Position;

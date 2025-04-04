@@ -39,9 +39,9 @@ public partial class GlobalSoundManager : Node2D
 	public override void _Process(double delta)
 	{
 		// main music
-		if (this.MusicPlayer.Playing == false && this.GlobalData.MainMenu.IsActive == false)
+		if (this.MusicPlayer.Playing == false && !this.GlobalData.IsMenuVisible())
 		{
-			if (this.GlobalData.Player.PlayerStateMachine.IsInGirlState)
+			if (this.GlobalData.IsPlayerInGirlState())
 			{
 				this.MusicPlayer.Play();
 			}
@@ -54,7 +54,7 @@ public partial class GlobalSoundManager : Node2D
 		// ambient raindrops, an
 		if (!this.RaindropsPlayer.Playing)
 		{
-			if (this.GlobalData.MainMenu.IsActive)
+			if (this.GlobalData.IsMenuVisible())
 			{
 				this.RaindropsPlayer.Stream = this.Raindrops["Pause"];
 				this.RaindropsPlayer.Play();

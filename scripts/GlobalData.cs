@@ -18,4 +18,32 @@ public partial class GlobalData : Node
 
     // Event used for reloading the level, and there for the current sublevel
     public Action ReloadLevel;
+
+    public Level GetLevel()
+    {
+        if (MainMenu == null || MainMenu.LevelOneInstance == null)
+            return null;
+        return MainMenu.LevelOneInstance;
+    }
+
+    public void SetEndScreen(bool state)
+    {
+        if (MainMenu == null)
+            return;
+        MainMenu.TempIsOnEndScreen = state;
+    }
+
+    public bool IsMenuVisible()
+    {
+        if (MainMenu == null)
+            return false;
+        return MainMenu.IsActive;
+    }
+
+    public bool IsPlayerInGirlState()
+    {
+        if (Player == null || Player.PlayerStateMachine == null)
+            return false;
+        return Player.PlayerStateMachine.IsInGirlState;
+    }
 }
