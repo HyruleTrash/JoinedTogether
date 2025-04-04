@@ -7,7 +7,7 @@ using System.Collections.Generic;
 /// </summary>
 public partial class PlayerComponent : Node
 {
-    protected Vector2I UP = new(0, -1);
+    protected static readonly Vector2I _UP = new(0, -1);
     protected Player _playerBody;
     public GlobalData GlobalData;
 

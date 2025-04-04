@@ -9,14 +9,14 @@ using System.Collections.Generic;
 public partial class SubLevel : Node
 {
     public event Action IsCompletedStateChanged;
-    private bool isCompleted = false;
+    private bool _isCompleted = false;
     [Export]
     public bool IsCompleted
     {
-        get => this.isCompleted;
+        get => this._isCompleted;
         set
         {
-            this.isCompleted = value;
+            this._isCompleted = value;
             this.IsCompletedStateChanged.Invoke();
         }
     }

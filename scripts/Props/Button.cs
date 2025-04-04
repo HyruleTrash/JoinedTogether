@@ -8,11 +8,11 @@ using System.Collections.Generic;
 public partial class Button : Area2D
 {
     [Export]
-    private AnimatedSprite2D AnimatedSprite2D;
+    private AnimatedSprite2D _animatedSprite2D;
     [Export]
-    private AudioStreamPlayer2D ButtonOnSound;
+    private AudioStreamPlayer2D _buttonOnSound;
     [Export]
-    private AudioStreamPlayer2D ButtonOffSound;
+    private AudioStreamPlayer2D _buttonOffSound;
     public event Action IsPressedStateChanged;
     private bool _isPressed = false;
     public bool IsPressed
@@ -28,25 +28,25 @@ public partial class Button : Area2D
     public override void _Ready()
     {
         base._Ready();
-        this.AnimatedSprite2D.Play("default");
+        this._animatedSprite2D.Play("default");
         this.BodyEntered += _OnBodyEntered;
         this.BodyExited += _OnBodyExited;
     }
 
     private void _OnBodyEntered(Node2D body)
     {
-        UpdateOverlapLogic();
+        _UpdateOverlapLogic();
     }
 
     private void _OnBodyExited(Node2D body)
     {
-        UpdateOverlapLogic();
+        _UpdateOverlapLogic();
     }
 
     /// <summary>
     /// Sets the button to the correct state depending on what is overlapping it
     /// </summary>
-    private void UpdateOverlapLogic()
+    private void _UpdateOverlapLogic()
     {
         Godot.Collections.Array<Node2D> bodies = GetOverlappingBodies();
         List<Node2D> legibleBodies = new();
@@ -60,14 +60,14 @@ public partial class Button : Area2D
         if (legibleBodies.Count != 0 && !this.IsPressed)
         {
             this.IsPressed = true;
-            this.ButtonOnSound.Play();
-            this.AnimatedSprite2D.Play("pressed");
+            this._buttonOnSound.Play();
+            this._animatedSprite2D.Play("pressed");
         }
         else if (legibleBodies.Count == 0 && this.IsPressed)
         {
             this.IsPressed = false;
-            this.ButtonOffSound.Play();
-            this.AnimatedSprite2D.Play("default");
+            this._buttonOffSound.Play();
+            this._animatedSprite2D.Play("default");
         }
     }
 }
