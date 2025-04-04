@@ -34,7 +34,7 @@ public partial class PlayerMovement : PlayerComponent
         this._playerBody.PlayerMovement = this;
 
         // Physics setup
-        this._playerBody.SetUpDirection(this.UP);
+        this._playerBody.SetUpDirection(PlayerComponent._UP);
         this._playerBody.SetFloorStopOnSlopeEnabled(true);
         this._playerBody.SetMaxSlides(4);
         this._playerBody.SetFloorMaxAngle(MathF.PI / 4);
@@ -101,7 +101,7 @@ public partial class PlayerMovement : PlayerComponent
     /// </summary>
     private void _Jump(double delta)
     {
-        this._playerBody.Velocity = new(this._playerBody.Velocity.X, this.JUMPFORCE * this.UP.Y);
+        this._playerBody.Velocity = new(this._playerBody.Velocity.X, this.JUMPFORCE * PlayerComponent._UP.Y);
         EmitSignal(SignalName.OnPlayerJump);
     }
 

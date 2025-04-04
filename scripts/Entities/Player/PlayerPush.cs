@@ -19,7 +19,7 @@ public partial class PlayerPush : PlayerComponent
             KinematicCollision2D collision = this._playerBody.GetSlideCollision(i);
             if (
                 collision.GetCollider() is Box box && // Check if the collider is a box
-                collision.GetNormal().Dot(this.UP) < 0.1f && // Check if the collision is not from the top
+                collision.GetNormal().Dot(PlayerComponent._UP) < 0.1f && // Check if the collision is not from the top
                 playerPushAxis != 0 &&// Check if the player is pushing
                 box.Position.Y < this._playerBody.GlobalPosition.Y // Check if the box is below the player
             )
