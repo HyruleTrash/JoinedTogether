@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 /// <summary>
-/// The player camera, meant for following the player around
+/// A camera component, meant for following a 2d node around
 /// </summary>
 public partial class Camera : Camera2D
 {
     [Export]
-    public Player Player;
+    public Node2D ToFollow;
     [Export]
     public Vector2 FollowOffset;
     [Export]
@@ -33,7 +33,7 @@ public partial class Camera : Camera2D
     public override void _Process(double delta)
     {
         // follow the player
-        Vector2 newPosition = this.Position.Lerp(this.Player.Position - this.FollowOffset, (float)(delta * this.Speed));
+        Vector2 newPosition = this.Position.Lerp(this.ToFollow.Position - this.FollowOffset, (float)(delta * this.Speed));
         this.Position = newPosition;
     }
 }

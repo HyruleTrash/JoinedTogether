@@ -5,11 +5,10 @@ using System.Collections.Generic;
 /// <summary>
 /// Adds all logic a box needs or uses, such as respawning, or when it should be active
 /// </summary>
-public partial class BoxRespawner : BoxComponent
+public partial class BoxRespawner : EntityRespawner
 {
     [Export]
     public double RESPAWN_TIME = 0.1;
-    public Vector2I SpawnPosition = new();
     [Export]
     private PackedScene _deathParticleEffect;
     [Export]
@@ -18,10 +17,10 @@ public partial class BoxRespawner : BoxComponent
     public override void _Ready()
     {
         base._Ready();
-        if (this._boxBody != null)
+        if (GetParent() is Box box)
         {
-            this._boxBody.BoxRespawner = this;
-            this.SpawnPosition = (Vector2I)this._boxBody.GlobalPosition;
+            box.BoxRespawner = this;
+            this._respawnPoint = (Vector2I)box.GlobalPosition;
 
             // Make sure the box respawns when the level reload is triggered
             GlobalData globalData = GetNode<GlobalData>("/root/GlobalData");
@@ -29,7 +28,7 @@ public partial class BoxRespawner : BoxComponent
             {
                 globalData.ReloadLevel += () =>
                 {
-                    if (this._boxBody.BoxLevelTracker.IsInsideCurrentSubLevel())
+                    if (box.BoxLevelTracker.IsInsideCurrentSubLevel())
                     {
                         Respawn();
                     }
@@ -38,43 +37,51 @@ public partial class BoxRespawner : BoxComponent
         }
     }
 
+    public Vector2 GetSpawnPoint()
+    {
+        return this._respawnPoint;
+    }
+
     /// <summary>
     /// Causes box death logic
     /// </summary>
-    public void Die()
+    public override void Die()
     {
         this._deathSound.Play();
 
         // Death Particle
         GpuParticles2D instance = (GpuParticles2D)this._deathParticleEffect.Instantiate();
-        instance.Position = this._boxBody.GlobalPosition;
-        this._boxBody.GetNode("../").AddChild(instance);
+        instance.Position = this._body.GlobalPosition;
+        this._body.GetNode("../").AddChild(instance);
         instance.Finished += () => { instance.QueueFree(); };
 
-        Respawn();
+        base.Die();
     }
 
     /// <summary>
     /// Teleports the box to its respawn location, after a certain time period
     /// </summary>
-    public void Respawn()
+    public override void Respawn()
     {
-        this._boxBody.Visible = false;
+        this._body.Visible = false;
 
         // Respawn timer
-        Timer t = new();
-        t.SetWaitTime(RESPAWN_TIME);
-        t.SetOneShot(true);
-        this.AddChild(t);
-        t.Start();
-        t.Timeout += () =>
+        if (this._body is Box box)
         {
-            this._boxBody.LinearVelocity = new(0, 0);
-            this._boxBody.AngularVelocity = 0f;
-            this._boxBody.RotationDegrees = 0;
-            this._boxBody.GlobalPosition = this.SpawnPosition;
-            this._boxBody.Visible = true;
-            t.QueueFree();
-        };
+            Timer t = new();
+            t.SetWaitTime(RESPAWN_TIME);
+            t.SetOneShot(true);
+            this.AddChild(t);
+            t.Start();
+            t.Timeout += () =>
+            {
+                box.LinearVelocity = new(0, 0);
+                box.AngularVelocity = 0f;
+                box.RotationDegrees = 0;
+                box.Visible = true;
+                base.Respawn();
+                t.QueueFree();
+            };
+        }
     }
 }

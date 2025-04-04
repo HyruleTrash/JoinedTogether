@@ -5,43 +5,52 @@ using System.Collections.Generic;
 /// <summary>
 /// Handles the player's respawn logic
 /// </summary>
-public partial class PlayerRespawner : PlayerComponent
+public partial class PlayerRespawner : EntityRespawner
 {
     [Signal]
     public delegate void OnPlayerLevelReloadTriggerEventHandler();
-    [Signal]
-    public delegate void OnPlayerDeathEventHandler();
+    public GlobalData GlobalData;
 
     public override void _Ready()
     {
         base._Ready();
-        this._playerBody.PlayerRespawner = this;
-        this.GlobalData.ReloadLevel += Respawn;
+
+        Player playerBody;
+        if (GetParent() is Player parent)
+        {
+            playerBody = parent;
+            playerBody.PlayerRespawner = this;
+        }
+
+        this.GlobalData = GetNode<GlobalData>("/root/GlobalData");
     }
 
-    protected override void _ProcessComponent(double delta)
+    public override void _Process(double delta)
     {
+
         if (Input.IsActionJustPressed("R")) // reload level
         {
             this.GlobalData.ReloadLevel?.Invoke();
             EmitSignal(SignalName.OnPlayerLevelReloadTrigger);
+            Respawn();
         }
     }
 
     /// <summary>
     /// Causes player's death logic
     /// </summary>
-    public void Die()
+    public override void Die()
     {
-        EmitSignal(SignalName.OnPlayerDeath);
+        base.Die();
         this.GlobalData.ReloadLevel?.Invoke();
     }
 
     /// <summary>
     /// Teleports the player to its respawn location
     /// </summary>
-    public void Respawn()
+    public override void Respawn()
     {
-        this._playerBody.GlobalPosition = this.GlobalData.MainMenu.LevelOneInstance.CurrentSpawnPoint;
+        this._respawnPoint = this.GlobalData.MainMenu.LevelOneInstance.CurrentSpawnPoint;
+        base.Respawn();
     }
 }

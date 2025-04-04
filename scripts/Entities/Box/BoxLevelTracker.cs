@@ -37,6 +37,6 @@ public partial class BoxLevelTracker : BoxComponent
     /// <returns></returns>
     public bool IsInsideCurrentSubLevel()
     {
-        return this.Level.CameraBoundingBoxManager.Camera.BoundingBox.IsPointWithinBounds(this._boxBody.BoxRespawner.SpawnPosition);
+        return this.Level.CameraBoundingBoxManager.Camera.BoundingBox.IsPointWithinBounds(this._boxBody.BoxRespawner.GetSpawnPoint());
     }
 }
