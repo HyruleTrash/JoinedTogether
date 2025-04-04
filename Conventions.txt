@@ -1,0 +1,155 @@
+// RULE 		=> Follow Exactly (or else...?)
+// GUIDELINE 	=> "Be Mindful Of ..."
+
+/////////////////////////
+// GIT CONVENTIONS ///
+/////////////////////////
+
+#1 GIT COMMIT RULE:
+start your commit messages with "Added: ..", "Updated: ..." or "Bugfix: ..." something allong these lines, that describes the main purpose of the commit or change
+
+#1 GIT COMMIT GUIDELINE:
+keep commit messages short and to the point, preffered a single sentance
+
+////////////////////////////////////
+// PROJECT STRUCTURE CONVENTIONS ///
+////////////////////////////////////
+
+#1 NAMING GUIDELINE FOLDERS AND FILES: Use PascalCasing whenever possible. Engine generated files are the acception.
+GlobalData.cs // allowed
+global_data.cs // not allowed
+joined through realms.csproj // allowed
+
+/////////////////////////
+// CODING CONVENTIONS ///
+/////////////////////////
+
+// These coding conventions were inspired by the conventions found here:
+// https://docs.godotengine.org/en/stable/tutorials/scripting/c_sharp/c_sharp_style_guide.html
+
+
+#1. WHITESPACE RULE: If relevant, samely scoped code must be separated by whitespace
+class Example
+{
+	void Function1()
+	{
+		
+	}
+		// <-- white space
+	void Function2()
+	{
+		
+	}
+}	// <-- different scope, no whitespace needed
+
+#2. ACCESS MODIFIER RULE: Always be explicit about private/protected/public if language supports this.
+class Example
+{
+	void Function() // Nope
+	{
+		
+	}
+
+	private void Function() // Yep (if relevant)
+	{
+		
+	}
+}
+
+#3. CODING RULE: Use english during code and comments
+// Dit mag niet
+int mijnVariabele = 10;
+// This is fine
+int myVariable = 10;
+
+#4. FUNCTION GUIDELINE: If a function cannot be explained in a single sentence,
+						consider splitting it up.
+// This function updates the UI of all visible enemies. (for instance)
+
+#5. VARIABLE RULE: Public variables use PascalCasing
+#6. VARIABLE RULE: Private/protected variables use camelCasing with a "_" prefix
+#7. VARIABLE RULE: local/parameter variables use camelCasing with no prefix
+#8. VARIABLE GUIDELINE: member variables should always be accessed using "this.", unless it's a inherited property from a godot class (since its annoying, but preffered to do so when possible)
+class Example
+{
+	public int MemberVariable;
+	private int _otherMemberVariable;
+	
+	public void Function( int paramVariable )
+	{
+		int localVariable = this.MemberVariable + paramVariable * this._otherMemberVariable;
+	}
+}
+
+#9. FUNCTION RULE: Public functions use PascalCasing. Unless it's a overwrite function from a godot class
+public void Function() // allowed
+{
+    return;
+}
+public overwrite void _Process() // allowed
+{
+    return;
+}
+public void _Function() // not allowed
+{
+    return;
+}
+public void function() // not allowed
+{
+    return;
+}
+
+#10. FUNCTION RULE: Private/protected functions use PascalCasing with a "_" prefix
+private void _Function() // allowed
+{
+    return;
+}
+protected void _Function() // allowed
+{
+    return;
+}
+private void Function() // not allowed
+{
+    return;
+}
+private void _function() // not allowed
+{
+    return;
+}
+				
+#11. RULE: BRACKETS ARE NEXTLINED
+// However, you may choose to omit line breaks inside brackets:
+// - For simple property accessors.
+// - For simple object, array, or collection initializers.
+// - For abstract auto property, indexer, or event declarations.
+void Start()
+{	// next line
+	
+}
+
+#12. IF STATEMENTS GUIDELINE: IF STATEMENTS WITH ONE LINE MAY OMIT BRACKETS
+if ( someCondition )
+	thisIsAllowed = 10;	// no brackets needed
+
+#13. IF STATEMENTS GUIDELINE: IF statements with long conditions may be on separate lines
+if ( someVariable == 10
+	 && otherVariable == 11
+	 && someCondition ) //may be on separate lines
+	DoSomething();
+
+#14. SPACES GUIDELINE: Use single spaces to increase legibility of separate parts of long statements.
+if (someConditionA && someConditionB) // use your own judgement of what is "legible"
+{
+	
+}
+
+#15. EXPLANATORY COMMENT GUIDELINE: When explaining scoped code, 
+								consider using summary if tool allows
+									(and do so consistently)
+/// Summary
+///  returns: ...
+///
+void SomeFunction()
+{
+	
+}
